@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class PlayerController : MonoBehaviour
 {
     // Movement Variables
     [Header("Movement Parameters")]
+    [SerializeField] private InputActionReference moveActionReference;
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float sprintSpeed = 8;
     [SerializeField] private float sprintStamina = 10;
@@ -33,9 +38,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Movement Input
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
 
         // Flip Sprite
         if (movement.x != 0) sr.flipX = (movement.x < 0);
@@ -64,15 +66,19 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector2 moveDirection = moveActionReference.action.ReadValue<Vector2>();
+        
         if (!isDashing)
         {
             if (!isSprinting)
             {
-                rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+                //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+                transform.Translate(moveDirection * dashSpeed* Time.deltaTime);
             }
             else
             {
-                rb.velocity = movement * sprintSpeed;
+                //rb.velocity = movement * sprintSpeed;
 
             }
         }
