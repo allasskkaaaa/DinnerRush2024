@@ -18,9 +18,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float StaminaRegen = 1;
     [SerializeField] private float dashSpeed = 10;
     [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float sprintThreshold = 0.8f; //The Threshold of how far from the center the stick is to enable sprinting.
+
     private bool isDashing = false;
     private bool isSprinting = false;
     private Vector2 movement;
+    private Vector2 movementInput;
 
     //Components
     private Rigidbody2D rb;
@@ -43,6 +46,9 @@ public class PlayerController : MonoBehaviour
         if (movement.x != 0) sr.flipX = (movement.x < 0);
 
         // Sprint Input
+
+        movementInput = moveActionReference.action.ReadValue<Vector2>();
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && !isSprinting)
         {
             isSprinting = true;
