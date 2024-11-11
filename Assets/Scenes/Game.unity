@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 161189998}
   - component: {fileID: 161189999}
   m_Layer: 0
-  m_Name: Square (9)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 221328799}
   - component: {fileID: 221328800}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 639848654}
   - component: {fileID: 639848655}
   m_Layer: 0
-  m_Name: Square (11)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -992,7 +992,7 @@ GameObject:
   - component: {fileID: 663084299}
   - component: {fileID: 663084300}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1076,7 +1076,7 @@ GameObject:
   - component: {fileID: 684154845}
   - component: {fileID: 684154846}
   m_Layer: 0
-  m_Name: Circle (4)
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1160,7 +1160,7 @@ GameObject:
   - component: {fileID: 701469033}
   - component: {fileID: 701469034}
   m_Layer: 0
-  m_Name: Circle (1)
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1312,7 +1312,7 @@ Transform:
   m_GameObject: {fileID: 780726938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.67, y: 6.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1381,7 +1381,7 @@ GameObject:
   - component: {fileID: 833142367}
   - component: {fileID: 833142368}
   m_Layer: 0
-  m_Name: Square (5)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1594,7 +1594,7 @@ GameObject:
   - component: {fileID: 892231117}
   - component: {fileID: 892231118}
   m_Layer: 0
-  m_Name: Circle (2)
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,8 +1713,8 @@ GameObject:
   - component: {fileID: 973743716}
   - component: {fileID: 973743717}
   m_Layer: 0
-  m_Name: Square (2)
-  m_TagString: Untagged
+  m_Name: Door
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1879,6 +1879,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042087167}
+  - component: {fileID: 1042087168}
+  - component: {fileID: 1042087169}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -1895,13 +1897,61 @@ Transform:
   m_GameObject: {fileID: 1042087166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.6319184, y: -14.102965, z: -0.051301803}
+  m_LocalPosition: {x: 0.08, y: -27.77, z: -0.051301803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 780726939}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1042087168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042087166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf599c369ded293428f35f3ca4ebc427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npc: {fileID: 11400000, guid: 0806ec9d74b793741b2b630c0771e525, type: 2}
+--- !u!58 &1042087169
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042087166}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.69
 --- !u!1 &1117625958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1963,7 @@ GameObject:
   - component: {fileID: 1117625959}
   - component: {fileID: 1117625960}
   m_Layer: 0
-  m_Name: Circle (3)
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2648,7 +2698,7 @@ GameObject:
   - component: {fileID: 1477858503}
   - component: {fileID: 1477858504}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2900,7 +2950,7 @@ GameObject:
   - component: {fileID: 1592354500}
   - component: {fileID: 1592354501}
   m_Layer: 0
-  m_Name: Square (3)
+  m_Name: KitchenDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3052,7 +3102,7 @@ GameObject:
   - component: {fileID: 1688575259}
   - component: {fileID: 1688575260}
   m_Layer: 0
-  m_Name: Square (10)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3226,7 +3276,7 @@ GameObject:
   - component: {fileID: 1779239172}
   - component: {fileID: 1779239173}
   m_Layer: 0
-  m_Name: Square (12)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3355,7 +3405,7 @@ GameObject:
   - component: {fileID: 1826686145}
   - component: {fileID: 1826686146}
   m_Layer: 0
-  m_Name: Square (6)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3439,7 +3489,7 @@ GameObject:
   - component: {fileID: 1840792219}
   - component: {fileID: 1840792220}
   m_Layer: 0
-  m_Name: Square (7)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3523,7 +3573,7 @@ GameObject:
   - component: {fileID: 1856392527}
   - component: {fileID: 1856392528}
   m_Layer: 0
-  m_Name: Square (4)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3608,7 +3658,7 @@ GameObject:
   - component: {fileID: 1969472363}
   m_Layer: 0
   m_Name: SeatingAreas
-  m_TagString: Untagged
+  m_TagString: Seat Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3661,7 +3711,7 @@ GameObject:
   - component: {fileID: 2085252024}
   - component: {fileID: 2085252025}
   m_Layer: 0
-  m_Name: Square (8)
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPCStateManager : MonoBehaviour
 {
+    public NPC npc;
     private int walkSpeed = 5;
     NPC_BaseState currentState;
     public NPC_SeatingState seatingState = new NPC_SeatingState();
@@ -13,6 +14,7 @@ public class NPCStateManager : MonoBehaviour
 
     private void Start()
     {
+
         currentState = seatingState;
 
         currentState.EnterState(this);
