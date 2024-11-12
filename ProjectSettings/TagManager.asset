@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Seat Manager
   - Door
+  - Latte
+  - Sandwich
+  - Cake
   layers:
   - Default
   - TransparentFX

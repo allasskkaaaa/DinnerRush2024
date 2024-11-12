@@ -39,4 +39,6 @@ public class NPC_WaitingState : NPC_BaseState
     {
         // Handle collision if needed
     }
+
+  
 }

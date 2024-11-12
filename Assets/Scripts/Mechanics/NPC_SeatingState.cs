@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class NPC_SeatingState : NPC_BaseState
 {
-    private Vector3 seat;
+    private Transform seat;
+    private Seat seatScript; // Reference to the Seat component
+    private SeatManager sm;
 
-    SeatManager sm;
     public override void EnterState(NPCStateManager npc)
     {
         Debug.Log(npc.name + " has entered the seating state.");
 
         sm = GameObject.FindWithTag("Seat Manager").GetComponent<SeatManager>();
-
-        var (areAllOccupied, freeSeatPosition) = sm.CheckAvailability();
+        var (areAllOccupied, freeSeatTransform) = sm.CheckAvailability();
 
         if (areAllOccupied)
         {
@@ -21,8 +21,14 @@ public class NPC_SeatingState : NPC_BaseState
         }
         else
         {
-            //Assigns the first available seat as the target place to sit.
-            seat = freeSeatPosition;
+            seat = freeSeatTransform;
+            seatScript = seat.GetComponent<Seat>();
+
+            if (seatScript != null)
+            {
+                seatScript.isOccupied = true; // Mark seat as occupied
+                Debug.Log(seat.name + " marked as occupied.");
+            }
         }
     }
 
@@ -30,12 +36,12 @@ public class NPC_SeatingState : NPC_BaseState
     {
         if (seat != null)
         {
-            npc.transform.position = Vector3.MoveTowards(npc.transform.position, seat, npc.npc.walkSpeed * Time.deltaTime);
-        }
+            npc.transform.position = Vector3.MoveTowards(npc.transform.position, seat.position, npc.npc.walkSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(npc.transform.position, seat) < 0.1f)
-        {
-            npc.SwitchState(npc.waitingState);
+            if (Vector3.Distance(npc.transform.position, seat.position) < 0.1f)
+            {
+                npc.SwitchState(npc.waitingState);
+            }
         }
     }
 
