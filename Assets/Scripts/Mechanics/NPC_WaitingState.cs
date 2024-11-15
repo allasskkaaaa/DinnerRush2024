@@ -6,11 +6,14 @@ public class NPC_WaitingState : NPC_BaseState
 {
     private float waitTime = 15f;
     private float timer;
+    private Kitchen kitchen;
 
     public override void EnterState(NPCStateManager npc)
     {
         Debug.Log(npc.name + " has entered the waiting state.");
         timer = waitTime; // Initialize the timer here
+        kitchen = GameObject.FindGameObjectWithTag("Kitchen").GetComponent<Kitchen>();
+        kitchen.sendToKitchen(npc.npc.currentOrder);
     }
 
     public override void UpdateState(NPCStateManager npc)
