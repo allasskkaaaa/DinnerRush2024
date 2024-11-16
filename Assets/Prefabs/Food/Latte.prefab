@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7033465914718187736}
   - component: {fileID: 6523800337328386101}
   - component: {fileID: -7352451960863760998}
+  - component: {fileID: 7634818646032558301}
   m_Layer: 0
   m_Name: Latte
   m_TagString: Latte
@@ -148,7 +149,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -164,6 +165,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 720021f3609bcda4585a296436f71952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDragging: 0
+--- !u!114 &7634818646032558301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617811087055974560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9144453af80483948a1550972fd2645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7238985850215446168

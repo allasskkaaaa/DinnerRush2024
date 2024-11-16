@@ -44,9 +44,8 @@ public class NPC_SeatingState : NPC_BaseState
             }
         }
     }
-
     public override void OnCollisionEnter(NPCStateManager npc)
     {
-
+        
     }
 }

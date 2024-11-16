@@ -18,4 +18,6 @@ public class NPC_EatingState : NPC_BaseState
     {
 
     }
+
+    
 }

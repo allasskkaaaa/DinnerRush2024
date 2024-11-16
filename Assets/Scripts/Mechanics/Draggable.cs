@@ -5,78 +5,32 @@ using UnityEngine.InputSystem.Android.LowLevel;
 
 public class Draggable : MonoBehaviour
 {
-    private bool isDragActive = false;
-    private Vector2 screenPosition;
-    private Vector3 worldPosition;
-    private Draggable lastDragged;
+    public bool isDragging;
 
-    private void Awake()
+    private Collider2D _collider;
+
+    private DragController dragController;
+
+    private float movementTime = 15f;
+    private System.Nullable<Vector3> movementDestination;
+    private Vector3 lastPosition;
+    private void Start()
     {
-        //Makes sure there is only one drag controller in the game. Deletes if it detects more than one
-        DragController[] controller = FindObjectsOfType<DragController>();
-        if (controller.Length > 1)
-        {
-            Destroy(gameObject);
-        }
+        _collider = GetComponent<Collider2D>();
+        dragController = FindObjectOfType<DragController>();
     }
 
-    private void Update()
+    //If the player drops an object on another draggable object, it moves the object so it doesn't overlap.
+    void OnTriggerEnter2D(Collider2D other)
     {
-        //Checks if the player lets go of mouse button or touch and drops item if detected
-        if (isDragActive && (Input.GetMouseButtonDown(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)))
+        Draggable collidedDraggable = other.GetComponent<Draggable>();
+
+        if (collidedDraggable != null && dragController.LastDragged.gameObject == gameObject)
         {
-            Drop();
-            return;
+            //Finds the nearest distance where the objects wouldn't collide and moves the dropped object to that position.
+            ColliderDistance2D colliderDistance2D = other.Distance(_collider);
+            Vector3 diff = new Vector3(colliderDistance2D.normal.x, colliderDistance2D.normal.y) * colliderDistance2D.distance;
+            transform.position -= diff;
         }
-
-        //If the player uses a mouse or touch input on the screen, it collects the position of where they clicked
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 mousePos = Input.mousePosition;
-            screenPosition = new Vector2(mousePos.x, mousePos.y);
-        }
-        else if(Input.touchCount > 0)
-        {
-            screenPosition = Input.GetTouch(0).position;
-        } else
-        {
-            return;
-        }
-
-        worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-
-        //Checks if the player is dragging an object. If yes, it constantly calls the drag method. If not, it checks for if the player touch is colliding with a draggable object
-        if (isDragActive)
-        {
-            Drag();
-        } 
-        else
-        {
-            RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
-            if (hit.collider != null)
-            {
-                Draggable draggable = hit.transform.gameObject.GetComponent<Draggable>();
-                if (draggable != null)
-                {
-                    lastDragged = draggable;
-                    InitDrag();
-                }
-            }
-        }
-    }
-
-    void InitDrag()
-    {
-        isDragActive = true;
-    }
-
-    void Drag()
-    {
-        lastDragged.transform.position = new Vector2(worldPosition.x, worldPosition.y);
-    }
-
-    void Drop()
-    {
-        isDragActive = false;
     }
 }
