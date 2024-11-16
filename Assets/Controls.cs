@@ -50,6 +50,94 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TouchControls"",
+            ""id"": ""84e43490-97a1-4778-84e7-29b09d37ee39"",
+            ""actions"": [
+                {
+                    ""name"": ""TouchInput"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d9f43001-28fc-4439-80a2-3088804e8596"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drag"",
+                    ""type"": ""Value"",
+                    ""id"": ""47bada78-03a2-47cd-aa04-35c501071555"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TouchStart"",
+                    ""type"": ""Button"",
+                    ""id"": ""5517501c-31a6-4bef-a7b3-2d8b912865c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TouchRelease"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad71d6b7-26bf-418a-9634-bca03fa6f10c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""54cdcb9c-b54f-4993-b4a6-5c6b7dd7e3c5"",
+                    ""path"": ""<Touchscreen>/primaryTouch"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee730428-2bb3-4913-811e-be6ec437ac25"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2da02b6-e6d7-4ff1-90a4-be9b37e5b3ef"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchStart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3884954f-a9aa-4b29-8aff-0455461d1fa0"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -57,6 +145,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        // TouchControls
+        m_TouchControls = asset.FindActionMap("TouchControls", throwIfNotFound: true);
+        m_TouchControls_TouchInput = m_TouchControls.FindAction("TouchInput", throwIfNotFound: true);
+        m_TouchControls_Drag = m_TouchControls.FindAction("Drag", throwIfNotFound: true);
+        m_TouchControls_TouchStart = m_TouchControls.FindAction("TouchStart", throwIfNotFound: true);
+        m_TouchControls_TouchRelease = m_TouchControls.FindAction("TouchRelease", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -160,8 +254,85 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // TouchControls
+    private readonly InputActionMap m_TouchControls;
+    private List<ITouchControlsActions> m_TouchControlsActionsCallbackInterfaces = new List<ITouchControlsActions>();
+    private readonly InputAction m_TouchControls_TouchInput;
+    private readonly InputAction m_TouchControls_Drag;
+    private readonly InputAction m_TouchControls_TouchStart;
+    private readonly InputAction m_TouchControls_TouchRelease;
+    public struct TouchControlsActions
+    {
+        private @Controls m_Wrapper;
+        public TouchControlsActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TouchInput => m_Wrapper.m_TouchControls_TouchInput;
+        public InputAction @Drag => m_Wrapper.m_TouchControls_Drag;
+        public InputAction @TouchStart => m_Wrapper.m_TouchControls_TouchStart;
+        public InputAction @TouchRelease => m_Wrapper.m_TouchControls_TouchRelease;
+        public InputActionMap Get() { return m_Wrapper.m_TouchControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TouchControlsActions set) { return set.Get(); }
+        public void AddCallbacks(ITouchControlsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TouchControlsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TouchControlsActionsCallbackInterfaces.Add(instance);
+            @TouchInput.started += instance.OnTouchInput;
+            @TouchInput.performed += instance.OnTouchInput;
+            @TouchInput.canceled += instance.OnTouchInput;
+            @Drag.started += instance.OnDrag;
+            @Drag.performed += instance.OnDrag;
+            @Drag.canceled += instance.OnDrag;
+            @TouchStart.started += instance.OnTouchStart;
+            @TouchStart.performed += instance.OnTouchStart;
+            @TouchStart.canceled += instance.OnTouchStart;
+            @TouchRelease.started += instance.OnTouchRelease;
+            @TouchRelease.performed += instance.OnTouchRelease;
+            @TouchRelease.canceled += instance.OnTouchRelease;
+        }
+
+        private void UnregisterCallbacks(ITouchControlsActions instance)
+        {
+            @TouchInput.started -= instance.OnTouchInput;
+            @TouchInput.performed -= instance.OnTouchInput;
+            @TouchInput.canceled -= instance.OnTouchInput;
+            @Drag.started -= instance.OnDrag;
+            @Drag.performed -= instance.OnDrag;
+            @Drag.canceled -= instance.OnDrag;
+            @TouchStart.started -= instance.OnTouchStart;
+            @TouchStart.performed -= instance.OnTouchStart;
+            @TouchStart.canceled -= instance.OnTouchStart;
+            @TouchRelease.started -= instance.OnTouchRelease;
+            @TouchRelease.performed -= instance.OnTouchRelease;
+            @TouchRelease.canceled -= instance.OnTouchRelease;
+        }
+
+        public void RemoveCallbacks(ITouchControlsActions instance)
+        {
+            if (m_Wrapper.m_TouchControlsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ITouchControlsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TouchControlsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TouchControlsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public TouchControlsActions @TouchControls => new TouchControlsActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface ITouchControlsActions
+    {
+        void OnTouchInput(InputAction.CallbackContext context);
+        void OnDrag(InputAction.CallbackContext context);
+        void OnTouchStart(InputAction.CallbackContext context);
+        void OnTouchRelease(InputAction.CallbackContext context);
     }
 }

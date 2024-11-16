@@ -9,6 +9,7 @@ TagManager:
   - Latte
   - Sandwich
   - Cake
+  - Kitchen
   layers:
   - Default
   - TransparentFX
