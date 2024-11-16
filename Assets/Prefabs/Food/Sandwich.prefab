@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3776914175846171241}
   - component: {fileID: 4775121971085355101}
+  - component: {fileID: -709035188416453100}
   m_Layer: 0
   m_Name: Sandwich
   m_TagString: Sandwich
@@ -69,6 +70,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.89
+--- !u!114 &-709035188416453100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607156412338551914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720021f3609bcda4585a296436f71952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4430201303990960832
 GameObject:
   m_ObjectHideFlags: 0
