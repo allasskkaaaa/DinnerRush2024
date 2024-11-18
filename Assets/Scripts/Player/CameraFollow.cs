@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player;
-
     public float minXClamp;
     public float maxXClamp;
     public float minYClamp;
     public float maxYClamp;
     public float xOffset;
     public float yOffset;
-
     private void LateUpdate()
     {
+        
         Vector3 cameraPos;
 
         cameraPos = transform.position;
-        cameraPos.x = Mathf.Clamp(player.transform.position.x + xOffset, minXClamp, maxXClamp);
-        cameraPos.y = Mathf.Clamp(player.transform.position.y + yOffset, minYClamp, maxYClamp);
+        cameraPos.x = Mathf.Clamp(GameManager.Instance.PlayerInstance.transform.position.x + xOffset, minXClamp, maxXClamp);
+        cameraPos.y = Mathf.Clamp(GameManager.Instance.PlayerInstance.transform.position.y + yOffset, minYClamp, maxYClamp);
         transform.position = cameraPos;
 
     }

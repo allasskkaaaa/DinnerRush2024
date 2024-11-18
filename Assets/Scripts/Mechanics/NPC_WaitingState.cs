@@ -50,6 +50,7 @@ public class NPC_WaitingState : NPC_BaseState
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.name + " has collided with NPC.");
         // Check if the collided object has the Food component
         Food food = other.GetComponent<Food>();
         if (food == null) return; // Exit early if no food component

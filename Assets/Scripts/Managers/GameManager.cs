@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public Action<int> OnLifeValueChange;
 
-    //public UnityEvent<int> OnLifeValueChange;
+    
 
     private int _lives;
     public int lives
@@ -38,11 +38,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxLives = 5;
     [SerializeField] private PlayerController playerPrefab;
-
     [HideInInspector] public PlayerController PlayerInstance => _playerInstance;
     PlayerController _playerInstance = null;
     Transform currentCheckpoint;
-
+    [SerializeField] private Transform startingSpawn;
+    public Action<PlayerController> OnPlayerSpawned;
 
 
     // Start is called before the first frame update
@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
         }
 
         Destroy(gameObject);
+
+        
     }
 
     private void Start()
@@ -65,6 +67,16 @@ public class GameManager : MonoBehaviour
             maxLives = 5;
         }
         lives = maxLives;
+
+        if (startingSpawn != null)
+        {
+            SpawnPlayer(startingSpawn);
+        }
+        else
+        {
+            Debug.Log("Starting spawn has not been set.");
+        }
+
     }
 
     // Update is called once per frame
@@ -100,6 +112,7 @@ public class GameManager : MonoBehaviour
         _playerInstance = Instantiate(playerPrefab, spawnLocation.position, spawnLocation.rotation);
         currentCheckpoint = spawnLocation;
     }
+
 
     public void UpdateCheckpoint(Transform updatedCheckpoint)
     {
