@@ -14,6 +14,7 @@ public class NPCStateManager : MonoBehaviour
 
     private void Start()
     {
+        npc = ScriptableObject.CreateInstance<NPC>();
 
         currentState = seatingState;
 

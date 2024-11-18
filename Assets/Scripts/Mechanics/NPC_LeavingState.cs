@@ -16,6 +16,8 @@ public class NPC_LeavingState : NPC_BaseState
         {
             door = doorObject.transform;
         }
+
+        npc.npc.seat.isOccupied = false;
     }
 
     public override void UpdateState(NPCStateManager npc)

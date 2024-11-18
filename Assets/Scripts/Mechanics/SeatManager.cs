@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class SeatManager : MonoBehaviour
 {
-    [SerializeField] public Transform[] seats;
+    [SerializeField] public GameObject[] seats;
 
-    public (bool areAllOccupied, Transform seat) CheckAvailability()
+    public (bool areAllOccupied, GameObject seat) CheckAvailability()
     {
         // Loops through each seat
         for (int i = 0; i < seats.Length; i++)
         {
-            Transform seatTransform = seats[i];
+            GameObject seatObject = seats[i];
 
             // Grabs the Seat script from the seat
-            Seat seat = seatTransform.GetComponent<Seat>();
+            Seat seat = seatObject.GetComponent<Seat>();
 
             if (seat != null)
             {
                 if (seat.isOccupied)
                 {
-                    Debug.Log(seatTransform.name + " is occupied.");
+                    Debug.Log(seatObject.name + " is occupied.");
                 }
                 else
                 {
-                    Debug.Log(seatTransform.name + " is available.");
+                    Debug.Log(seatObject.name + " is available.");
                     // Return false and the available seat Transform
-                    return (false, seatTransform); // 'false' means it's available
+                    return (false, seatObject); // 'false' means it's available
                 }
             }
             else
             {
-                Debug.Log(seatTransform.name + " does not have the Seat script.");
+                Debug.Log(seatObject.name + " does not have the Seat script.");
             }
         }
 

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NPC_SeatingState : NPC_BaseState
 {
-    private Transform seat;
+    private GameObject seat;
     private Seat seatScript; // Reference to the Seat component
     private SeatManager sm;
 
@@ -12,8 +10,9 @@ public class NPC_SeatingState : NPC_BaseState
     {
         Debug.Log(npc.name + " has entered the seating state.");
 
+        // Find the SeatManager
         sm = GameObject.FindWithTag("Seat Manager").GetComponent<SeatManager>();
-        var (areAllOccupied, freeSeatTransform) = sm.CheckAvailability();
+        var (areAllOccupied, seatObject) = sm.CheckAvailability();
 
         if (areAllOccupied)
         {
@@ -21,13 +20,15 @@ public class NPC_SeatingState : NPC_BaseState
         }
         else
         {
-            seat = freeSeatTransform;
+            // Assign the seat only to this NPC
+            seat = seatObject;
             seatScript = seat.GetComponent<Seat>();
 
             if (seatScript != null)
             {
                 seatScript.isOccupied = true; // Mark seat as occupied
-                Debug.Log(seat.name + " marked as occupied.");
+                npc.npc.seat = seatScript;    // Assign the seat to the NPC
+                Debug.Log(seat.name + " marked as occupied by " + npc.name);
             }
         }
     }
@@ -36,16 +37,19 @@ public class NPC_SeatingState : NPC_BaseState
     {
         if (seat != null)
         {
-            npc.transform.position = Vector3.MoveTowards(npc.transform.position, seat.position, npc.npc.walkSpeed * Time.deltaTime);
+            // Move the NPC toward their assigned seat
+            npc.transform.position = Vector3.MoveTowards(npc.transform.position, seat.transform.position, npc.npc.walkSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(npc.transform.position, seat.position) < 0.1f)
+            // Switch to waiting state once seated
+            if (Vector3.Distance(npc.transform.position, seat.transform.position) < 0.1f)
             {
                 npc.SwitchState(npc.waitingState);
             }
         }
     }
+
     public override void OnCollisionEnter(NPCStateManager npc)
     {
-        
+        // Optional: Handle collision logic if needed
     }
 }

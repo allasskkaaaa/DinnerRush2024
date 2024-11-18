@@ -2,8 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,10 +46,11 @@ public class GameManager : MonoBehaviour
     Transform currentCheckpoint;
     [SerializeField] private Transform startingSpawn;
     public Action<PlayerController> OnPlayerSpawned;
-
+    [SerializeField] public Timer timer;
+    [SerializeField] public int playerScore;
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         if (_instance == null)
         {
@@ -96,13 +100,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneName);
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         Debug.Log("GameOver goes here");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(3);
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         _playerInstance.transform.position = currentCheckpoint.position;
     }

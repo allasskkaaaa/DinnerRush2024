@@ -2224,8 +2224,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 5
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 4902060564052839179, guid: cdad51f8b720ff44bb2d275adb53be08, type: 3}
   startingSpawn: {fileID: 0}
+  timer: {fileID: 0}
+  playerScore: 0
 --- !u!4 &1771382731
 Transform:
   m_ObjectHideFlags: 0
