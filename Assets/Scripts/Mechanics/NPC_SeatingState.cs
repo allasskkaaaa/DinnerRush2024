@@ -1,13 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class NPC_SeatingState : NPC_BaseState
 {
     private GameObject seat;
     private Seat seatScript; // Reference to the Seat component
     private SeatManager sm;
+    private NPC_Movement movement;
+
+    public List<PathNode> path = new List<PathNode>();
 
     public override void EnterState(NPCStateManager npc)
     {
+        movement = npc.GetComponent<NPC_Movement>();
         Debug.Log(npc.name + " has entered the seating state.");
 
         // Find the SeatManager
@@ -18,38 +27,34 @@ public class NPC_SeatingState : NPC_BaseState
         {
             Debug.Log("All seats are occupied.");
         }
+        else if (seatObject != null) // Check if a seat is available
+        {
+            var seat = seatObject.GetComponent<Seat>();
+            npc.npc.seat = seat; // Assign the seat to the NPC
+            seat.isOccupied = true; // Mark seat as occupied
+            Debug.Log(seatObject.name + " marked as occupied by " + npc.name);
+
+            // Set movement nodes
+            movement.currentNode = GameObject.FindWithTag("Door").GetComponent<PathNode>();
+            movement.destinationNode = seatObject.GetComponent<PathNode>();
+        }
         else
         {
-            // Assign the seat only to this NPC
-            seat = seatObject;
-            seatScript = seat.GetComponent<Seat>();
-
-            if (seatScript != null)
-            {
-                seatScript.isOccupied = true; // Mark seat as occupied
-                npc.npc.seat = seatScript;    // Assign the seat to the NPC
-                Debug.Log(seat.name + " marked as occupied by " + npc.name);
-            }
+            Debug.LogError("Seat object is null despite availability.");
         }
     }
 
+
     public override void UpdateState(NPCStateManager npc)
     {
-        if (seat != null)
-        {
-            // Move the NPC toward their assigned seat
-            npc.transform.position = Vector3.MoveTowards(npc.transform.position, seat.transform.position, npc.npc.walkSpeed * Time.deltaTime);
 
-            // Switch to waiting state once seated
-            if (Vector3.Distance(npc.transform.position, seat.transform.position) < 0.1f)
-            {
-                npc.SwitchState(npc.waitingState);
-            }
-        }
     }
 
     public override void OnCollisionEnter(NPCStateManager npc)
     {
         // Optional: Handle collision logic if needed
     }
+
+
+
 }

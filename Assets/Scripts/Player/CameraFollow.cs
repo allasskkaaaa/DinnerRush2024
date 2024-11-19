@@ -12,7 +12,8 @@ public class CameraFollow : MonoBehaviour
     public float yOffset;
     private void LateUpdate()
     {
-        
+        if (GameManager.Instance.PlayerInstance == null) return;
+
         Vector3 cameraPos;
 
         cameraPos = transform.position;
