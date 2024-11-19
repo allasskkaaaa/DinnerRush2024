@@ -6,7 +6,21 @@ public class NPCStateManager : MonoBehaviour
 {
     public NPC npc;
     private int walkSpeed = 5;
-    NPC_BaseState currentState;
+
+    // Enum for NPC states
+    public enum NPCState
+    {
+        Seating,
+        Waiting,
+        Eating,
+        Leaving
+    }
+
+    // Current state as an enum (visible in Inspector)
+    public NPCState currentEnumState;
+
+    // States
+    private NPC_BaseState currentState;
     public NPC_SeatingState seatingState = new NPC_SeatingState();
     public NPC_WaitingState waitingState = new NPC_WaitingState();
     public NPC_EatingState eatingState = new NPC_EatingState();
@@ -16,19 +30,44 @@ public class NPCStateManager : MonoBehaviour
     {
         npc = ScriptableObject.CreateInstance<NPC>();
 
-        currentState = seatingState;
-
-        currentState.EnterState(this);
+        // Initialize state
+        SwitchState(NPCState.Seating);
     }
 
     private void Update()
     {
         currentState.UpdateState(this);
+
+        // Debug: Log current state
+        Debug.Log($"NPC is currently in the {currentEnumState} state.");
     }
 
-    public void SwitchState(NPC_BaseState state)
+    public void SwitchState(NPCState newState)
     {
-        currentState = state;
-        state.EnterState(this);
+        // Update the enum state
+        currentEnumState = newState;
+
+        // Set the current state based on the enum
+        switch (newState)
+        {
+            case NPCState.Seating:
+                currentState = seatingState;
+                break;
+            case NPCState.Waiting:
+                currentState = waitingState;
+                break;
+            case NPCState.Eating:
+                currentState = eatingState;
+                break;
+            case NPCState.Leaving:
+                currentState = leavingState;
+                break;
+            default:
+                Debug.LogError("Invalid state!");
+                return;
+        }
+
+        // Enter the new state
+        currentState.EnterState(this);
     }
 }

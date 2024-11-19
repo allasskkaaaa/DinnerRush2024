@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NPC_WaitingState : NPC_BaseState
 {
-    private float waitTime = 15f;
     private float timer;
     private Kitchen kitchen;
 
@@ -14,7 +13,7 @@ public class NPC_WaitingState : NPC_BaseState
     public override void EnterState(NPCStateManager npc)
     {
         Debug.Log(npc.name + " has entered the waiting state.");
-        timer = waitTime; // Initialize the timer here
+        timer = npc.npc.patience; // Initialize the timer here
         kitchen = GameObject.FindGameObjectWithTag("Kitchen").GetComponent<Kitchen>();
         kitchen.sendToKitchen(npc.npc.currentOrder);
         order = npc.npc.currentOrder;
@@ -25,7 +24,7 @@ public class NPC_WaitingState : NPC_BaseState
     {
         timer -= Time.deltaTime;
 
-        if (timer > waitTime / 2)
+        if (timer > npc.npc.patience / 2)
         {
             // If the player gives the NPC food within this time frame, they are happy
             npc.npc.currentMood = NPC.mood.Happy;
@@ -39,7 +38,7 @@ public class NPC_WaitingState : NPC_BaseState
         {
             // If the player fails to give the NPC food, they will leave angry.
             npc.npc.currentMood = NPC.mood.Angry;
-            npc.SwitchState(npc.leavingState);
+            npc.SwitchState(NPCStateManager.NPCState.Leaving);
         }
     }
 
@@ -59,7 +58,7 @@ public class NPC_WaitingState : NPC_BaseState
         if (other.gameObject.tag == order.ToString())
         {
             Debug.Log("NPC has been given the correct order.");
-            stateManager.SwitchState(stateManager.eatingState);
+            stateManager.SwitchState(NPCStateManager.NPCState.Eating);
 
         }
         else
@@ -67,7 +66,7 @@ public class NPC_WaitingState : NPC_BaseState
             // NPC gets angry and switches to leaving state
             Debug.Log("NPC has been given the incorrect order.");
             stateManager.npc.currentMood = NPC.mood.Angry;
-            stateManager.SwitchState(stateManager.leavingState);
+            stateManager.SwitchState(NPCStateManager.NPCState.Leaving);
         }
     }
 

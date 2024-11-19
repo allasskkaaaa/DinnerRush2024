@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class NPC_LeavingState : NPC_BaseState
 {
-    public Transform door;
+    private NPC_Movement movement;
 
     public override void EnterState(NPCStateManager npc)
     {
+        movement = npc.GetComponent<NPC_Movement>();
         Debug.Log(npc.name + " has entered the leaving state.");
 
-        // Find the door by tag and set the transform if found
-        GameObject doorObject = GameObject.FindWithTag("Door");
-        if (doorObject != null)
-        {
-            door = doorObject.transform;
-        }
+        // Find the door by tag and set the destination to it
+        movement.destinationNode = GameObject.FindWithTag("Door").GetComponent<PathNode>();
+        Debug.Log("Setting new destination to " + movement.destinationNode);
 
         npc.npc.seat.isOccupied = false;
     }
@@ -36,8 +34,10 @@ public class NPC_LeavingState : NPC_BaseState
                 break;
         }
 
-        // Call leave method to move NPC towards the door
-        leave(npc);
+        if (movement.hasReachedDestination)
+        {
+            GameObject.Destroy(npc.gameObject);
+        }
     }
 
     public override void OnCollisionEnter(NPCStateManager npc)
@@ -45,19 +45,4 @@ public class NPC_LeavingState : NPC_BaseState
         // Handle collision if needed
     }
 
-    private void leave(NPCStateManager npc)
-    {
-        // Ensure door is set before moving
-        if (door != null)
-        {
-            // Move the NPC towards the door
-            npc.transform.position = Vector3.MoveTowards(npc.transform.position, door.position, npc.npc.walkSpeed * Time.deltaTime);
-        }
-
-        // Check if NPC has reached the door
-        if (Vector3.Distance(npc.transform.position, door.position) < 0.1f)
-        {
-            GameObject.Destroy(npc.gameObject);
-        }
-    }
 }

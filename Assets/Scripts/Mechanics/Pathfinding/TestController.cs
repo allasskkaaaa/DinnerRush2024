@@ -7,11 +7,22 @@ public class NPC_Movement : MonoBehaviour
     public PathNode currentNode;
     public List<PathNode> path = new List<PathNode>();
     public PathNode destinationNode;  // Reference to the target destination node
-    private bool hasReachedDestination = false;
+
+    public bool hasReachedDestination = false;
+    private PathNode lastDestinationNode; // Keeps track of the last destination to detect changes
 
     private void Update()
     {
-        if (currentNode != destinationNode)
+        // Check if the destination node has changed
+        if (destinationNode != lastDestinationNode)
+        {
+            // Update path if the destination has changed
+            SetDestination(destinationNode);
+            lastDestinationNode = destinationNode; // Update the last destination
+        }
+
+        // Continue creating the path to the destination
+        if (!hasReachedDestination && currentNode != destinationNode)
         {
             CreatePath();
         }
@@ -20,6 +31,8 @@ public class NPC_Movement : MonoBehaviour
     // Method to set the destination for the NPC
     public void SetDestination(PathNode newDestination)
     {
+        if (newDestination == null) return; // Ensure we have a valid destination
+
         destinationNode = newDestination;
         path = AStarManager.instance.GeneratePath(currentNode, destinationNode); // Generate the path to the new destination
         hasReachedDestination = false; // Reset the flag when setting a new destination

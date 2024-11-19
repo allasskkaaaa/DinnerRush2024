@@ -47,7 +47,10 @@ public class NPC_SeatingState : NPC_BaseState
 
     public override void UpdateState(NPCStateManager npc)
     {
-
+        if (movement.currentNode == movement.destinationNode)
+        {
+            npc.SwitchState(NPCStateManager.NPCState.Waiting);
+        }
     }
 
     public override void OnCollisionEnter(NPCStateManager npc)
