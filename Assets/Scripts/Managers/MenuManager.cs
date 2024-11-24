@@ -16,11 +16,35 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        start.onClick.AddListener(startGame);
-        options.onClick.AddListener(optionsMenu);
-        tutorial.onClick.AddListener(tutorialMenu);
-        credits.onClick.AddListener(creditsMenu);
-        back.onClick.AddListener(backToMenu);
+
+        if (start != null)
+        {
+            start.onClick.AddListener(startGame);
+        }
+
+        if (options != null)
+        {
+            options.onClick.AddListener(optionsMenu);
+        }
+
+        if (tutorial != null)
+        {
+            tutorial.onClick.AddListener(tutorialMenu);
+        }
+
+        if (credits != null)
+        {
+            credits.onClick.AddListener(creditsMenu);
+        }
+
+        if (back != null)
+        {
+            back.onClick.AddListener(backToMenu);
+        }
+        
+        
+        
+        
     }
 
     public void startGame()
@@ -43,9 +67,13 @@ public class MenuManager : MonoBehaviour
         switchPanels("CreditsMenu");
     }
 
-    public void backToMenu()
+    public void mainMenu()
     {
         switchPanels("MainMenu");
+    }
+    public void backToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void switchPanels(string clip)

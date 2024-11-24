@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     public Action<PlayerController> OnPlayerSpawned;
     [SerializeField] public Timer timer;
     [SerializeField] public int playerScore;
+   
 
     // Start is called before the first frame update
     private void Awake()
@@ -72,14 +73,7 @@ public class GameManager : MonoBehaviour
         }
         lives = maxLives;
 
-        if (startingSpawn != null)
-        {
-            SpawnPlayer(startingSpawn);
-        }
-        else
-        {
-            Debug.Log("Starting spawn has not been set.");
-        }
+      
 
     }
 
@@ -103,7 +97,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GameOver goes here");
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
 
     public void Respawn()
@@ -122,4 +116,6 @@ public class GameManager : MonoBehaviour
     {
         currentCheckpoint = updatedCheckpoint;
     }
+
+  
 }

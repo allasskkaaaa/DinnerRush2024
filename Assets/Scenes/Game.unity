@@ -872,6 +872,7 @@ MonoBehaviour:
   - {fileID: 1515983929}
   - {fileID: 606416996}
   maxScorePerStar: 100
+  maxTotalScore: 500
 --- !u!1001 &192128782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6001,7 +6002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1475753141}
-  totalTime: 300
+  totalTime: 10
   currentTime: 0
 --- !u!1 &1477858502
 GameObject:
@@ -6503,6 +6504,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530436789}
   m_CullTransparentMesh: 1
+--- !u!1 &1536271583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1536271585}
+  - component: {fileID: 1536271584}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1536271584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536271583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79fd15aba544a7046a77ea99b69789d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn: {fileID: 507532916}
+--- !u!4 &1536271585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536271583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1325.3312, y: 669.1661, z: -13.64038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1561908104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9512,3 +9558,4 @@ SceneRoots:
   - {fileID: 655678650}
   - {fileID: 1800444501}
   - {fileID: 156248393}
+  - {fileID: 1536271585}

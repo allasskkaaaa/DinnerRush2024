@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
-
-public class StarTracker : MonoBehaviour
+public class SlowFillStars : MonoBehaviour
 {
     [SerializeField] private Image[] stars; // Array of star images
     [SerializeField] private int maxScorePerStar = 100; // Max score for each star
@@ -14,13 +13,35 @@ public class StarTracker : MonoBehaviour
     private float secondsToShow = 1f;
     private bool isFilling = false;
 
-    private void Update()
+    private void Start()
     {
-        if (GameManager.Instance.playerScore != totalScore && !isFilling) // Update only if score changes
+
+        fillScore();
+    }
+    public void fillScore()
+    {
+        Debug.Log("Filling stars...");
+        isFilling = true;
+        StartCoroutine(FillScoreGradually(secondsToShow));
+    }
+
+    private IEnumerator FillScoreGradually(float duration)
+    {
+        yield return new WaitForSeconds(0.5f); // Add a short delay here to allow scene to load
+
+        int scoreGot = GameManager.Instance.playerScore;
+        totalScore = 0;
+
+        float delay = scoreGot > 0 ? duration / scoreGot : 0;
+
+        for (int i = 0; i < scoreGot; i++)
         {
-            totalScore = GameManager.Instance.playerScore;
+            totalScore++;
             UpdateStars();
+            yield return new WaitForSeconds(delay);
         }
+
+        isFilling = false;
     }
 
     private void UpdateStars()
@@ -42,10 +63,4 @@ public class StarTracker : MonoBehaviour
             }
         }
     }
-
-
-
-
-
-
 }
