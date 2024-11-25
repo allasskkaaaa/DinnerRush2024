@@ -20,7 +20,7 @@ public class SlowFillStars : MonoBehaviour
     }
     public void fillScore()
     {
-        Debug.Log("Filling stars...");
+        
         isFilling = true;
         StartCoroutine(FillScoreGradually(secondsToShow));
     }

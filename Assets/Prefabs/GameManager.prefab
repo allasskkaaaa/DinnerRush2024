@@ -48,4 +48,4 @@ MonoBehaviour:
   playerPrefab: {fileID: 4902060564052839179, guid: cdad51f8b720ff44bb2d275adb53be08, type: 3}
   startingSpawn: {fileID: 0}
   timer: {fileID: 0}
-  playerScore: 0
+  playerScore: 156
