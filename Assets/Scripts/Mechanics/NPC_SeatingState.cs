@@ -17,7 +17,7 @@ public class NPC_SeatingState : NPC_BaseState
     public override void EnterState(NPCStateManager npc)
     {
         movement = npc.GetComponent<NPC_Movement>();
-        
+        Debug.Log(npc.name + " has entered the seating state.");
 
         // Find the SeatManager
         sm = GameObject.FindWithTag("Seat Manager").GetComponent<SeatManager>();
@@ -32,7 +32,7 @@ public class NPC_SeatingState : NPC_BaseState
             var seat = seatObject.GetComponent<Seat>();
             npc.npc.seat = seat; // Assign the seat to the NPC
             seat.isOccupied = true; // Mark seat as occupied
-            
+            Debug.Log(seatObject.name + " marked as occupied by " + npc.name);
 
             // Set movement nodes
             movement.currentNode = GameObject.FindWithTag("Door").GetComponent<PathNode>();

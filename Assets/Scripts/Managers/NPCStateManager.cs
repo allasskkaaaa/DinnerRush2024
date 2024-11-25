@@ -37,7 +37,9 @@ public class NPCStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
-     
+
+        // Debug: Log current state
+        Debug.Log($"NPC is currently in the {currentEnumState} state.");
     }
 
     public void SwitchState(NPCState newState)

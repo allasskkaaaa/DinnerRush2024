@@ -58,7 +58,7 @@ public class NPC_Movement : MonoBehaviour
                 if (currentNode == destinationNode)
                 {
                     hasReachedDestination = true;
-                    
+                    Debug.Log("Reached the destination.");
                 }
             }
         }

@@ -11,7 +11,7 @@ public class NPC : ScriptableObject
     public Seat seat; //Reference to the seat they are in
     public bool isSeated; //If they are sitting at a seat
     public Vector3 seatLocation; // What location are they sitting at
-    public float walkSpeed = 5; //The speed they walk to the table
+    public int walkSpeed = 5; //The speed they walk to the table
     public float patience = 15f; //How long they'll wait for food
     public Order currentOrder;
     public mood currentMood;

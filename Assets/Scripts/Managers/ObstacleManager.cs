@@ -4,35 +4,15 @@ using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
-    public static ObstacleManager Instance;
-    [SerializeField] private Transform[] nodes;
-    [SerializeField] private GameObject[] obstacles;
-    [SerializeField] private float spawnInterval = 20f;
-
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        Instance = this;
+        
     }
 
-    private void Start()
+    // Update is called once per frame
+    void Update()
     {
-        InvokeRepeating(nameof(spawnObstacle), 0f, spawnInterval);
-    }
-
-    void spawnObstacle()
-    {
-        int randomNode = Random.Range(0, nodes.Length);
-        int randomObstacle = Random.Range(0, obstacles.Length);
-
-
-        if (nodes[randomNode].childCount == 0) 
-        {
-            Debug.Log("Obstacle spawned.");
-            Instantiate(obstacles[randomObstacle], nodes[randomNode]);
-        }
-        else
-        {
-            Debug.Log("There is already an obstacle here.");
-        }
+        
     }
 }

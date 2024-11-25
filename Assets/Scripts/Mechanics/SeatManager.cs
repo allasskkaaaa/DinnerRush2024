@@ -24,7 +24,7 @@ public class SeatManager : MonoBehaviour
                 }
                 else
                 {
-                    
+                    Debug.Log(seatObject.name + " is available.");
                     // Return false and the available seat Transform
                     return (false, seatObject); // 'false' means it's available
                 }

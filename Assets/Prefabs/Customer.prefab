@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4038323448212401621}
   m_Layer: 0
   m_Name: Customer
-  m_TagString: NPC
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 11400000, guid: 0806ec9d74b793741b2b630c0771e525, type: 2}
-  currentEnumState: 0
 --- !u!58 &1699747002653364709
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +162,6 @@ MonoBehaviour:
   currentNode: {fileID: 0}
   path: []
   destinationNode: {fileID: 0}
-  hasReachedDestination: 0
 --- !u!1 &5542532471744921849
 GameObject:
   m_ObjectHideFlags: 0

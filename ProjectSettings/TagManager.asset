@@ -11,7 +11,6 @@ TagManager:
   - Cake
   - Kitchen
   - Seat
-  - NPC
   layers:
   - Default
   - TransparentFX

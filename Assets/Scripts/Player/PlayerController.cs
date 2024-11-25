@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     // Movement Variables
     [Header("Movement Parameters")]
     [SerializeField] private InputActionReference moveActionReference;
-    [SerializeField] public float moveSpeed = 5;
+    [SerializeField] private float moveSpeed = 5;
 
     private Vector2 movement;
     private Vector2 movementInput;
