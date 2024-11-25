@@ -13,7 +13,7 @@ public class AStarManager : MonoBehaviour
     }
     public List<PathNode> GeneratePath(PathNode start, PathNode end)
     {
-        Debug.Log("Creating path");
+        
         List<PathNode> openSet = new List<PathNode>();
 
         foreach (PathNode n in FindObjectsOfType<PathNode>())
