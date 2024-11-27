@@ -5,7 +5,6 @@ using UnityEngine;
 public class NPCStateManager : MonoBehaviour
 {
     public NPC npc;
-    private int walkSpeed = 5;
 
     // Enum for NPC states
     public enum NPCState

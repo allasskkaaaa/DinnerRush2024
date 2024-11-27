@@ -13,6 +13,7 @@ public class NPC_LeavingState : NPC_BaseState
 
         // Find the door by tag and set the destination to it
         movement.destinationNode = GameObject.FindWithTag("Door").GetComponent<PathNode>();
+        movement.CreatePath();
         Debug.Log("Setting new destination to " + movement.destinationNode);
 
         npc.npc.seat.isOccupied = false;

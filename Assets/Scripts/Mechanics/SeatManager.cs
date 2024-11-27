@@ -18,16 +18,11 @@ public class SeatManager : MonoBehaviour
 
             if (seat != null)
             {
-                if (seat.isOccupied)
+                if (!seat.isOccupied)
                 {
-                    Debug.Log(seatObject.name + " is occupied.");
-                }
-                else
-                {
-                    
-                    // Return false and the available seat Transform
                     return (false, seatObject); // 'false' means it's available
                 }
+                
             }
             else
             {

@@ -27,11 +27,11 @@ public class NPC_SeatingState : NPC_BaseState
         {
             Debug.Log("All seats are occupied.");
         }
-        else if (seatObject != null) // Check if a seat is available
+        else if (seatObject != null) // Check if a seat has been assigned
         {
             var seat = seatObject.GetComponent<Seat>();
             npc.npc.seat = seat; // Assign the seat to the NPC
-            seat.isOccupied = true; // Mark seat as occupied
+            seatObject.GetComponent<Seat>().isOccupied = true; // Mark seat as occupied
             
 
             // Set movement nodes

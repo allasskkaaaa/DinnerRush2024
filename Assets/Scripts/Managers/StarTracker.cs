@@ -11,7 +11,6 @@ public class StarTracker : MonoBehaviour
     [SerializeField] private int maxScorePerStar = 100; // Max score for each star
     [SerializeField] private int maxTotalScore = 500; // Max score for each star
     private int totalScore; // Cached score to avoid redundant updates
-    private float secondsToShow = 1f;
     private bool isFilling = false;
 
     private void Update()

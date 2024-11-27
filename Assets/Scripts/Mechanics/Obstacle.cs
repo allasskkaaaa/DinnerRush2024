@@ -20,10 +20,6 @@ public class Obstacle : MonoBehaviour
                 playerController.moveSpeed = slowSpeed;
             }
 
-        } else if (other.CompareTag("NPC"))
-        {
-            NPC npcController = other.GetComponent<NPC>();
-            originalSpeed = npcController.walkSpeed;
         }
     }
 
@@ -40,10 +36,6 @@ public class Obstacle : MonoBehaviour
             }
 
         }
-        else if (collision.CompareTag("NPC"))
-        {
-            NPC npcController = collision.GetComponent<NPC>();
-            npcController.walkSpeed = originalSpeed;
-        }
+       
     }
 }
