@@ -7,7 +7,8 @@ public class ObstacleManager : MonoBehaviour
     public static ObstacleManager Instance;
     [SerializeField] private Transform[] nodes;
     [SerializeField] private GameObject[] obstacles;
-    [SerializeField] private float spawnInterval = 20f;
+    [SerializeField] private float minSpawnInterval = 10f;
+    [SerializeField] private float maxSpawnInterval = 20f;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class ObstacleManager : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(spawnObstacle), 0f, spawnInterval);
+        InvokeRepeating(nameof(spawnObstacle), 0f, Random.Range(minSpawnInterval, maxSpawnInterval + 1));
     }
 
     void spawnObstacle()

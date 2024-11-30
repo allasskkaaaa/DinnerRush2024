@@ -5,8 +5,6 @@ using UnityEngine;
 public class NPC_WaitingState : NPC_BaseState
 {
     private float timer;
-    private Kitchen kitchen;
-
     private NPC.Order order;
     private NPCStateManager stateManager;
 
@@ -14,9 +12,8 @@ public class NPC_WaitingState : NPC_BaseState
     {
         Debug.Log(npc.name + " has entered the waiting state.");
         timer = npc.npc.patience; // Initialize the timer here
-        kitchen = GameObject.FindGameObjectWithTag("Kitchen").GetComponent<Kitchen>();
-        kitchen.sendToKitchen(npc.npc.currentOrder);
         order = npc.npc.currentOrder;
+        Kitchen.Instance.sendToKitchen(order);
         stateManager = npc;
     }
 

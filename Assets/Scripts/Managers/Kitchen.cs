@@ -6,6 +6,7 @@ using static NPC;
 
 public class Kitchen : MonoBehaviour
 {
+    public static Kitchen Instance;
     [SerializeField] private Transform[] cookingSpawnNode; //Node where cooked objects will spawn
     [SerializeField] private float cookingTime = 5f; //How long it takes for object to cook aka cooldown between instantiation
     [SerializeField] private GameObject[] cookables; //Objects the kitchen can prepare
@@ -14,6 +15,10 @@ public class Kitchen : MonoBehaviour
     private bool isCounterSpace = true;
     private Transform availableNode;
 
+    private void Start()
+    {
+        Instance = this;
+    }
     public void Update()
     {
         //Checks if the kitchen is off cooking cooldown. If it can, it first checks if there is any backlog in orders

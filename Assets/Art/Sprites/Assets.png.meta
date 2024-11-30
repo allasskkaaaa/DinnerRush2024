@@ -278,27 +278,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SprayBottle
-      rect:
-        serializedVersion: 2
-        x: 1235
-        y: 561
-        width: 197
-        height: 354
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3ce8631a3648d14fb6b39129598db0e
-      internalID: -956140773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Plate
       rect:
         serializedVersion: 2
@@ -340,6 +319,216 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Splash_Small_Water
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 634
+        width: 140
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6453cc64edef326438d7cbbf4022ff73
+      internalID: 533228531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Splash_Small_Dirty
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 629
+        width: 140
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17cea98a1fe98fa4e8d68b518bd7d95a
+      internalID: -2098907118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Splash_Dirty
+      rect:
+        serializedVersion: 2
+        x: 1784
+        y: 246
+        width: 335
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac29c38b86ee9264b9ac2ca129c4dba2
+      internalID: 336441975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Outline
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 274
+        width: 210
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5458669da8774e4d97d755861df21ba
+      internalID: 1962672582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Star
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 195
+        width: 287
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba0c51510272fb49baf7185446aa850
+      internalID: -1463952866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Banana Peel
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 141
+        width: 274
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6409e825569376d479d1b9e404e64621
+      internalID: -1891098920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Paper
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 159
+        width: 136
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3deb6d02b62bbe140b4a92c95ebb6b48
+      internalID: -950167671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Fill
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 46
+        width: 210
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ee3828e7463474cadfe0159779f767
+      internalID: -879993934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Splash_Water
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 259
+        width: 329
+        height: 305
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08b81e36ccd45e54d9057d070b303fea
+      internalID: 1568783997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritz Bottle
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 561
+        width: 201
+        height: 359
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26608df81ebb1574e8d27ae83747a82d
+      internalID: -1544477714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -351,16 +540,29 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Assets_10: -725140966
+      Assets_11: 628927218
+      Assets_7: 1705806233
+      Banana Peel: -1891098920
+      Button_Fill: -879993934
+      Button_Outline: 1962672582
       Cake: 2032350849
       Chair: -378153844
       Garbage: -1701218653
       Latte: 1530455844
       Mop: -1744208772
+      Paper: -950167671
       Plate: 2059364017
       PlateTop: 1454112936
       Rag: -833778342
       Sandwich: 915377779
+      Splash_Dirty: 336441975
+      Splash_Small_Dirty: -2098907118
+      Splash_Small_Water: 533228531
+      Splash_Water: 1568783997
       SprayBottle: -956140773
+      Spritz Bottle: -1544477714
+      Star: -1463952866
       Table: 570556234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

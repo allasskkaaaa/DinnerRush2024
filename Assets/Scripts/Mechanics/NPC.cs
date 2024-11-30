@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,18 +14,6 @@ public class NPC : ScriptableObject
     public float patience = 15f; //How long they'll wait for food
     public Order currentOrder;
     public mood currentMood;
-
-    public void Start()
-    {
-        SetRandomOrder();
-    }
-    public enum mood //How much of a tip and how much of a mess they'll leave once finished their meal (if given one)
-    {
-        Happy,
-        Neutral,
-        Angry
-    }
-
     public enum Order
     {
         Latte,
@@ -34,19 +21,15 @@ public class NPC : ScriptableObject
         Sandwich
     }
 
-    public void SetRandomOrder()
+    public enum mood //How much of a tip and how much of a mess they'll leave once finished their meal (if given one)
     {
-        // Get all enum values
-        Array enumValues = Enum.GetValues(typeof(Order));
-
-        // Pick a random index
-        int randomIndex = UnityEngine.Random.Range(0, enumValues.Length);
-
-        // Get the random enum value
-        currentOrder = (Order)enumValues.GetValue(randomIndex);
-
-        // Optionally print out the random order
-        Debug.Log("Random Order: " + currentOrder);
+        Happy,
+        Neutral,
+        Angry
+    }
+    private void OnEnable()
+    {
+        currentOrder = (Order)Random.Range(0, 3);
     }
 
 }
