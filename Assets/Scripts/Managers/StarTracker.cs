@@ -43,8 +43,4 @@ public class StarTracker : MonoBehaviour
     }
 
 
-
-
-
-
 }

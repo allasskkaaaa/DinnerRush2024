@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
     public Action<PlayerController> OnPlayerSpawned;
     [SerializeField] public Timer timer;
     [SerializeField] public int playerScore;
+
+    private bool isPaused;
    
 
     // Start is called before the first frame update
@@ -117,5 +119,13 @@ public class GameManager : MonoBehaviour
         currentCheckpoint = updatedCheckpoint;
     }
 
-  
+    public void pauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void unpauseGame()
+    {
+        Time.timeScale = 1;
+    }
 }

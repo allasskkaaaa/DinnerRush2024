@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
     [SerializeField] private Transform[] inventorySlots;
 
+    private void Start()
+    {
+        Instance = this;
+    }
     private Transform findAvailableSlot()
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -22,13 +27,17 @@ public class InventoryManager : MonoBehaviour
         return null; 
     }
 
-    private void AddToInventory(GameObject invObject)
+    public void AddToInventory(GameObject invObject)
     {
-        Instantiate(invObject, findAvailableSlot());
+        Transform availableSlot = findAvailableSlot();
+        if (availableSlot != null)
+        {
+            Instantiate(invObject, availableSlot);
+        }
+        else
+        {
+            Debug.LogWarning("Cannot add to inventory: no available slots.");
+        }
     }
 
-    private void RemoveFromInventory(int slot)
-    {
-        
-    }
 }

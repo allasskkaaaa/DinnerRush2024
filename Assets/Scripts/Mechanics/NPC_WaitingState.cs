@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC_WaitingState : NPC_BaseState
@@ -44,7 +45,8 @@ public class NPC_WaitingState : NPC_BaseState
         // Handle collision if needed
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+
+    public void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.name + " has collided with NPC.");
         // Check if the collided object has the Food component
