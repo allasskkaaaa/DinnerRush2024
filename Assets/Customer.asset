@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eae1ba63d83da149b4b2bc5e2623836, type: 3}
   m_Name: Customer
   m_EditorClassIdentifier: 
-  appearance: {fileID: 0}
+  appearance: {fileID: -733714421, guid: e0ff7d3d26eccf54e92ca2879d2c10e4, type: 3}
+  seat: {fileID: 0}
   isSeated: 0
   seatLocation: {x: 0, y: 0, z: 0}
   walkSpeed: 5
-  patience: 0
-  currentOrder: 0
+  patience: 20
+  currentOrder: 1
   currentMood: 2

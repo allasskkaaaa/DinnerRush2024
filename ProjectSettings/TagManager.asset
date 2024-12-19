@@ -12,6 +12,13 @@ TagManager:
   - Kitchen
   - Seat
   - NPC
+  - ConveyorBelt
+  - Slot
+  - Happy
+  - Sad
+  - Angry
+  - Obstacle
+  - Finger
   layers:
   - Default
   - TransparentFX

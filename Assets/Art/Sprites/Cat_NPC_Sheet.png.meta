@@ -365,9 +365,9 @@ TextureImporter:
       name: SadFace
       rect:
         serializedVersion: 2
-        x: 1054
+        x: 1005
         y: 868
-        width: 302
+        width: 398
         height: 186
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -424,6 +424,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Neutral
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 876
+        width: 382
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d535256e0147181419d1115f93d3a74e
+      internalID: -651270131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SweatDrop
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 1189
+        width: 101
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5338fa8aa68e15443b76cf2048c1a0df
+      internalID: -401133768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dot
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 1360
+        width: 105
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ec1db5f3dd03947a067f56c30c4a8f
+      internalID: -150395996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blink
+      rect:
+        serializedVersion: 2
+        x: 1484
+        y: 1212
+        width: 382
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35de0bd33ddf8ff418bcc522cc205b58
+      internalID: -195917347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -437,6 +521,7 @@ TextureImporter:
     nameFileIdTable:
       Anger: -2107623048
       AngryFace: 1006465115
+      Blink: -195917347
       Cat_Black: -733714421
       Cat_NPC_Sheet_10: -786231048
       Cat_NPC_Sheet_12: -2004296434
@@ -450,11 +535,14 @@ TextureImporter:
       Cat_NPC_Sheet_9: 1710470190
       Cat_RedPanda: -1886095263
       Cat_WhiteYellow: 1542251187
+      Dot: -150395996
       HappyFace: 1155745033
+      Neutral: -651270131
       SadFace: 541162280
       Shine: 1042438985
       Slash: 309029356
       SmallBubble: 1811173978
+      SweatDrop: -401133768
       Tears: 1642167759
       ThoughtBubble: -1955638213
       Tumble1: 115013113

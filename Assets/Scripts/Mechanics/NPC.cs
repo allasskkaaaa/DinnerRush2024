@@ -25,6 +25,7 @@ public class NPC : ScriptableObject
     {
         Happy,
         Neutral,
+        Distressed,
         Angry
     }
     private void OnEnable()

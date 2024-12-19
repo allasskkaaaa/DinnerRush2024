@@ -30,7 +30,7 @@ public class NPCStateManager : MonoBehaviour
         npc = ScriptableObject.CreateInstance<NPC>();
 
         // Initialize state
-        SwitchState(NPCState.Seating);
+        SwitchState(NPCState.Waiting);
     }
 
     private void Update()

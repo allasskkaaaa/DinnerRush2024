@@ -4,36 +4,55 @@ using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
-    public static ObstacleManager Instance;
-    [SerializeField] private Transform[] nodes;
-    [SerializeField] private GameObject[] obstacles;
+
     [SerializeField] private float minSpawnInterval = 10f;
     [SerializeField] private float maxSpawnInterval = 20f;
+    [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
+    [SerializeField] private List<GameObject> obstacles = new List<GameObject>();
 
-    private void Awake()
+    [SerializeField] private List<GameObject> spawnedObstacle = new List<GameObject>();
+
+    private float timer;
+    public void spawnObstacle()
     {
-        Instance = this;
-    }
+        List<Transform> availableNodes = new List<Transform>();
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(spawnObstacle), 0f, Random.Range(minSpawnInterval, maxSpawnInterval + 1));
-    }
-
-    void spawnObstacle()
-    {
-        int randomNode = Random.Range(0, nodes.Length);
-        int randomObstacle = Random.Range(0, obstacles.Length);
-
-
-        if (nodes[randomNode].childCount == 0) 
+        for (int i = 0; i < spawnPoints.Count; i++)
         {
-            Debug.Log("Obstacle spawned.");
-            Instantiate(obstacles[randomObstacle], nodes[randomNode]);
+            if (!spawnPoints[i].GetComponent<Obstacle>().isOccupied)
+            {
+                availableNodes.Add(spawnPoints[i]);
+            }
+        }
+
+        if (availableNodes.Count > 0)
+        {
+            int randomSpawn = Random.Range(0, availableNodes.Count);
+            int randomObstacle = Random.Range(0, obstacles.Count);
+
+            GameObject spawnedObject = Instantiate(obstacles[randomObstacle], availableNodes[randomSpawn]);
+            availableNodes[randomSpawn].GetComponent<Obstacle>().isOccupied = true;
+            spawnedObstacle.Add(spawnedObject);
+
         }
         else
         {
-            Debug.Log("There is already an obstacle here.");
+            Debug.Log("No place to spawn obstacle");
+            return;
         }
+    }
+
+    private void Update()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            timer += Random.Range(minSpawnInterval, maxSpawnInterval);
+            spawnObstacle();
+        }
+        
     }
 }

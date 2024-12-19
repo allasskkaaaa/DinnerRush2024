@@ -41,7 +41,7 @@ public class NPC_LeavingState : NPC_BaseState
         }
     }
 
-    public override void OnCollisionEnter(NPCStateManager npc)
+    public override void OnCollision2DEnter(NPCStateManager npc)
     {
         // Handle collision if needed
     }

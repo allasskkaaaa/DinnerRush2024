@@ -53,9 +53,9 @@ public class NPC_SeatingState : NPC_BaseState
         }
     }
 
-    public override void OnCollisionEnter(NPCStateManager npc)
+    public override void OnCollision2DEnter(NPCStateManager npc)
     {
-        // Optional: Handle collision logic if needed
+        // Handle collision if needed
     }
 
 

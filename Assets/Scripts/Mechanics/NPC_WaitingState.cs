@@ -14,7 +14,6 @@ public class NPC_WaitingState : NPC_BaseState
         Debug.Log(npc.name + " has entered the waiting state.");
         timer = npc.npc.patience; // Initialize the timer here
         order = npc.npc.currentOrder;
-        Kitchen.Instance.sendToKitchen(order);
         stateManager = npc;
     }
 
@@ -40,7 +39,7 @@ public class NPC_WaitingState : NPC_BaseState
         }
     }
 
-    public override void OnCollisionEnter(NPCStateManager npc)
+    public override void OnCollision2DEnter(NPCStateManager npc)
     {
         // Handle collision if needed
     }

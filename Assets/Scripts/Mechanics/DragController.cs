@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.Android.LowLevel;
 
 public class DragController : MonoBehaviour
 {
-
     public Draggable LastDragged => lastDragged;
     private bool isDragActive = false;
     private Vector2 screenPosition;
     private Vector3 worldPosition;
     private Draggable lastDragged;
+    private Food item;
+    private Rigidbody2D itemRB;
+    private List<Collider2D> safeZones = new List<Collider2D>();
+    private Vector2 lastPosition;
+    [SerializeField] private Transform parent;
 
     private void Awake()
     {
-        //Makes sure there is only one drag controller in the game. Deletes if it detects more than one
-        DragController[] controller = FindObjectsOfType<DragController>();
-        if (controller.Length > 1)
+        // Ensures only one DragController exists
+        DragController[] controllers = FindObjectsOfType<DragController>();
+        if (controllers.Length > 1)
         {
             Destroy(gameObject);
         }
@@ -24,14 +27,21 @@ public class DragController : MonoBehaviour
 
     private void Update()
     {
-        //Checks if the player lets go of mouse button or touch and drops item if detected
+        // Ensure lastDragged is valid
+        if (lastDragged != null && lastDragged.gameObject == null)
+        {
+            ClearReferences();
+            return;
+        }
+
+        // Check for drop action
         if (isDragActive && (Input.GetMouseButtonDown(0) || (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)))
         {
             Drop();
             return;
         }
 
-        //If the player uses a mouse or touch input on the screen, it collects the position of where they clicked
+        // Get screen position
         if (Input.GetMouseButton(0))
         {
             Vector3 mousePos = Input.mousePosition;
@@ -46,12 +56,16 @@ public class DragController : MonoBehaviour
             return;
         }
 
+        // Convert screen position to world position
         worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
 
-        //Checks if the player is dragging an object. If yes, it constantly calls the drag method. If not, it checks for if the player touch is colliding with a draggable object
+        // Handle dragging or initiate drag
         if (isDragActive)
         {
-            Drag();
+            if (lastDragged != null && lastDragged.gameObject != null)
+            {
+                Drag();
+            }
         }
         else
         {
@@ -62,6 +76,8 @@ public class DragController : MonoBehaviour
                 if (draggable != null)
                 {
                     lastDragged = draggable;
+                    item = draggable.GetComponent<Food>();
+                    itemRB = draggable.GetComponent<Rigidbody2D>();
                     InitDrag();
                 }
             }
@@ -71,15 +87,51 @@ public class DragController : MonoBehaviour
     void InitDrag()
     {
         isDragActive = true;
+        if (item != null)
+        {
+            item.pickedUp = true;
+            if (itemRB != null)
+            {
+                itemRB.velocity = Vector2.zero;
+                itemRB.isKinematic = true;
+            }
+        }
     }
 
     void Drag()
     {
+        if (lastDragged == null || lastDragged.gameObject == null) return;
+
         lastDragged.transform.position = new Vector2(worldPosition.x, worldPosition.y);
+        lastDragged.transform.parent = parent;
     }
 
     void Drop()
     {
         isDragActive = false;
+
+        if (item != null)
+        {
+            item.pickedUp = false;
+            if (itemRB != null)
+            {
+                itemRB.isKinematic = false;
+            }
+        }
+
+        // Clear references to prevent accessing destroyed objects
+        if (lastDragged != null)
+        {
+            lastDragged.transform.parent = null;
+        }
+
+        ClearReferences();
+    }
+
+    void ClearReferences()
+    {
+        lastDragged = null;
+        item = null;
+        itemRB = null;
     }
 }

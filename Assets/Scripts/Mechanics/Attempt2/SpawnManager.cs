@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         timer = spawnInterval;
+        spawnCustomer();
     }
 
     private void Update()
@@ -50,7 +51,8 @@ public class SpawnManager : MonoBehaviour
         Transform randomSpawn = availableNodes[Random.Range(0, availableNodes.Count)];
 
         // Spawn the NPC and mark the node as occupied
-        Instantiate(npc, randomSpawn.position, randomSpawn.rotation);
+        GameObject spawnedNPC = Instantiate(npc, randomSpawn.position, randomSpawn.rotation);
+        spawnedNPC.GetComponent<Customer>().zOrder = randomSpawn.GetComponent<SpawnNode>().zOrder;
         randomSpawn.GetComponent<SpawnNode>().isOccupied = true;
 
         Debug.Log("NPC Spawned at " + randomSpawn.name);

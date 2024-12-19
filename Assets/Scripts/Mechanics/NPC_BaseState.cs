@@ -8,6 +8,6 @@ public abstract class NPC_BaseState
 
     public abstract void UpdateState(NPCStateManager npc);
 
-    public abstract void OnCollisionEnter(NPCStateManager npc);
+    public abstract void OnCollision2DEnter(NPCStateManager npc);
 
 }
