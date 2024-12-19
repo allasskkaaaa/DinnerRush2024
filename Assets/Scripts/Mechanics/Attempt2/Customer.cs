@@ -41,7 +41,7 @@ public class Customer : MonoBehaviour
     [Header("Animation Settings")]
     private Animator anim; // Reference to cat animator
 
-
+    public SpawnNode spawnNode;
     private bool isSelectable;
     private void Awake()
     {
@@ -106,11 +106,11 @@ public class Customer : MonoBehaviour
     {
         Draggable draggable = collision.GetComponent<Draggable>();
 
-        if (draggable != null)
+        if (draggable != null && CompareTag("Obstacle"))
         {
             selected();
         }
-        else if (collision.CompareTag("Finger") && draggable == null && !checkingOrder)
+        else if (collision.CompareTag("Finger") && (collision.transform.childCount <= 0))
         {
             StartCoroutine(thinkOrder(order.tag));
         }
@@ -123,33 +123,35 @@ public class Customer : MonoBehaviour
             return;
 
         Draggable draggable = collision.GetComponent<Draggable>();
-
-       
-        if (draggable != null && !wasServed)
+        Food food = collision.GetComponent<Food>();
+      
+        if (food != null)
         {
-            if (!draggable.isDragging && !collision.CompareTag("Finger"))
+            if (draggable != null && !wasServed)
             {
-                if (checkOrder(collision.gameObject))
+                if (!draggable.isDragging && !collision.CompareTag("Finger"))
                 {
-                    Debug.Log("Order match: " + checkOrder(collision.gameObject));
-                    playThought("Happy");
-                    wasServed = true;
-                    StartCoroutine(leave());
-                    draggable.gameObject.SetActive(false);
-                    Destroy(draggable.gameObject, 0.1f);
-                    return;
-                }
-                else
-                {
-                    Debug.Log("Order match: " + checkOrder(collision.gameObject));
-                    playThought("Angry");
-                    draggable.gameObject.SetActive(false);
-                    Destroy(draggable.gameObject, 0.1f);
-                    return;
+                    if (checkOrder(collision.gameObject))
+                    {
+                        Debug.Log("Order match: " + checkOrder(collision.gameObject));
+                        playThought("Happy");
+                        wasServed = true;
+                        StartCoroutine(leave());
+                        draggable.gameObject.SetActive(false);
+                        Destroy(draggable.gameObject, 0.1f);
+                        return;
+                    }
+                    else
+                    {
+                        Debug.Log("Order match: " + checkOrder(collision.gameObject));
+                        playThought("Angry");
+                        draggable.gameObject.SetActive(false);
+                        Destroy(draggable.gameObject, 0.1f);
+                        return;
+                    }
                 }
             }
         }
-
         
     }
 
@@ -165,7 +167,6 @@ public class Customer : MonoBehaviour
 
     private void unselected()
     {
-        Debug.Log("Changing scale");
         sr.gameObject.transform.localScale = originalScale;
     }
 
@@ -185,6 +186,7 @@ public class Customer : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
+        spawnNode.isOccupied = false;
         Destroy(gameObject);
 
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject npc;
-    public Transform[] spawnPoints;
+    public SpawnNode[] spawnPoints;
     public float spawnInterval;
     private float timer;
 
@@ -29,14 +29,14 @@ public class SpawnManager : MonoBehaviour
     }
     private void spawnCustomer()
     {
-        List<Transform> availableNodes = new List<Transform>();
+        List<SpawnNode> availableNodes = new List<SpawnNode>();
 
         // Collect all available spawn points
-        foreach (Transform spawnPoint in spawnPoints)
+        for (int i = 0; i < spawnPoints.Length; i++)
         {
-            if (!spawnPoint.GetComponent<SpawnNode>().isOccupied)
+            if (!spawnPoints[i].isOccupied)
             {
-                availableNodes.Add(spawnPoint);
+                availableNodes.Add(spawnPoints[i]);
             }
         }
 
@@ -48,12 +48,13 @@ public class SpawnManager : MonoBehaviour
         }
 
         // Randomly select one of the available nodes
-        Transform randomSpawn = availableNodes[Random.Range(0, availableNodes.Count)];
+        SpawnNode randomSpawn = availableNodes[Random.Range(0, availableNodes.Count)];
 
         // Spawn the NPC and mark the node as occupied
-        GameObject spawnedNPC = Instantiate(npc, randomSpawn.position, randomSpawn.rotation);
+        GameObject spawnedNPC = Instantiate(npc, randomSpawn.transform.position, randomSpawn.transform.rotation);
         spawnedNPC.GetComponent<Customer>().zOrder = randomSpawn.GetComponent<SpawnNode>().zOrder;
         randomSpawn.GetComponent<SpawnNode>().isOccupied = true;
+        spawnedNPC.GetComponent<Customer>().spawnNode = randomSpawn;
 
         Debug.Log("NPC Spawned at " + randomSpawn.name);
     }

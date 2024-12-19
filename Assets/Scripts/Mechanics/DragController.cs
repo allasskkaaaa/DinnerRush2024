@@ -102,12 +102,15 @@ public class DragController : MonoBehaviour
     {
         if (lastDragged == null || lastDragged.gameObject == null) return;
 
+        lastDragged.isDragging = true;
         lastDragged.transform.position = new Vector2(worldPosition.x, worldPosition.y);
         lastDragged.transform.parent = parent;
+        
     }
 
     void Drop()
     {
+        lastDragged.isDragging = false;
         isDragActive = false;
 
         if (item != null)

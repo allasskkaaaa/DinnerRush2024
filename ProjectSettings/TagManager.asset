@@ -19,6 +19,8 @@ TagManager:
   - Angry
   - Obstacle
   - Finger
+  - Garbage
+  - Spill
   layers:
   - Default
   - TransparentFX

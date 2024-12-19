@@ -6,10 +6,7 @@ public class KitchenV2 : MonoBehaviour
 {
     public static KitchenV2 instance;
 
-    
-
     [SerializeField] public Transform converyorbeltStart; // Start of the conveyor belt
-    [SerializeField] public Transform conveyorbeltEnd;   // End of the conveyor belt
     [SerializeField] private float cooldownBetweenOrders = 1f; // Cooldown between orders spawning
     [SerializeField] private List<GameObject> backlog = new List<GameObject>();
 
