@@ -21,16 +21,17 @@ TagManager:
   - Finger
   - Garbage
   - Spill
+  - Obstacle Manager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Dragging
   - Water
   - UI
+  - Spills
+  - Garbage
   - 
-  - 
-  - Dragging
   - 
   - 
   - 

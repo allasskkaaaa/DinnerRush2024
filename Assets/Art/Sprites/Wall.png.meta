@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,18 +108,79 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: WallBlank
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1051
+        width: 1360
+        height: 862
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ac7125dff3ee140abee3c3a939c9ea
+      internalID: 889787246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WallShaded
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 156
+        width: 1362
+        height: 859
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fea554935c7e5734db37ce6fe4de838f
+      internalID: -1164235591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WallBlank: 889787246
+      WallShaded: -1164235591
+      Wall_0: -1177969445
+      Wall_1: -2083751161
+      Wall_10: -896957696
+      Wall_11: -1065186459
+      Wall_12: -1930605330
+      Wall_14: 119886272
+      Wall_15: 2106487437
+      Wall_16: -350198614
+      Wall_17: -615539277
+      Wall_18: -712676736
+      Wall_2: 1914404835
+      Wall_4: 1987582979
+      Wall_5: -996315078
+      Wall_6: 837388073
+      Wall_7: 730977724
+      Wall_8: 198142606
+      Wall_9: -558951330
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

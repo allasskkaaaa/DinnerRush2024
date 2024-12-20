@@ -15,9 +15,9 @@ public class StarTracker : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.playerScore != totalScore && !isFilling) // Update only if score changes
+        if (GameManager.Instance.restaurantScore != totalScore && !isFilling) // Update only if score changes
         {
-            totalScore = GameManager.Instance.playerScore;
+            totalScore = GameManager.Instance.restaurantScore;
             UpdateStars();
         }
     }

@@ -47,37 +47,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform startingSpawn;
     public Action<PlayerController> OnPlayerSpawned;
     [SerializeField] public Timer timer;
-    [SerializeField] public int playerScore;
+    [SerializeField] public int restaurantScore;
 
     private bool isPaused;
    
 
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-            return;
-        }
-
-        Destroy(gameObject);
-
-        
-    }
-
-    private void Start()
-    {
-        if (maxLives <= 0)
-        {
-            maxLives = 5;
-        }
-        lives = maxLives;
-
-      
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -127,5 +101,10 @@ public class GameManager : MonoBehaviour
     public void unpauseGame()
     {
         Time.timeScale = 1;
+    }
+
+    public void updateRating()
+    {
+
     }
 }

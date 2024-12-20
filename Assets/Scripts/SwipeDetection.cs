@@ -4,7 +4,6 @@ using UnityEngine;
 public class SwipeDetection : MonoBehaviour
 {
 
-
     [SerializeField] private float minimumDistance = .2f;
     [SerializeField] private float maximumTime = 1f;
 

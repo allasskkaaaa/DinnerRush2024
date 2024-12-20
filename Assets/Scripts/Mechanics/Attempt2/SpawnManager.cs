@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
         // Collect all available spawn points
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            if (!spawnPoints[i].isOccupied)
+            if (!spawnPoints[i].isOccupied) 
             {
                 availableNodes.Add(spawnPoints[i]);
             }
@@ -43,7 +43,6 @@ public class SpawnManager : MonoBehaviour
         // If there are no available nodes, log a warning and return
         if (availableNodes.Count == 0)
         {
-            Debug.LogWarning("No available spawn nodes.");
             return;
         }
 
@@ -52,11 +51,9 @@ public class SpawnManager : MonoBehaviour
 
         // Spawn the NPC and mark the node as occupied
         GameObject spawnedNPC = Instantiate(npc, randomSpawn.transform.position, randomSpawn.transform.rotation);
-        spawnedNPC.GetComponent<Customer>().zOrder = randomSpawn.GetComponent<SpawnNode>().zOrder;
         randomSpawn.GetComponent<SpawnNode>().isOccupied = true;
         spawnedNPC.GetComponent<Customer>().spawnNode = randomSpawn;
 
-        Debug.Log("NPC Spawned at " + randomSpawn.name);
     }
 
 }

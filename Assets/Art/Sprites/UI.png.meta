@@ -114,7 +114,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1140
-        y: 1730
+        y: 2097
         width: 298
         height: 295
       alignment: 0
@@ -135,7 +135,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 31
-        y: 1785
+        y: 2148
         width: 1070
         height: 199
       alignment: 0
@@ -155,8 +155,8 @@ TextureImporter:
       name: Notepad
       rect:
         serializedVersion: 2
-        x: 29
-        y: 585
+        x: 26
+        y: 951
         width: 884
         height: 1143
       alignment: 0
@@ -176,8 +176,8 @@ TextureImporter:
       name: Garbage
       rect:
         serializedVersion: 2
-        x: 934
-        y: 1118
+        x: 936
+        y: 1489
         width: 512
         height: 586
       alignment: 0
@@ -197,10 +197,10 @@ TextureImporter:
       name: Pause
       rect:
         serializedVersion: 2
-        x: 1454
-        y: 1744
-        width: 254
-        height: 269
+        x: 1450
+        y: 2104
+        width: 263
+        height: 286
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,12 +218,12 @@ TextureImporter:
       name: WaterBucket
       rect:
         serializedVersion: 2
-        x: 1461
-        y: 1057
+        x: 1467
+        y: 1424
         width: 543
         height: 583
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -239,12 +239,12 @@ TextureImporter:
       name: FullGarbage
       rect:
         serializedVersion: 2
-        x: 961
-        y: 504
+        x: 967
+        y: 871
         width: 471
         height: 584
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,8 +260,50 @@ TextureImporter:
       name: OpenGarbage
       rect:
         serializedVersion: 2
-        x: 1436
-        y: 484
+        x: 1444
+        y: 865
+        width: 559
+        height: 413
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99b685552af252148b8baa3d89453e94
+      internalID: 6641855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_0
+      rect:
+        serializedVersion: 2
+        x: 1735
+        y: 2090
+        width: 284
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a600248a1b1ee42b42838ddfb3c1ef
+      internalID: -481829412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OpenGarbageOutline
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 165
         width: 559
         height: 413
       alignment: 0
@@ -271,8 +313,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99b685552af252148b8baa3d89453e94
-      internalID: 6641855
+      spriteID: 7136a3649ac184c4eaa4479721a47eff
+      internalID: -773559242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FullGarbageOutline
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 186
+        width: 471
+        height: 584
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25fb031abe411ad47a630f4b24e81f99
+      internalID: 147473312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BucketOutline
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 161
+        width: 543
+        height: 583
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229ffc5d57054cf45a42f3300ac404da
+      internalID: -94132274
       vertices: []
       indices: 
       edges: []
@@ -289,20 +373,22 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Border: 512609552
+      BucketOutline: -354016822
       FullGarbage: 1279408799
+      FullGarbageOutline: -1889993399
       Garbage: -954119691
       Notepad: 2124598913
       OpenGarbage: 6641855
+      OpenGarbageOutline: -773559242
       Pause: -1442392211
       Pencil: 184965337
       Settings: 2085239621
+      UI_0: -481829412
       UI_11: 674798553
       UI_14: 563077285
       UI_15: 405327361
       UI_16: -2124426247
       UI_17: -909677729
-      UI_2: -1889993399
-      UI_3: -354016822
       UI_4: 1392310688
       UI_5: -419716496
       UI_6: -781003032

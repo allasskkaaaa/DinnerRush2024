@@ -10,7 +10,7 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
     [SerializeField] private List<GameObject> obstacles = new List<GameObject>();
 
-    [SerializeField] private List<GameObject> spawnedObstacle = new List<GameObject>();
+    [SerializeField] public List<GameObject> spawnedObstacle = new List<GameObject>();
 
     private float timer;
     public void spawnObstacle()
@@ -33,6 +33,9 @@ public class ObstacleManager : MonoBehaviour
             GameObject spawnedObject = Instantiate(obstacles[randomObstacle], availableNodes[randomSpawn]);
             availableNodes[randomSpawn].GetComponent<Obstacle>().isOccupied = true;
             spawnedObstacle.Add(spawnedObject);
+
+            if (spawnedObject.CompareTag("Garbage"))
+            spawnedObject.GetComponent<GarbagePiece>().spawnNode = availableNodes[randomSpawn].GetComponent<Obstacle>();
 
         }
         else

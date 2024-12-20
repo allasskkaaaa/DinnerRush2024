@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1560476516540602987}
   - component: {fileID: 5704927733832817030}
-  m_Layer: 0
+  - component: {fileID: 8194711100363245257}
+  m_Layer: 6
   m_Name: SmallDirtySplash
   m_TagString: Spill
   m_Icon: {fileID: 0}
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8194711100363245257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8255013257404977223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73107c8e6f646824c8c71c061f1b2e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

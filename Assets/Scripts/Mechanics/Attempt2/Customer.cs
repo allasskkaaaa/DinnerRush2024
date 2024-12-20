@@ -5,11 +5,11 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     // Appearance Settings
-    [Header("Appearance Settings")]
+    [Header("Cat Settings")]
     [SerializeField] private Sprite[] appearanceVarieties; // Different cat appearances they can use
     [SerializeField] private SpriteRenderer sr; // Reference to customer sprite renderer
-    [HideInInspector] public int zOrder = 6; // Z order the sprite lays on
-
+    [SerializeField] private float cleanlinessRating;
+    [SerializeField] private float patience = 20;
     // Interaction Settings
     [Header("Interaction Settings")]
     [SerializeField] private float scaleMultiplier; // When the cat is hovered over, local scale is multiplied by this value
@@ -40,9 +40,14 @@ public class Customer : MonoBehaviour
     // Animation Settings
     [Header("Animation Settings")]
     private Animator anim; // Reference to cat animator
-
+    private ObstacleManager obstacleManager;
     public SpawnNode spawnNode;
     private bool isSelectable;
+
+
+    private float overallSatisfaction = 3;
+
+    private Coroutine checkingCleanliness;
     private void Awake()
     {
         speechAnim = speechBubble.GetComponent<Animator>();
@@ -57,12 +62,14 @@ public class Customer : MonoBehaviour
         sr.sprite = appearanceVarieties[randomInt];
         
         order = menuSelection[Random.Range(0, menuSelection.Count)];
-        Debug.Log("Z order = " + zOrder);
+
+        obstacleManager = FindObjectOfType<ObstacleManager>();
     }
 
     private void Start()
     {
-        sr.sortingOrder = zOrder;
+        sr.sortingOrder = spawnNode.zOrder;
+        sr.flipX = spawnNode.xFlipped;
 
     }
     private void Update()
@@ -75,23 +82,34 @@ public class Customer : MonoBehaviour
         { 
             StartCoroutine(thinkOrder(order.tag));
         }
+
+        if (checkingCleanliness == null)
+        {
+            checkingCleanliness = StartCoroutine(checkCleanliness());
+        }
+
+        if (patience > 0)
+        {
+            patience -= Time.deltaTime;
+        }
+        else
+        {
+            leave();
+        }
         
     }
 
     private IEnumerator thinkOrder(string tag)
     {
         checkingOrder = true;
-        Debug.Log("Thinking: " + tag);
        
         for (int i = 0; i < menuSelection.Count; i++) 
         {
-            Debug.Log(menuSelection[i].tag);
             if (order.tag == menuSelection[i].tag)
             {
                 speechAnim.Play("Form");
                 currentThought = Instantiate(menuSelection[i], speechBubbleSlot.transform);
                 hasOrdered = true;
-                Debug.Log("Current thought: " + currentThought.tag);
                 yield return new WaitForSeconds(3);
                 
             }
@@ -104,13 +122,10 @@ public class Customer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        selected();
         Draggable draggable = collision.GetComponent<Draggable>();
-
-        if (draggable != null && CompareTag("Obstacle"))
-        {
-            selected();
-        }
-        else if (collision.CompareTag("Finger") && (collision.transform.childCount <= 0))
+        
+        if (collision.CompareTag("Finger") && (collision.transform.childCount <= 0))
         {
             StartCoroutine(thinkOrder(order.tag));
         }
@@ -133,7 +148,6 @@ public class Customer : MonoBehaviour
                 {
                     if (checkOrder(collision.gameObject))
                     {
-                        Debug.Log("Order match: " + checkOrder(collision.gameObject));
                         playThought("Happy");
                         wasServed = true;
                         StartCoroutine(leave());
@@ -143,7 +157,6 @@ public class Customer : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Order match: " + checkOrder(collision.gameObject));
                         playThought("Angry");
                         draggable.gameObject.SetActive(false);
                         Destroy(draggable.gameObject, 0.1f);
@@ -186,6 +199,7 @@ public class Customer : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
+        obstacleManager.spawnObstacle();
         spawnNode.isOccupied = false;
         Destroy(gameObject);
 
@@ -194,6 +208,31 @@ public class Customer : MonoBehaviour
     private bool checkOrder(GameObject checkOrder)
     {
         return (order.CompareTag(checkOrder.tag));
+    }
+
+    private IEnumerator checkCleanliness()
+    {
+
+        Obstacle[] possibleGarbage = FindObjectsOfType<Obstacle>();
+
+        List<Obstacle> garbageOnFloor = new List<Obstacle>();
+
+        for (int i = 0; i < possibleGarbage.Length; i++)
+        {
+            if (possibleGarbage[i].isOccupied)
+            {
+                garbageOnFloor.Add(possibleGarbage[i]);
+            }
+        }
+
+        cleanlinessRating = 1 - ((float)garbageOnFloor.Count / possibleGarbage.Length);
+
+        Debug.Log("Cleanliness: "+ cleanlinessRating);
+
+        yield return new WaitForSeconds(1);
+
+        checkingCleanliness = null;
+
     }
 
 }

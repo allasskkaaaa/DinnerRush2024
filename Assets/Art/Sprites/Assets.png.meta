@@ -197,12 +197,12 @@ TextureImporter:
       name: Latte
       rect:
         serializedVersion: 2
-        x: 93
-        y: 817
+        x: 91
+        y: 630
         width: 180
         height: 118
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4842145, y: 0.4939808}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,8 +218,8 @@ TextureImporter:
       name: Sandwich
       rect:
         serializedVersion: 2
-        x: 361
-        y: 817
+        x: 356
+        y: 631
         width: 178
         height: 135
       alignment: 0
@@ -240,7 +240,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 628
-        y: 825
+        y: 635
         width: 151
         height: 152
       alignment: 0
@@ -281,8 +281,8 @@ TextureImporter:
       name: Plate
       rect:
         serializedVersion: 2
-        x: 76
-        y: 573
+        x: 17
+        y: 424
         width: 251
         height: 107
       alignment: 0
@@ -302,8 +302,8 @@ TextureImporter:
       name: PlateTop
       rect:
         serializedVersion: 2
-        x: 364
-        y: 499
+        x: 303
+        y: 350
         width: 250
         height: 256
       alignment: 0
@@ -529,6 +529,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: LatteButton
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 816
+        width: 230
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66026f2cea5a7574fa761575d09d87a6
+      internalID: -934839314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandwichButton
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 832
+        width: 230
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcee79a0c7f60da40a483d66ed32ec9a
+      internalID: 6296213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CakeButton
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 829
+        width: 230
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f49e4d5ad1702b249b2c24cc4c944344
+      internalID: -1871269129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -547,15 +610,18 @@ TextureImporter:
       Button_Fill: -879993934
       Button_Outline: 1962672582
       Cake: 2032350849
+      CakeButton: -1871269129
       Chair: -378153844
       Garbage: -1701218653
       Latte: 1530455844
+      LatteButton: -934839314
       Mop: -1744208772
       Paper: -950167671
       Plate: 2059364017
       PlateTop: 1454112936
       Rag: -833778342
       Sandwich: 915377779
+      SandwichButton: 6296213
       Splash_Dirty: 336441975
       Splash_Small_Dirty: -2098907118
       Splash_Small_Water: 533228531
