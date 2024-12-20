@@ -407,8 +407,8 @@ TextureImporter:
       name: Star
       rect:
         serializedVersion: 2
-        x: 955
-        y: 195
+        x: 849
+        y: 268
         width: 287
         height: 254
       alignment: 0
@@ -538,7 +538,7 @@ TextureImporter:
         width: 230
         height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -559,7 +559,7 @@ TextureImporter:
         width: 230
         height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -580,7 +580,7 @@ TextureImporter:
         width: 230
         height: 183
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -588,6 +588,27 @@ TextureImporter:
       bones: []
       spriteID: f49e4d5ad1702b249b2c24cc4c944344
       internalID: -1871269129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StarOutline
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 42
+        width: 287
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e3813a6d478773449caf7111eeb4729
+      internalID: 1929958320
       vertices: []
       indices: 
       edges: []
@@ -629,6 +650,7 @@ TextureImporter:
       SprayBottle: -956140773
       Spritz Bottle: -1544477714
       Star: -1463952866
+      StarOutline: 1929958320
       Table: 570556234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

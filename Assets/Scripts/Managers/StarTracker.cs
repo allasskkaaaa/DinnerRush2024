@@ -8,14 +8,19 @@ using Unity.VisualScripting;
 public class StarTracker : MonoBehaviour
 {
     [SerializeField] private Image[] stars; // Array of star images
-    [SerializeField] private int maxScorePerStar = 100; // Max score for each star
-    [SerializeField] private int maxTotalScore = 500; // Max score for each star
-    private int totalScore; // Cached score to avoid redundant updates
-    private bool isFilling = false;
+    [SerializeField] private float maxScorePerStar = 1; // Max score for each star
+    [SerializeField] private float maxTotalScore = 5; // Max score for each star
+    private float totalScore = 0; // Cached score to avoid redundant updates
+
 
     private void Update()
     {
-        if (GameManager.Instance.restaurantScore != totalScore && !isFilling) // Update only if score changes
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance is null. Ensure GameManager is initialized.");
+            return;
+        }
+        if (GameManager.Instance.restaurantScore != totalScore) // Update only if score changes
         {
             totalScore = GameManager.Instance.restaurantScore;
             UpdateStars();

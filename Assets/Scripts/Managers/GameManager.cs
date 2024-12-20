@@ -15,44 +15,17 @@ public class GameManager : MonoBehaviour
 
     public Action<int> OnLifeValueChange;
 
-    
-
-    private int _lives;
-    public int lives
-    {
-        get => _lives;
-        set
-        {
-            if (value <= 0)
-            {
-                GameOver();
-                return;
-            }
-            if (value < _lives) Respawn();
-            if (value > maxLives) value = maxLives;
-            _lives = value;
-
-            OnLifeValueChange?.Invoke(_lives);
-
-            Debug.Log($"Lives have been set to {_lives}");
-            //broadcast can happen here
-        }
-    }
-
-    [SerializeField] private int maxLives = 5;
-    [SerializeField] private PlayerController playerPrefab;
-    [HideInInspector] public PlayerController PlayerInstance => _playerInstance;
-    PlayerController _playerInstance = null;
-    Transform currentCheckpoint;
-    [SerializeField] private Transform startingSpawn;
-    public Action<PlayerController> OnPlayerSpawned;
     [SerializeField] public Timer timer;
-    [SerializeField] public int restaurantScore;
-
+    [SerializeField] public float restaurantScore = 0;
+    [SerializeField] public List<float> allRatings;
+    [SerializeField] private Image[] stars; // Array of star images
     private bool isPaused;
-   
 
 
+    private void Start()
+    {
+        _instance = this;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -76,22 +49,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    public void Respawn()
-    {
-        _playerInstance.transform.position = currentCheckpoint.position;
-    }
-
-    public void SpawnPlayer(Transform spawnLocation)
-    {
-        _playerInstance = Instantiate(playerPrefab, spawnLocation.position, spawnLocation.rotation);
-        currentCheckpoint = spawnLocation;
-    }
-
-
-    public void UpdateCheckpoint(Transform updatedCheckpoint)
-    {
-        currentCheckpoint = updatedCheckpoint;
-    }
 
     public void pauseGame()
     {
@@ -103,8 +60,40 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void updateRating()
+    public void calculateRestaurantScore()
     {
+        float sum = 0;
 
+        float average;
+
+        for (int i = 0; i < allRatings.Count; i++)
+        {
+            sum += allRatings[i];
+        }
+
+        average = sum / allRatings.Count;
+
+        restaurantScore = average;
+        UpdateStars();
+    }
+
+    private void UpdateStars()
+    {
+        float remainingScore = restaurantScore;
+
+
+        for (int i = 0; i < stars.Length; i++)
+        {
+            if (remainingScore > 1) // Fully fill the star
+            {
+                stars[i].fillAmount = 1f;
+                remainingScore -= 1;
+            }
+            else // Partially fill the star
+            {
+                stars[i].fillAmount = remainingScore / 1;
+                remainingScore = 0; // No more score to distribute
+            }
+        }
     }
 }

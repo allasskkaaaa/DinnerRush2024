@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Customer : MonoBehaviour
 {
     // Appearance Settings
     [Header("Cat Settings")]
     [SerializeField] private Sprite[] appearanceVarieties; // Different cat appearances they can use
     [SerializeField] private SpriteRenderer sr; // Reference to customer sprite renderer
-    [SerializeField] private float cleanlinessRating;
+    [SerializeField] private float cleanlinessRating = 5;
     [SerializeField] private float patience = 20;
+    [SerializeField] private int orderSatisfaction = 5;
+    [SerializeField] private float overallSatisfaction;
+
     // Interaction Settings
     [Header("Interaction Settings")]
     [SerializeField] private float scaleMultiplier; // When the cat is hovered over, local scale is multiplied by this value
@@ -45,7 +49,7 @@ public class Customer : MonoBehaviour
     private bool isSelectable;
 
 
-    private float overallSatisfaction = 3;
+    
 
     private Coroutine checkingCleanliness;
     private void Awake()
@@ -88,13 +92,17 @@ public class Customer : MonoBehaviour
             checkingCleanliness = StartCoroutine(checkCleanliness());
         }
 
-        if (patience > 0)
+        if (patience > 0 && !wasServed)
         {
             patience -= Time.deltaTime;
         }
-        else
+        
+        if ((patience <= 0 || orderSatisfaction <= 0) && !wasServed)
         {
-            leave();
+            orderSatisfaction = 0;
+            cleanlinessRating = 0;
+            patience = 0;
+            StartCoroutine(leave());
         }
         
     }
@@ -157,6 +165,7 @@ public class Customer : MonoBehaviour
                     }
                     else
                     {
+                        overallSatisfaction -= 1;
                         playThought("Angry");
                         draggable.gameObject.SetActive(false);
                         Destroy(draggable.gameObject, 0.1f);
@@ -199,7 +208,16 @@ public class Customer : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        obstacleManager.spawnObstacle();
+
+        overallSatisfaction += ((5*cleanlinessRating) + (patience/4) + orderSatisfaction)/3;
+
+        GameManager.Instance.allRatings.Add(overallSatisfaction);
+        GameManager.Instance.calculateRestaurantScore();
+
+        if (overallSatisfaction < 3.5)
+        {
+            obstacleManager.spawnObstacle();
+        }
         spawnNode.isOccupied = false;
         Destroy(gameObject);
 
