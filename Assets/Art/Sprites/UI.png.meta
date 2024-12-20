@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI_0
+      name: X
       rect:
         serializedVersion: 2
         x: 1735
@@ -286,7 +286,7 @@ TextureImporter:
         width: 284
         height: 295
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,7 +307,7 @@ TextureImporter:
         width: 559
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -328,7 +328,7 @@ TextureImporter:
         width: 471
         height: 584
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -349,7 +349,7 @@ TextureImporter:
         width: 543
         height: 583
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,6 +357,27 @@ TextureImporter:
       bones: []
       spriteID: 229ffc5d57054cf45a42f3300ac404da
       internalID: -94132274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Play
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 39
+        width: 263
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f2e8d4599b3c948a7c9b6008daa4aa
+      internalID: 1590177079
       vertices: []
       indices: 
       edges: []
@@ -382,8 +403,8 @@ TextureImporter:
       OpenGarbageOutline: -773559242
       Pause: -1442392211
       Pencil: 184965337
+      Play: 1590177079
       Settings: 2085239621
-      UI_0: -481829412
       UI_11: 674798553
       UI_14: 563077285
       UI_15: 405327361
@@ -396,6 +417,7 @@ TextureImporter:
       UI_8: 1450277207
       UI_9: 321811069
       WaterBucket: 2098465818
+      X: -481829412
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

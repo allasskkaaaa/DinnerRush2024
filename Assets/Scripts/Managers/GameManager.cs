@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float restaurantScore = 0;
     [SerializeField] public List<float> allRatings;
     [SerializeField] private Image[] stars; // Array of star images
-    private bool isPaused;
+
+    
 
 
     private void Start()
@@ -29,13 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (SceneManager.GetActiveScene().name == "Game")
-                SceneManager.LoadScene(0);
-            else
-                SceneManager.LoadScene(1);
-        }
+        
     }
 
     public void LoadScene(string SceneName)
@@ -47,17 +42,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameOver goes here");
         SceneManager.LoadScene(2);
-    }
-
-
-    public void pauseGame()
-    {
-        Time.timeScale = 0;
-    }
-
-    public void unpauseGame()
-    {
-        Time.timeScale = 1;
     }
 
     public void calculateRestaurantScore()

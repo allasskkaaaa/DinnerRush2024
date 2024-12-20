@@ -48,8 +48,9 @@ public class Customer : MonoBehaviour
     public SpawnNode spawnNode;
     private bool isSelectable;
 
+    private bool isPlayingThought = false;
 
-    
+    private bool isScaled;
 
     private Coroutine checkingCleanliness;
     private void Awake()
@@ -133,7 +134,7 @@ public class Customer : MonoBehaviour
         selected();
         Draggable draggable = collision.GetComponent<Draggable>();
         
-        if (collision.CompareTag("Finger") && (collision.transform.childCount <= 0))
+        if (collision.CompareTag("Finger") && (collision.transform.childCount <= 0) && !wasServed)
         {
             StartCoroutine(thinkOrder(order.tag));
         }
@@ -156,7 +157,7 @@ public class Customer : MonoBehaviour
                 {
                     if (checkOrder(collision.gameObject))
                     {
-                        playThought("Happy");
+                        StartCoroutine(playThought("Happy"));
                         wasServed = true;
                         StartCoroutine(leave());
                         draggable.gameObject.SetActive(false);
@@ -165,8 +166,8 @@ public class Customer : MonoBehaviour
                     }
                     else
                     {
-                        overallSatisfaction -= 1;
-                        playThought("Angry");
+                        orderSatisfaction--;
+                        StartCoroutine(playThought("Angry"));
                         draggable.gameObject.SetActive(false);
                         Destroy(draggable.gameObject, 0.1f);
                         return;
@@ -184,21 +185,31 @@ public class Customer : MonoBehaviour
 
     private void selected()
     {
-        sr.gameObject.transform.localScale = sr.gameObject.transform.localScale * scaleMultiplier;
+        if (!isScaled)
+        {
+            sr.gameObject.transform.localScale = sr.gameObject.transform.localScale * scaleMultiplier;
+            isScaled = true;
+            Debug.Log("Scaling object");
+        }
     }
 
     private void unselected()
     {
         sr.gameObject.transform.localScale = originalScale;
+        isScaled = false;
     }
 
     private IEnumerator playThought(string thought)
     {
-        speechAnim.Play(thought);
+
+        speechAnim.SetTrigger(thought);
+
         yield return new WaitForSeconds(3);
 
         speechAnim.Play("HeadEmpty");
+
     }
+
 
     private IEnumerator leave()
     {
