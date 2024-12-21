@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
-public class StarTracker : MonoBehaviour
+public class MenuStarTracker : MonoBehaviour
 {
     [SerializeField] private Image[] stars; // Array of star images
 
+    private void Start()
+    {
+        UpdateStars();
+    }
     public void UpdateStars()
     {
-        float remainingScore = GameManager.Instance.restaurantScore;
+        float remainingScore = GameManager.Instance.highScore;
 
 
         for (int i = 0; i < stars.Length; i++)
@@ -26,7 +31,6 @@ public class StarTracker : MonoBehaviour
                 remainingScore = 0; // No more score to distribute
             }
         }
-        GameManager.Instance.setHighScore();
     }
 
 

@@ -205,8 +205,8 @@ MonoBehaviour:
   - {fileID: 3797684406225953471}
   - {fileID: 3177302891746230320}
   - {fileID: 4689781776412859118}
-  maxScorePerStar: 100
-  maxTotalScore: 500
+  maxScorePerStar: 1
+  maxTotalScore: 5
 --- !u!1 &2659176208639123817
 GameObject:
   m_ObjectHideFlags: 0

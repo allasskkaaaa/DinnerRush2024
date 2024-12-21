@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class GarbageMechanic : MonoBehaviour
 {
+    [SerializeField] private AudioClip pickupSFX;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +13,7 @@ public class GarbageMechanic : MonoBehaviour
             GarbagePiece garbagePiece = collision.GetComponent<GarbagePiece>();
             if (garbagePiece != null)
             {
+                AudioManager.instance.playOneShot(pickupSFX);
                 Debug.Log("Removing Garbage");
                 garbagePiece.spawnNode.isOccupied = false;
                 Destroy(collision.gameObject);

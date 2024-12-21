@@ -73,22 +73,26 @@ MonoBehaviour:
   - {fileID: -733714421, guid: e0ff7d3d26eccf54e92ca2879d2c10e4, type: 3}
   - {fileID: -1886095263, guid: e0ff7d3d26eccf54e92ca2879d2c10e4, type: 3}
   - {fileID: 1542251187, guid: e0ff7d3d26eccf54e92ca2879d2c10e4, type: 3}
-  speechBubble: {fileID: 7203840599833253985}
-  speechBubbleSlot: {fileID: 8136778651025755859}
-  decideTime: 0
-  minDecideTime: 2
-  maxDecideTime: 4
+  sr: {fileID: 229294851250652250}
+  cleanlinessRating: 5
+  patience: 20
+  orderSatisfaction: 5
+  overallSatisfaction: 0
   scaleMultiplier: 1.3
   order: {fileID: 0}
   menuSelection:
   - {fileID: 7564019259952056803, guid: 2607f4633af38634ab1abd8028384975, type: 3}
   - {fileID: 4617811087055974560, guid: e15510bd81cce724193c3e9bf76c265c, type: 3}
   - {fileID: 607156412338551914, guid: daeb4d54c86c5a54da53445383c60e85, type: 3}
-  emotions:
-  - {fileID: 3658016563224215292, guid: 3363683972c2c8044a4f368f3c255d7b, type: 3}
-  - {fileID: 6810997645333782539, guid: f03e5c767b3499d46ae6e8a6dfdf89cf, type: 3}
-  - {fileID: 1262314399953105065, guid: 1a7aefb2c1988d149b73480d6defdb28, type: 3}
-  sr: {fileID: 229294851250652250}
+  speechBubble: {fileID: 7203840599833253985}
+  speechBubbleSlot: {fileID: 8136778651025755859}
+  thinkingTime: 0
+  minDecideTime: 2
+  maxDecideTime: 4
+  spawnNode: {fileID: 0}
+  meow: {fileID: 8300000, guid: 8643efa373153fd48935301a50903320, type: 3}
+  angry_meow: {fileID: 8300000, guid: 4dd951cfabe66a0458412cce500f2d2d, type: 3}
+  hungry_meow: {fileID: 8300000, guid: 5ea52e98fd75c41498bfd77979ead310, type: 3}
 --- !u!70 &2831957900919765202
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

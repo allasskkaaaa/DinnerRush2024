@@ -6,7 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
+
+[DefaultExecutionOrder(-1)]
 
 public class GameManager : MonoBehaviour
 {
@@ -15,34 +16,57 @@ public class GameManager : MonoBehaviour
 
     public Action<int> OnLifeValueChange;
 
-    [SerializeField] public Timer timer;
     [SerializeField] public float restaurantScore = 0;
     [SerializeField] public List<float> allRatings;
-    [SerializeField] private Image[] stars; // Array of star images
+    [SerializeField] public float highScore = 0;
+    [SerializeField] private StarTracker starTracker;
 
-    
+    [HideInInspector] public bool newHighScore;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        if (FindObjectsOfType<GameManager>().Length > 1)
+        {
+            Destroy(gameObject); // Destroys duplicate instances
+        }
+
+        LoadPlayer();
+
+
+    }
 
     private void Start()
     {
+        Time.timeScale = 1;
+        restaurantScore = 0;
+
         _instance = this;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+        if (starTracker != null)
+        starTracker.UpdateStars();
+
+        SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to the sceneLoaded event
     }
 
-    public void LoadScene(string SceneName)
+    private void OnDestroy()
     {
-        SceneManager.LoadScene(SceneName);
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to prevent memory leaks
     }
 
-    public void GameOver()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("GameOver goes here");
-        SceneManager.LoadScene(2);
+        starTracker = FindObjectOfType<StarTracker>();
+        if (starTracker != null)
+            starTracker.UpdateStars();
     }
+    public void LoadScene(int scene)
+    {
+        Debug.Log("Loading scene " +  scene);
+        SceneManager.LoadScene(scene);
+    }
+
 
     public void calculateRestaurantScore()
     {
@@ -58,26 +82,45 @@ public class GameManager : MonoBehaviour
         average = sum / allRatings.Count;
 
         restaurantScore = average;
-        UpdateStars();
+
+        starTracker.UpdateStars();
     }
 
-    private void UpdateStars()
+    public void setHighScore()
     {
-        float remainingScore = restaurantScore;
-
-
-        for (int i = 0; i < stars.Length; i++)
+        
+        if (restaurantScore > highScore)
         {
-            if (remainingScore > 1) // Fully fill the star
-            {
-                stars[i].fillAmount = 1f;
-                remainingScore -= 1;
-            }
-            else // Partially fill the star
-            {
-                stars[i].fillAmount = remainingScore / 1;
-                remainingScore = 0; // No more score to distribute
-            }
+            Debug.Log("New high score!");
+            highScore = restaurantScore;
+
+            newHighScore = true;
+            SavePlayer();
         }
+        else
+        {
+            newHighScore = false;
+        }
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.loadPlayer();
+
+        if (data != null)
+        {
+            highScore = data.highScore;
+        }
+        
+    }
+   
+    public void deleteData()
+    {
+        SaveSystem.ResetPlayerData();
     }
 }

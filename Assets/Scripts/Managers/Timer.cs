@@ -8,6 +8,9 @@ public class Timer : MonoBehaviour
     public TMP_Text timerText;
     public float totalTime = 300f; //5 minutes
     public float currentTime;
+    public bool isDone;
+
+    [SerializeField] private CanvasManager canvas; 
     private void Start()
     {
         currentTime = totalTime;
@@ -15,15 +18,19 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if (currentTime > 0)
+        if (!isDone)
         {
-            currentTime -= Time.deltaTime; //Decrease the timer
-            currentTime = Mathf.Max(currentTime, 0); //Avoids negative time
-            UpdateTimerUI();
-        }
-        else
-        {
-            GameManager.Instance.GameOver();
+            if (currentTime > 0)
+            {
+                currentTime -= Time.deltaTime; //Decrease the timer
+                currentTime = Mathf.Max(currentTime, 0); //Avoids negative time
+                UpdateTimerUI();
+            }
+            else
+            {
+                canvas.endScreen();
+                isDone = true;
+            }
         }
     }
 

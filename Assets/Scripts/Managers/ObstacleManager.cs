@@ -13,6 +13,10 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] public List<GameObject> spawnedObstacle = new List<GameObject>();
 
     private float timer;
+    private void Start()
+    {
+        timer += Random.Range(minSpawnInterval, maxSpawnInterval);
+    }
     public void spawnObstacle()
     {
         List<Transform> availableNodes = new List<Transform>();

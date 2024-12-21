@@ -9,6 +9,7 @@ public class Spill : MonoBehaviour
     [SerializeField] Vector2 exitPoint;
     [SerializeField] float timeBetween;
 
+    [SerializeField] private AudioClip swipeSFX;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -57,6 +58,7 @@ public class Spill : MonoBehaviour
     {
         if (timeBetween < 1)
         {
+            AudioManager.instance.playOneShot(swipeSFX);
             swipeCount++;
         }
 

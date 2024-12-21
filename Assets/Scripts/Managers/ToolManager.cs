@@ -13,10 +13,10 @@ public class ToolManager : MonoBehaviour
     [SerializeField] private Button garbageButton;
     [SerializeField] private Button bucketButton;
 
-    public GameObject garbageHighlightPanel;
-    public GameObject spillsHighlightPanel;
-
-    [SerializeField]
+    [Header("Audio")]
+    [SerializeField] private AudioClip garbageSelectSFX;
+    [SerializeField] private AudioClip bucketSelectSFX;
+    [SerializeField] private AudioClip deselect;
     public enum CurrentTool
     {
         garbage,
@@ -41,7 +41,7 @@ public class ToolManager : MonoBehaviour
     {
         if (currentTool != CurrentTool.garbage)
         {
-
+            AudioManager.instance.playOneShot(garbageSelectSFX);
             ColorBlock bucketColorBlock = bucketButton.colors;
             bucketColorBlock.normalColor = Color.white;
             bucketButton.colors = bucketColorBlock;
@@ -63,6 +63,7 @@ public class ToolManager : MonoBehaviour
             Debug.Log("Finger was equipped");
             currentTool = CurrentTool.finger;
             garbageButton.OnDeselect(null);
+            AudioManager.instance.playOneShot(deselect);
         }
         
     }
@@ -71,6 +72,7 @@ public class ToolManager : MonoBehaviour
     {
         if (currentTool != CurrentTool.bucket)
         {
+            AudioManager.instance.playOneShot(bucketSelectSFX);
             ColorBlock garbageColorBlock = garbageButton.colors;
             garbageColorBlock.normalColor = Color.white;
             garbageButton.colors = garbageColorBlock;
@@ -86,7 +88,7 @@ public class ToolManager : MonoBehaviour
         }
         else if (currentTool == CurrentTool.bucket)
         {
-
+            AudioManager.instance.playOneShot(deselect);
             ColorBlock colorBlock = bucketButton.colors;
             colorBlock.normalColor = Color.white;
             bucketButton.colors = colorBlock; // Apply the updated ColorBlock
@@ -102,7 +104,7 @@ public class ToolManager : MonoBehaviour
     {
         Debug.Log("Finger was equipped");
         currentTool = CurrentTool.finger;
-
+        AudioManager.instance.playOneShot(deselect);
         // Reset color for garbage button
 
         garbageButton.OnDeselect(null);

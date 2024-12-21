@@ -46,6 +46,12 @@ public class Customer : MonoBehaviour
     private Animator anim; // Reference to cat animator
     private ObstacleManager obstacleManager;
     public SpawnNode spawnNode;
+
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip meow;
+    [SerializeField] private AudioClip angry_meow;
+    [SerializeField] private AudioClip hungry_meow;
+
     private bool isSelectable;
 
     private bool isPlayingThought = false;
@@ -75,6 +81,8 @@ public class Customer : MonoBehaviour
     {
         sr.sortingOrder = spawnNode.zOrder;
         sr.flipX = spawnNode.xFlipped;
+
+        AudioManager.instance.playOneShot(meow);
 
     }
     private void Update()
@@ -119,6 +127,7 @@ public class Customer : MonoBehaviour
                 speechAnim.Play("Form");
                 currentThought = Instantiate(menuSelection[i], speechBubbleSlot.transform);
                 hasOrdered = true;
+                AudioManager.instance.playOneShot(hungry_meow);
                 yield return new WaitForSeconds(3);
                 
             }
@@ -157,6 +166,7 @@ public class Customer : MonoBehaviour
                 {
                     if (checkOrder(collision.gameObject))
                     {
+                        AudioManager.instance.playOneShot(meow);
                         StartCoroutine(playThought("Happy"));
                         wasServed = true;
                         StartCoroutine(leave());
@@ -166,6 +176,7 @@ public class Customer : MonoBehaviour
                     }
                     else
                     {
+                        AudioManager.instance.playOneShot(angry_meow);
                         orderSatisfaction--;
                         StartCoroutine(playThought("Angry"));
                         draggable.gameObject.SetActive(false);
@@ -225,10 +236,20 @@ public class Customer : MonoBehaviour
         GameManager.Instance.allRatings.Add(overallSatisfaction);
         GameManager.Instance.calculateRestaurantScore();
 
+        int randomGarbageAmount = 0;
+
         if (overallSatisfaction < 3.5)
         {
-            obstacleManager.spawnObstacle();
+            randomGarbageAmount = Random.Range(2,5);
         }
+        else if (overallSatisfaction >= 3.5)
+        {
+            randomGarbageAmount = Random.Range(0, 2);
+        }
+
+        for (int i = 0; i < randomGarbageAmount; i++)
+            obstacleManager.spawnObstacle();
+
         spawnNode.isOccupied = false;
         Destroy(gameObject);
 

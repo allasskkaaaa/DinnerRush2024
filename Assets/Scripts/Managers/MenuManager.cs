@@ -42,9 +42,6 @@ public class MenuManager : MonoBehaviour
             back.onClick.AddListener(backToMenu);
         }
         
-        
-        
-        
     }
 
     public void startGame()
