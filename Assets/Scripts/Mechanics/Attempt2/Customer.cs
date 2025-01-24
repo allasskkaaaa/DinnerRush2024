@@ -52,10 +52,6 @@ public class Customer : MonoBehaviour
     [SerializeField] private AudioClip angry_meow;
     [SerializeField] private AudioClip hungry_meow;
 
-    private bool isSelectable;
-
-    private bool isPlayingThought = false;
-
     private bool isScaled;
 
     private Coroutine checkingCleanliness;
