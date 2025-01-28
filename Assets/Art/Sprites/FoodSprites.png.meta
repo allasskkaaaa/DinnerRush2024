@@ -1,0 +1,436 @@
+fileFormatVersion: 2
+guid: ce2b224837a2d954599a9779a2573867
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Latte
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 1398
+        width: 228
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a72e6fa00ee67f34ca7d1047448911fa
+      internalID: 415111690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Milkshake
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 1263
+        width: 126
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e0b375ec256c4f4d8acedb806c7456e
+      internalID: -933988611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plate
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 1420
+        width: 252
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9eac328701de047a908134cce6551c
+      internalID: -1101485545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Waffles
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1201
+        width: 227
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f412ca6473bfa4d48afe4b963f77b5c8
+      internalID: -2073926929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalmonBagel
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 1195
+        width: 228
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94941b9682887024484d2fa46d5451fa
+      internalID: 67721743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Salad
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 1197
+        width: 227
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46114deeec2e932458f3db5d03db3e1c
+      internalID: -308939749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flower
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 910
+        width: 224
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2341fbc054eadbb4c9a38fdbce57ca1b
+      internalID: -505128577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eggs
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 917
+        width: 236
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6487aa33b1107bb418288f99e02c2d9a
+      internalID: -1782299810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sandwich
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1414
+        width: 228
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f82a729126a93e345afc2e4fc4e55bb3
+      internalID: 2071415588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cake
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 1412
+        width: 229
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c11aae9367b244597da6d7ec510b94
+      internalID: -552422250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MatchaCake
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 1410
+        width: 229
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e74aad382e8162049aeed40c473bb378
+      internalID: 612936333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tea
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 1197
+        width: 228
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d776b86413bccf48b7798fb6733cc4d
+      internalID: 280771710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Cake: -1296719093
+      Eggs: -1782299810
+      Flower: -505128577
+      FoodSprites_10: 232796675
+      FoodSprites_11: -37638444
+      FoodSprites_12: 1962753996
+      FoodSprites_14: -1535606908
+      FoodSprites_15: -872441299
+      FoodSprites_16: -536017528
+      FoodSprites_17: -1072733356
+      FoodSprites_19: 1710647724
+      FoodSprites_20: -1457424539
+      FoodSprites_21: -660366929
+      FoodSprites_22: -189629384
+      FoodSprites_23: 1267830491
+      FoodSprites_24: 1367271138
+      FoodSprites_25: -1212603741
+      FoodSprites_26: -128633944
+      FoodSprites_28: 363373775
+      FoodSprites_30: -234910843
+      FoodSprites_31: 795517662
+      FoodSprites_32: -346692095
+      FoodSprites_33: -1694547379
+      FoodSprites_34: -1507876248
+      FoodSprites_35: -1655624735
+      FoodSprites_36: -1080728752
+      FoodSprites_37: 984483448
+      FoodSprites_39: 686435741
+      FoodSprites_40: -298285247
+      FoodSprites_42: 271554637
+      FoodSprites_43: 980648111
+      FoodSprites_44: -173910356
+      FoodSprites_45: -660248708
+      FoodSprites_46: -153303894
+      FoodSprites_47: 532577298
+      FoodSprites_48: -1099078461
+      FoodSprites_49: 1757411484
+      FoodSprites_5: 1622985035
+      FoodSprites_50: -1559320621
+      FoodSprites_51: -2118819644
+      FoodSprites_52: 72067364
+      FoodSprites_53: -478728368
+      FoodSprites_54: -1574005671
+      FoodSprites_55: -306095063
+      FoodSprites_56: 564461312
+      FoodSprites_6: 1683438744
+      FoodSprites_7: -622590122
+      FoodSprites_8: -396037385
+      Latte: 415111690
+      MatchaCake: 2107012381
+      Milkshake: -933988611
+      Plate: -1101485545
+      Salad: -308939749
+      SalmonBagel: 67721743
+      Sandwich: -1986006377
+      Tea: -1078332705
+      Waffles: -2073926929
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

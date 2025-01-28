@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1847e2eb65c78ae45b0debe50c86b351, type: 3}
+  m_Name: Milkshake
+  m_EditorClassIdentifier: 
+  thumbnail: {fileID: -933988611, guid: ce2b224837a2d954599a9779a2573867, type: 3}
+  foodName: Milkshake
+  quantity: 0
+  recipe:
+  - {fileID: 11400000, guid: b5b657837ae5f9648ba0418251ab35e3, type: 2}
+  - {fileID: 11400000, guid: e775e0287a307854daca09285559a9ec, type: 2}
+  - {fileID: 11400000, guid: 2a19c3f9c59c5b349a4fa495f6c63663, type: 2}
