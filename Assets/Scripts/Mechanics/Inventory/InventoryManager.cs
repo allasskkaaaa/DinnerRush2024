@@ -30,4 +30,6 @@ public class InventoryManager : MonoBehaviour
             foodInventory.Add(food);
         }
     }
+
+
 }

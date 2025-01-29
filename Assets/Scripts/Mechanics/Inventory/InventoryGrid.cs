@@ -7,6 +7,8 @@ public class InventoryGrid : MonoBehaviour
     public int columns = 5;       // Number of columns
     public int inventoryItems = 12; // Total number of slots you want to generate
 
+
+
     private void Start()
     {
         GenerateGrid();
