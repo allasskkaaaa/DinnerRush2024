@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Milk
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
-  itemName: Milk
+  itemName: 
   quantity: 0
   itemID: 0
+  recipe: []

@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1847e2eb65c78ae45b0debe50c86b351, type: 3}
+  m_Script: {fileID: 11500000, guid: caa90ee75a9a602448df75e6e4ff92a1, type: 3}
   m_Name: Cake
   m_EditorClassIdentifier: 
   thumbnail: {fileID: -552422250, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  foodName: Cake
+  itemName: 
+  quantity: 4
+  itemID: 0
   recipe: []
+  type: 1

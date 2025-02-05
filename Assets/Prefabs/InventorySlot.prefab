@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
   quantity: {fileID: 0}
+  quantityText: {fileID: 0}
 --- !u!1 &2287712974190280015
 GameObject:
   m_ObjectHideFlags: 0

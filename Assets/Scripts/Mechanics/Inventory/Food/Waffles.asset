@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1847e2eb65c78ae45b0debe50c86b351, type: 3}
+  m_Script: {fileID: 11500000, guid: caa90ee75a9a602448df75e6e4ff92a1, type: 3}
   m_Name: Waffles
   m_EditorClassIdentifier: 
   thumbnail: {fileID: -2073926929, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  foodName: Waffles
+  itemName: 
   quantity: 0
-  recipe:
-  - {fileID: 11400000, guid: 5e68d778c4acf2744b6ae3b9330d533c, type: 2}
-  - {fileID: 11400000, guid: 2a19c3f9c59c5b349a4fa495f6c63663, type: 2}
-  - {fileID: 11400000, guid: b122aea26f2827740b3ee4157c377ad7, type: 2}
+  itemID: 0
+  recipe: []
+  type: 1

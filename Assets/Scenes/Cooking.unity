@@ -610,7 +610,8 @@ MonoBehaviour:
   slotPrefab: {fileID: 2159457982853651610, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
   rows: 3
   columns: 4
-  inventoryItems: 12
+  inventorySlots: 12
+  inventory: {fileID: 11400000, guid: 02d60ac807ed0164c9a787c1b005895b, type: 2}
 --- !u!1 &1101117280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1434,8 @@ MonoBehaviour:
   slotPrefab: {fileID: 2159457982853651610, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
   rows: 1
   columns: 5
-  inventoryItems: 5
+  inventorySlots: 12
+  inventory: {fileID: 0}
 --- !u!1 &2025698648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,7 +1633,8 @@ MonoBehaviour:
   slotPrefab: {fileID: 2159457982853651610, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
   rows: 4
   columns: 4
-  inventoryItems: 16
+  inventorySlots: 12
+  inventory: {fileID: 11400000, guid: ed4998d42f0c6e845a49b03e5b7120e5, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
