@@ -1437,7 +1437,7 @@ MonoBehaviour:
   columns: 5
   inventorySlots: 12
   inventory: {fileID: 11400000, guid: d18e71b2df459c5469b41856ce2d955d, type: 2}
-  potInventory: {fileID: 0}
+  potInventory: {fileID: 11400000, guid: d18e71b2df459c5469b41856ce2d955d, type: 2}
 --- !u!1 &2025698648
 GameObject:
   m_ObjectHideFlags: 0

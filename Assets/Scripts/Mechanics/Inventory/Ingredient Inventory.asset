@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ee148cfb01561499442014d2c5f73e, type: 3}
   m_Name: Ingredient Inventory
   m_EditorClassIdentifier: 
-  list: []
+  list:
+  - {fileID: 11400000, guid: 43fb1f7610de8c34586985482ad5c954, type: 2}
+  - {fileID: 11400000, guid: c20db1ada36439f439deaebaf241088b, type: 2}
+  - {fileID: 11400000, guid: 948ee2530620ca349bab6c3b2d94733f, type: 2}
+  - {fileID: 11400000, guid: dada336f1cb3cbc44a5d99db5292d027, type: 2}
+  - {fileID: 11400000, guid: 4baeb9d761a8cb54f8ea6679d14d42d5, type: 2}
+  - {fileID: 11400000, guid: 9b19da08fa131dd4b995579a6ce8a34e, type: 2}
+  - {fileID: 11400000, guid: c49667bb65b58754e87af5b69b551928, type: 2}
+  - {fileID: 11400000, guid: 9b9496caf42952343a43e0ede54ed112, type: 2}
+  - {fileID: 11400000, guid: 9bc157f73686c8b4c8fe36d67c6531e4, type: 2}
+  - {fileID: 11400000, guid: df39491b9edad814487e7e6ea1977d8c, type: 2}
