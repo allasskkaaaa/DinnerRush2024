@@ -6,5 +6,5 @@ public class Cat : ScriptableObject
 {
     public Sprite thumbnail;
     public string catName;
-    public List<FoodItem> favouriteFoods;
+    public List<FoodObject> favouriteFoods;
 }

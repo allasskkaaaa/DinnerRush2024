@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Milkshake
   m_EditorClassIdentifier: 
   thumbnail: {fileID: -933988611, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  itemName: 
+  itemName: Milkshake
   quantity: 0
   itemID: 0
-  recipe: []
+  recipe:
+  - {fileID: 11400000, guid: c49667bb65b58754e87af5b69b551928, type: 2}
+  - {fileID: 11400000, guid: 4baeb9d761a8cb54f8ea6679d14d42d5, type: 2}
+  - {fileID: 11400000, guid: 43fb1f7610de8c34586985482ad5c954, type: 2}
   type: 1

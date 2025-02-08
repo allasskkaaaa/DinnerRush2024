@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Tea
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 280771710, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  itemName: 
+  itemName: Tea
   quantity: 0
   itemID: 0
-  recipe: []
+  recipe:
+  - {fileID: 11400000, guid: c49667bb65b58754e87af5b69b551928, type: 2}
+  - {fileID: 11400000, guid: 9bc157f73686c8b4c8fe36d67c6531e4, type: 2}
   type: 1

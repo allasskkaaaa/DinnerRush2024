@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Salmon Bagel
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 67721743, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  itemName: 
+  itemName: Salmon Bagel
   quantity: 0
   itemID: 0
-  recipe: []
+  recipe:
+  - {fileID: 11400000, guid: 9b19da08fa131dd4b995579a6ce8a34e, type: 2}
+  - {fileID: 11400000, guid: 9b9496caf42952343a43e0ede54ed112, type: 2}
+  - {fileID: 11400000, guid: dada336f1cb3cbc44a5d99db5292d027, type: 2}
+  - {fileID: 11400000, guid: 948ee2530620ca349bab6c3b2d94733f, type: 2}
   type: 1

@@ -612,6 +612,7 @@ MonoBehaviour:
   columns: 4
   inventorySlots: 12
   inventory: {fileID: 11400000, guid: 02d60ac807ed0164c9a787c1b005895b, type: 2}
+  potInventory: {fileID: 11400000, guid: d18e71b2df459c5469b41856ce2d955d, type: 2}
 --- !u!1 &1101117280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1436,8 @@ MonoBehaviour:
   rows: 1
   columns: 5
   inventorySlots: 12
-  inventory: {fileID: 0}
+  inventory: {fileID: 11400000, guid: d18e71b2df459c5469b41856ce2d955d, type: 2}
+  potInventory: {fileID: 0}
 --- !u!1 &2025698648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,6 +1450,7 @@ GameObject:
   - component: {fileID: 2025698652}
   - component: {fileID: 2025698651}
   - component: {fileID: 2025698650}
+  - component: {fileID: 2025698653}
   m_Layer: 5
   m_Name: Cook
   m_TagString: Untagged
@@ -1518,7 +1521,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2025698651}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2025698653}
+        m_TargetAssemblyTypeName: CookingPot, Assembly-CSharp
+        m_MethodName: cook
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2025698651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,6 +1572,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025698648}
   m_CullTransparentMesh: 1
+--- !u!114 &2025698653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025698648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7afb9b25cd847c548a14830274f3839c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potInventory: {fileID: 11400000, guid: d18e71b2df459c5469b41856ce2d955d, type: 2}
+  foodInventory: {fileID: 11400000, guid: ed4998d42f0c6e845a49b03e5b7120e5, type: 2}
 --- !u!1 &2089900775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,6 +1664,7 @@ MonoBehaviour:
   columns: 4
   inventorySlots: 12
   inventory: {fileID: 11400000, guid: ed4998d42f0c6e845a49b03e5b7120e5, type: 2}
+  potInventory: {fileID: 11400000, guid: d18e71b2df459c5469b41856ce2d955d, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

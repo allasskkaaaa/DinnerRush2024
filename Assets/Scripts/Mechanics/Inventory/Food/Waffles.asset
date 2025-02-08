@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Waffles
   m_EditorClassIdentifier: 
   thumbnail: {fileID: -2073926929, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  itemName: 
+  itemName: Waffles
   quantity: 0
   itemID: 0
-  recipe: []
+  recipe:
+  - {fileID: 11400000, guid: dada336f1cb3cbc44a5d99db5292d027, type: 2}
+  - {fileID: 11400000, guid: c49667bb65b58754e87af5b69b551928, type: 2}
+  - {fileID: 11400000, guid: c20db1ada36439f439deaebaf241088b, type: 2}
   type: 1

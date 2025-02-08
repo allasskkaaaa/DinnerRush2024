@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cake
   m_EditorClassIdentifier: 
   thumbnail: {fileID: -552422250, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  itemName: 
+  itemName: Cake
   quantity: 4
   itemID: 0
   recipe: []

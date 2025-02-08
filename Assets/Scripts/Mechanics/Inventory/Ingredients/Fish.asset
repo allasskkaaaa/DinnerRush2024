@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caa90ee75a9a602448df75e6e4ff92a1, type: 3}
-  m_Name: Salad
+  m_Name: Fish
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: -308939749, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  itemName: Salad
+  thumbnail: {fileID: 0}
+  itemName: 
   quantity: 0
   itemID: 0
-  recipe:
-  - {fileID: 11400000, guid: 9b9496caf42952343a43e0ede54ed112, type: 2}
-  - {fileID: 11400000, guid: 9b19da08fa131dd4b995579a6ce8a34e, type: 2}
-  - {fileID: 11400000, guid: df39491b9edad814487e7e6ea1977d8c, type: 2}
-  type: 1
+  recipe: []

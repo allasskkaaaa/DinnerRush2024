@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caa90ee75a9a602448df75e6e4ff92a1, type: 3}
-  m_Name: Salmon
+  m_Script: {fileID: 11500000, guid: 11ee148cfb01561499442014d2c5f73e, type: 3}
+  m_Name: Cooking Pot Inventory
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 0}
-  itemName: 
-  quantity: 0
-  itemID: 0
-  recipe: []
+  list: []

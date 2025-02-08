@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Matcha Cake
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 612936333, guid: ce2b224837a2d954599a9779a2573867, type: 3}
-  itemName: 
+  itemName: Matcha Cake
   quantity: 0
   itemID: 0
-  recipe: []
+  recipe:
+  - {fileID: 11400000, guid: c49667bb65b58754e87af5b69b551928, type: 2}
+  - {fileID: 11400000, guid: 43fb1f7610de8c34586985482ad5c954, type: 2}
+  - {fileID: 11400000, guid: c20db1ada36439f439deaebaf241088b, type: 2}
+  - {fileID: 11400000, guid: dada336f1cb3cbc44a5d99db5292d027, type: 2}
+  - {fileID: 11400000, guid: 9bc157f73686c8b4c8fe36d67c6531e4, type: 2}
   type: 1
