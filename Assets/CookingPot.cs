@@ -11,13 +11,19 @@ public class CookingPot : MonoBehaviour
     [Header("Inventory References")]
     [SerializeField] private Inventory potInventory;
     [SerializeField] private Inventory foodInventory;
+    [SerializeField] private Inventory cookableFoods;
 
     [SerializeField] private Image cookingOutputIMG;
-    
+    [SerializeField] private Button cookingOutputButton;
+
+    private void Start()
+    {
+        if (cookingOutputButton != null) { cookingOutputButton.onClick.AddListener(() => addToInventory(outputMeal)); }
+    }
     public void cook()
     {
 
-        foreach (FoodObject meal in foodInventory.list)
+        foreach (FoodObject meal in cookableFoods.list)
         {
             outputMeal = checkRecipe(meal);
 
@@ -34,6 +40,7 @@ public class CookingPot : MonoBehaviour
         else
         {
             Debug.Log(outputMeal.name + " was made!");
+            cookingOutputIMG.gameObject.SetActive(true);
             cookingOutputIMG.sprite = outputMeal.thumbnail;
         }
 
@@ -77,6 +84,33 @@ public class CookingPot : MonoBehaviour
         return food; // If all ingredients match, return the cooked food
     }
 
-    
+    public void addToInventory(FoodObject item)
+    {
+        if (outputMeal != null)
+        {
+            bool found = false;
+
+            foreach (FoodObject foodObject in foodInventory.list) // Check for duplicate items
+            {
+                if (item.itemName == foodObject.itemName) // If duplicate is found, increase its quantity
+                {
+                    foodObject.quantity++;
+                    found = true;
+                    break; // Exit the loop early since we found a match
+                }
+            }
+
+            if (!found)
+            {
+                foodInventory.list.Add(item); // If no duplicate was found, add it
+                item.quantity++;
+            }
+
+            cookingOutputIMG.gameObject.SetActive(false);
+            cookingOutputIMG.sprite = null;
+            outputMeal = null; // Clear output meal after adding
+        }
+    }
+
 
 }

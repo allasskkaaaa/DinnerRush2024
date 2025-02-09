@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caa90ee75a9a602448df75e6e4ff92a1, type: 3}
   m_Name: Tomato
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 0}
-  itemName: 
+  thumbnail: {fileID: 21300000, guid: a05aafb30ef465245ba30653aeda2f65, type: 3}
+  itemName: Tomato
   quantity: 0
   itemID: 0
   recipe: []
