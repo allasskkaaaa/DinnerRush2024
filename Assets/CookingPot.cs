@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CookingPot : MonoBehaviour
 {
@@ -11,13 +12,19 @@ public class CookingPot : MonoBehaviour
     [SerializeField] private Inventory potInventory;
     [SerializeField] private Inventory foodInventory;
 
+    [SerializeField] private Image cookingOutputIMG;
     
     public void cook()
     {
 
         foreach (FoodObject meal in foodInventory.list)
         {
-            outputMeal = checkRecipe(meal); 
+            outputMeal = checkRecipe(meal);
+
+            if (outputMeal != null) // Stop checking once a valid recipe is found
+            {
+                break;
+            }
         }
 
         if (outputMeal == null)
@@ -27,6 +34,7 @@ public class CookingPot : MonoBehaviour
         else
         {
             Debug.Log(outputMeal.name + " was made!");
+            cookingOutputIMG.sprite = outputMeal.thumbnail;
         }
 
         //Clear both the selected item list 
