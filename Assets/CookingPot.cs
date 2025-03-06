@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class CookingPot : MonoBehaviour
 {
@@ -22,6 +23,21 @@ public class CookingPot : MonoBehaviour
     }
     public void cook()
     {
+        GameObject[] selectedSlots = GameObject.FindGameObjectsWithTag("CookingSlot");
+
+        foreach (GameObject slot in selectedSlots)
+        {
+            SlotManager slotScript = slot.GetComponent<SlotManager>();
+
+            if (slotScript.itemInSlot != null)
+            {
+                potInventory.list.Add(slotScript.itemInSlot);
+            }
+            else
+            {
+                continue;
+            }
+        }
 
         foreach (FoodObject meal in cookableFoods.list)
         {
@@ -46,6 +62,21 @@ public class CookingPot : MonoBehaviour
 
         //Clear both the selected item list 
         potInventory.list.Clear();
+
+        foreach (GameObject slot in selectedSlots)
+        {
+            SlotManager slotScript = slot.GetComponent<SlotManager>();
+
+            if (slotScript.itemInSlot != null)
+            {
+                slotScript.removeFromSlot();
+            }
+            else
+            {
+                continue;
+            }
+        }
+
     }
 
     private FoodObject checkRecipe(FoodObject food)

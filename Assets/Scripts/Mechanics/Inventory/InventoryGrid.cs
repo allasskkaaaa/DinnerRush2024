@@ -37,6 +37,7 @@ public class InventoryGrid : MonoBehaviour
     {
         clearSlots(); //Clear any already created slots
 
+        int inventoryIndex = 0;
         for (int i = 0; i < inventorySlots; i++)
         {
             int row = i / columns;
@@ -48,63 +49,48 @@ public class InventoryGrid : MonoBehaviour
                 break;
             }
 
+
             GameObject newSlot = Instantiate(slotPrefab, transform);
+            SlotManager slotScript = newSlot.GetComponent<SlotManager>();
             Button slotButton = newSlot.GetComponent<Button>();
             createdSlotButtons.Add(slotButton);
+
+            if (inventoryIndex < inventory.list.Count)
+            {
+                slotScript.itemInSlot = inventory.list[inventoryIndex]; //Put current item in index into the slot
+                slotScript.updateSlot(); //Update the slot to display info
+
+                inventoryIndex++;
+            }
+
+            slotButton.onClick.AddListener(() => inputItem(slotScript.itemInSlot));
+
             newSlot.name = $"Slot ({row}, {column})";
 
-            if (inventory != null && inventory.list.Count > 0)
-            {
-                Transform child = newSlot.transform.GetChild(0);
-                Transform quantityBG = newSlot.transform.GetChild(1);
-                Transform quantityTXTHolder = quantityBG.transform.GetChild(0);
-
-                Image slotImage = child.GetComponent<Image>();
-                TMP_Text quantityTXT = quantityTXTHolder.GetComponent<TMP_Text>();
-
-                
-
-                if (slotImage != null && i < inventory.list.Count)
-                {
-                    child.gameObject.SetActive(true);
-                    FoodObject slotItem = inventory.list[i]; // Get the item from inventory
-
-                    SlotManager slotManager = newSlot.GetComponent<SlotManager>();
-                    slotManager.itemInSlot = slotItem; // Assign it properly
-
-                    slotImage.sprite = slotItem.thumbnail;
-                    Debug.Log("Setting slot image as " + slotItem.name);
-
-                    if (quantityTXT != null)
-                    {
-                        if (slotItem.quantity > 1) //Display the quantity of an object if it's greater than 1
-                        {
-                            quantityBG.gameObject.SetActive(true);
-                            quantityTXT.text = slotItem.quantity.ToString();
-                        }
-                    }
-                    
-
-                    // Assign button listener
-                    slotButton.onClick.AddListener(() => inputItem(slotItem));
-                    Debug.Log("Adding button listener for " + slotItem.name);
-                }
-            }
         }
     }
-
 
     public void inputItem(FoodObject item)
     {
-        if (potInventory != null)
+        GameObject[] selectionSlots = GameObject.FindGameObjectsWithTag("CookingSlot");
+
+        foreach (GameObject slot in selectionSlots)
         {
-            potInventory.list.Add(item);
+            SlotManager slotScript = slot.GetComponent<SlotManager>();
+
+            if (slotScript.itemInSlot != null)
+            {
+                continue;
+            }
+            else
+            {
+                slotScript.itemInSlot = item;
+                slotScript.updateSlot();
+                break;
+            }
         }
-
-        selectedItemGrid.GenerateGrid();
     }
-
-    public void clearSlots()
+public void clearSlots()
     {
         foreach (Button slot in createdSlotButtons)
         {

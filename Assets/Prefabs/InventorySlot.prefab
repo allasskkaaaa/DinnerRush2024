@@ -212,6 +212,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInSlot: {fileID: 0}
+  thumbnailHolder: {fileID: 6558456977526968790}
+  thumbnail: {fileID: 7974155795618144282}
+  quantitySlot: {fileID: 1283962176745963243}
+  quantityText: {fileID: 2563023703556674327}
 --- !u!1 &2287712974190280015
 GameObject:
   m_ObjectHideFlags: 0

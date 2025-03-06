@@ -20,6 +20,8 @@ TagManager:
   - VolumeSlider
   - Music Source
   - SFX Source
+  - Slot
+  - CookingSlot
   layers:
   - Default
   - TransparentFX
