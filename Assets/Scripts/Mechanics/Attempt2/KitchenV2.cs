@@ -54,9 +54,21 @@ public class KitchenV2 : MonoBehaviour
         {
             // Instantiate the order at the conveyor belt start position
             GameObject madeOrder = Instantiate(dishPrefab, converyorbeltStart.position, Quaternion.identity);
-            dishPrefab.GetComponent<Dish>().dish = order;
-            dishPrefab.GetComponent<Dish>().setDish(order);
+
+            // Get the Dish component from the instantiated object
+            Dish dishComponent = madeOrder.GetComponent<Dish>();
+            if (dishComponent != null)
+            {
+                dishComponent.dish = order;
+                dishComponent.setDish(order);
+            }
+            else
+            {
+                Debug.LogError("Dish component not found on the dishPrefab.");
+            }
+
             timer = cooldownBetweenOrders;
         }
     }
+
 }

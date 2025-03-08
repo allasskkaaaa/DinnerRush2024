@@ -6788,7 +6788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045877132481084916, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6158829416941720825, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -7143,7 +7143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045877132481084916, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6158829416941720825, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -8509,7 +8509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045877132481084916, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6158829416941720825, guid: 3b367dd7d1758614ea12414f470d6347, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -11725,7 +11725,7 @@ MonoBehaviour:
   converyorbeltStart: {fileID: 1523788688}
   cooldownBetweenOrders: 2
   backlog: []
-  dishPrefab: {fileID: 0}
+  dishPrefab: {fileID: 7832816684341898712, guid: b374bb347284f06438bf1b63062b7593, type: 3}
 --- !u!61 &1811343440
 BoxCollider2D:
   m_ObjectHideFlags: 0

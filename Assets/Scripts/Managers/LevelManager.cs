@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,7 +52,7 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        menuInventory.list.Add(foodItem);
+        
 
         bool itemAdded = false;
         foreach (SlotManager slot in menuSlots)
@@ -81,10 +82,18 @@ public class LevelManager : MonoBehaviour
 
     private void startGame()
     {
+
+        foreach (SlotManager slot in menuSlots)
+        {
+            menuInventory.list.Add(slot.itemInSlot);
+        }
+
         Time.timeScale = 1;
         chooseMenuPanel.SetActive(false);
 
         notePad.initializeMenuButtons();
+
+        menuInventory.list.Clear();
     }
 
 

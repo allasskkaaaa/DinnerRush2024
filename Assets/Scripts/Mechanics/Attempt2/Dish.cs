@@ -9,7 +9,18 @@ public class Dish : MonoBehaviour
 
     public void setDish(FoodObject food)
     {
+        
         dish = food;
-        thumbnail.sprite = dish.thumbnail;
+
+        if (dish == null)
+        {
+            Debug.Log("No dish was found to set");
+        }
+        else
+        {
+            thumbnail.sprite = dish.thumbnail;
+        }
+
+            
     }
 }
