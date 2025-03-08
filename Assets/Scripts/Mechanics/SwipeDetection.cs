@@ -74,7 +74,7 @@ public class SwipeDetection : MonoBehaviour
 
             Vector3 direction = endPosition - startPosition;
             Vector2 direction2D = new Vector2(direction.x, direction.y).normalized;
-            SwipeDirection(direction2D);
+            //SwipeDirection(direction2D);
         }
     }
 

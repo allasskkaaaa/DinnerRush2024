@@ -8,7 +8,8 @@ public class KitchenV2 : MonoBehaviour
 
     [SerializeField] public Transform converyorbeltStart; // Start of the conveyor belt
     [SerializeField] private float cooldownBetweenOrders = 1f; // Cooldown between orders spawning
-    [SerializeField] private List<GameObject> backlog = new List<GameObject>();
+    [SerializeField] private List<FoodObject> backlog = new List<FoodObject>();
+    [SerializeField] private GameObject dishPrefab; //The base template for a dish gameobject
 
     private float timer;
 
@@ -43,7 +44,7 @@ public class KitchenV2 : MonoBehaviour
         }
     }
 
-    public void makeOrder(GameObject order)
+    public void makeOrder(FoodObject order)
     {
         if (timer > 0)
         {
@@ -52,7 +53,9 @@ public class KitchenV2 : MonoBehaviour
         else
         {
             // Instantiate the order at the conveyor belt start position
-            GameObject madeOrder = Instantiate(order, converyorbeltStart.position, Quaternion.identity);
+            GameObject madeOrder = Instantiate(dishPrefab, converyorbeltStart.position, Quaternion.identity);
+            dishPrefab.GetComponent<Dish>().dish = order;
+            dishPrefab.GetComponent<Dish>().setDish(order);
             timer = cooldownBetweenOrders;
         }
     }

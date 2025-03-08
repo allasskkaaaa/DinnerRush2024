@@ -273,7 +273,6 @@ public class Customer : MonoBehaviour
 
         cleanlinessRating = 1 - ((float)garbageOnFloor.Count / possibleGarbage.Length);
 
-        Debug.Log("Cleanliness: "+ cleanlinessRating);
 
         yield return new WaitForSeconds(1);
 

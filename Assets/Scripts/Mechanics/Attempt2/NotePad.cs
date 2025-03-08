@@ -12,20 +12,18 @@ public class NotePad : MonoBehaviour
     [SerializeField] private bool isNotePadOpen;
 
     [Header("Orders")]
-    [SerializeField] private Button cakeBTN;
-    [SerializeField] private GameObject cakeObject;
-    [SerializeField] private Button latteBTN;
-    [SerializeField] private GameObject latteObject;
-    [SerializeField] private Button sandwichBTN;
-    [SerializeField] private GameObject sandwichObject;
+    [SerializeField] private Button slot1;
+    [SerializeField] private Button slot2;
+    [SerializeField] private Button slot3;
+    [SerializeField] private Inventory menu;
+    
+
 
     private void Start()
     {
 
         if (openNotepad_BTN != null) openNotepad_BTN.onClick.AddListener(() => openNotePad());
-        if (cakeBTN != null) cakeBTN.onClick.AddListener(() => sendOrder(cakeObject));
-        if (latteBTN != null) latteBTN.onClick.AddListener(() => sendOrder(latteObject));
-        if (sandwichBTN != null) sandwichBTN.onClick.AddListener(() => sendOrder(sandwichObject));
+        
     }
 
     private void openNotePad()
@@ -44,9 +42,28 @@ public class NotePad : MonoBehaviour
         }
     }
 
-    private void sendOrder(GameObject order)
+    private void sendOrder(FoodObject order)
     {
+        
         KitchenV2.instance.makeOrder(order);
         Debug.Log("Sent " + order.name + " to the kitchen.");
     }
+
+    public void initializeMenuButtons()
+    {
+        slot1.GetComponent<SlotManager>().itemInSlot = menu.list[0];
+        slot1.GetComponent<SlotManager>().updateSlot();
+
+        slot2.GetComponent<SlotManager>().itemInSlot = menu.list[1];
+        slot2.GetComponent<SlotManager>().updateSlot();
+
+        slot3.GetComponent<SlotManager>().itemInSlot = menu.list[2];
+        slot3.GetComponent<SlotManager>().updateSlot();
+
+
+        if (slot1 != null) slot1.onClick.AddListener(() => sendOrder(slot1.GetComponent<SlotManager>().itemInSlot));
+        if (slot2 != null) slot2.onClick.AddListener(() => sendOrder(slot2.GetComponent<SlotManager>().itemInSlot));
+        if (slot3 != null) slot3.onClick.AddListener(() => sendOrder(slot3.GetComponent<SlotManager>().itemInSlot));
+    }
+
 }

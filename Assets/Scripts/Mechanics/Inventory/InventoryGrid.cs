@@ -11,11 +11,8 @@ public class InventoryGrid : MonoBehaviour
     public int inventorySlots = 12; // Total number of slots you want to generate
 
     public Inventory inventory; //Inventory the grid displays
-    public Inventory potInventory;
 
-    [SerializeField] private InventoryGrid selectedItemGrid;
-
-    private List<Button> createdSlotButtons = new List<Button>();
+    public List<Button> createdSlotButtons = new List<Button>();
 
     public enum InventoryType
     {
@@ -74,21 +71,25 @@ public class InventoryGrid : MonoBehaviour
     {
         GameObject[] selectionSlots = GameObject.FindGameObjectsWithTag("CookingSlot");
 
-        foreach (GameObject slot in selectionSlots)
+        if (selectionSlots.Length > 0)
         {
-            SlotManager slotScript = slot.GetComponent<SlotManager>();
+            foreach (GameObject slot in selectionSlots)
+            {
+                SlotManager slotScript = slot.GetComponent<SlotManager>();
 
-            if (slotScript.itemInSlot != null)
-            {
-                continue;
-            }
-            else
-            {
-                slotScript.itemInSlot = item;
-                slotScript.updateSlot();
-                break;
+                if (slotScript.itemInSlot != null)
+                {
+                    continue;
+                }
+                else
+                {
+                    slotScript.itemInSlot = item;
+                    slotScript.updateSlot();
+                    break;
+                }
             }
         }
+        
     }
 public void clearSlots()
     {

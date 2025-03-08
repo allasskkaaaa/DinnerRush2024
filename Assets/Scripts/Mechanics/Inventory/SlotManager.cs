@@ -28,7 +28,6 @@ public class SlotManager : MonoBehaviour
             thumbnail.gameObject.SetActive(true);
             thumbnail.sprite = itemInSlot.thumbnail;
 
-            Debug.Log("Slot values updated!");
         }
         else
         {
@@ -43,5 +42,10 @@ public class SlotManager : MonoBehaviour
 
         updateSlot();
 
+    }
+
+    public FoodObject returnItemInSlot()
+    {
+        return itemInSlot;
     }
 }
