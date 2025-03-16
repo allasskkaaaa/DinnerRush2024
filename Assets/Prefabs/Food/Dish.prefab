@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf4b274867b1dd41a5f7c57f8e05077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dish: {fileID: 11400000, guid: 62bdea9b8e113e44db5f95485785d723, type: 2}
+  dish: {fileID: 0}
   thumbnail: {fileID: 4031807888684049616}
 --- !u!212 &4031807888684049616
 SpriteRenderer:

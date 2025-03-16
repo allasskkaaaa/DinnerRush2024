@@ -231,6 +231,7 @@ Transform:
   - {fileID: 2071292024}
   - {fileID: 1926373638}
   - {fileID: 188401169}
+  - {fileID: 651467317}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &32018252
@@ -4505,6 +4506,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608723679}
   m_CullTransparentMesh: 1
+--- !u!1 &651467316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651467317}
+  - component: {fileID: 651467318}
+  m_Layer: 0
+  m_Name: CustomerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &651467317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651467316}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 24695147}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &651467318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651467316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccea2ab9f90d1074190164f6963a51e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 11400000, guid: e1bf5bc4c84922649b20d49226fd0fac, type: 2}
+  catPrefab: {fileID: 5369852711180342182, guid: c5e73f12c7a1515469231d866526b178, type: 3}
+  allCats:
+  - {fileID: 11400000, guid: 1cf31685d1c62984cbda899ec7e9a83f, type: 2}
+  - {fileID: 11400000, guid: 4aa344af4ae58c145a65b882217c8e7b, type: 2}
+  - {fileID: 11400000, guid: c79b7d2ec0da9a2498a632a8297b7ecf, type: 2}
+  - {fileID: 11400000, guid: 1a7bcfb7dafae424c90ab6ddb63cbe26, type: 2}
+  - {fileID: 11400000, guid: 19ea4e17f0d8a37468493c3752f90ed4, type: 2}
+  possibleCats: []
+  spawnInterval: 5
+  spawnPoints:
+  - {fileID: 1475198409}
+  - {fileID: 1856872327}
+  - {fileID: 208982834}
+  - {fileID: 1598941513}
+  - {fileID: 1670073939}
+  - {fileID: 717823567}
+  - {fileID: 1895068615}
+  - {fileID: 66580904}
+  - {fileID: 297473549}
+  - {fileID: 1111688324}
 --- !u!1 &692985735
 GameObject:
   m_ObjectHideFlags: 0
@@ -11339,7 +11405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1742365101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11352,7 +11418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abdc80e9c19222d40bde27b543b861d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npc: {fileID: 876663093081796023, guid: 29d314775c676ae4390bbadf0d1a062d, type: 3}
+  npc: {fileID: 5369852711180342182, guid: c5e73f12c7a1515469231d866526b178, type: 3}
   spawnPoints:
   - {fileID: 1475198409}
   - {fileID: 1856872327}

@@ -18,7 +18,6 @@ public class Customer : MonoBehaviour
     [Header("Interaction Settings")]
     [SerializeField] private float scaleMultiplier; // When the cat is hovered over, local scale is multiplied by this value
     private Vector3 originalScale; // Tracks original scale
-    private bool isServed; // Customer was served
 
     // Order Settings
     [Header("Order Settings")]
