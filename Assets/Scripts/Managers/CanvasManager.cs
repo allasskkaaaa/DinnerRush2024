@@ -23,7 +23,6 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private Button pauseBTN;
     [SerializeField] private Button resumeBTN;
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private Button pauseMenuBTN;
 
     [Header("Settings")]
     [SerializeField] private Button settingsBTN;
@@ -42,7 +41,6 @@ public class CanvasManager : MonoBehaviour
     {
         Time.timeScale = 1;
         if (menuBTN != null) menuBTN.onClick.AddListener(() => returnToMenu());
-        if (pauseMenuBTN != null) pauseMenuBTN.onClick.AddListener(() => returnToMenu());
         if (pauseBTN != null) pauseBTN.onClick.AddListener(() => Pause());
         if (resumeBTN != null) resumeBTN.onClick.AddListener(() => Resume());
         if (gearBTN != null) gearBTN.onClick.AddListener(() => settings());

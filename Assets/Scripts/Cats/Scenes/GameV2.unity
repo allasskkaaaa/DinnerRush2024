@@ -3511,7 +3511,6 @@ MonoBehaviour:
   pauseBTN: {fileID: 1833884203}
   resumeBTN: {fileID: 557449481}
   pausePanel: {fileID: 328788260}
-  pauseMenuBTN: {fileID: 908712211}
   settingsBTN: {fileID: 188181509}
   gearBTN: {fileID: 6842526278926704874}
   settingsPanel: {fileID: 237118961}
@@ -7383,7 +7382,14 @@ Transform:
   m_Children:
   - {fileID: 544713804}
   - {fileID: 1416396846}
+<<<<<<< HEAD:Assets/Scripts/Cats/Scenes/GameV2.unity
   - {fileID: 1811343437}
+=======
+  - {fileID: 1805847152}
+  - {fileID: 762016452}
+  - {fileID: 1811343437}
+  - {fileID: 1672271180}
+>>>>>>> parent of 442da17 (should be done):Assets/Scenes/GameV2.unity
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1026515947
