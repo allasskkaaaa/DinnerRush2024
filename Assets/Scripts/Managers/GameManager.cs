@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<float> allRatings;
     [SerializeField] public float highScore = 0;
     [SerializeField] private StarTracker starTracker;
-    [SerializeField] private int money = 0;
+    [SerializeField] public int money = 1000;
 
     [HideInInspector] public bool newHighScore;
 

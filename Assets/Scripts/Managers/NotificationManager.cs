@@ -22,6 +22,7 @@ public class NotificationManager : MonoBehaviour
         {
             AndroidNotificationCenter.CancelAllNotifications();
             androidNotifications.SendNotification("Come Play!", "Your regulars are waiting for you!", 10);
+            androidNotifications.SendNotification("Come Play!", "The shop has reset!", 20);
         }
     }
 }
