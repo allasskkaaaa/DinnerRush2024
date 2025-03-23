@@ -35,10 +35,9 @@ public class Level : MonoBehaviour
         foreach (Button slotButton in foodSelection.createdSlotButtons)
         {
             Button capturedButton = slotButton;  // Capture the correct reference
+            capturedButton.onClick.RemoveAllListeners();
             capturedButton.onClick.AddListener(() => addToMenu(capturedButton.GetComponent<SlotManager>().itemInSlot));
         }
-
-
 
     }
 
@@ -95,6 +94,4 @@ public class Level : MonoBehaviour
 
         menuInventory.inventory.Clear();
     }
-
-
 }

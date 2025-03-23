@@ -31,7 +31,7 @@ public class SlotManager : MonoBehaviour
         }
         else
         {
-            quantitySlot.SetActive(false);
+            if (quantitySlot != null) quantitySlot.SetActive(false);
             thumbnail.gameObject.SetActive(false);
         }
     }

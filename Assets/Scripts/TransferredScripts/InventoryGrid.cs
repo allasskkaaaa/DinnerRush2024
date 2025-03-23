@@ -47,22 +47,26 @@ public class InventoryGrid : MonoBehaviour
             }
 
 
-            GameObject newSlot = Instantiate(slotPrefab, transform);
-            SlotManager slotScript = newSlot.GetComponent<SlotManager>();
-            Button slotButton = newSlot.GetComponent<Button>();
-            createdSlotButtons.Add(slotButton);
+            
 
             if (inventoryIndex < inventory.inventory.Count)
             {
+                GameObject newSlot = Instantiate(slotPrefab, transform);
+                SlotManager slotScript = newSlot.GetComponent<SlotManager>();
+                Button slotButton = newSlot.GetComponent<Button>();
+                createdSlotButtons.Add(slotButton);
                 slotScript.itemInSlot = inventory.inventory[inventoryIndex]; //Put current item in index into the slot
                 slotScript.updateSlot(); //Update the slot to display info
+
+                slotButton.onClick.AddListener(() => inputItem(slotScript.itemInSlot));
+                newSlot.name = $"Slot ({row}, {column})";
 
                 inventoryIndex++;
             }
 
-            slotButton.onClick.AddListener(() => inputItem(slotScript.itemInSlot));
+            
 
-            newSlot.name = $"Slot ({row}, {column})";
+            
 
         }
     }
@@ -89,9 +93,9 @@ public class InventoryGrid : MonoBehaviour
                 }
             }
         }
-        
+
     }
-public void clearSlots()
+    public void clearSlots()
     {
         foreach (Button slot in createdSlotButtons)
         {

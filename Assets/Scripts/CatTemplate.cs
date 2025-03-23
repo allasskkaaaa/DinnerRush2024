@@ -8,22 +8,7 @@ public class CatTemplate : MonoBehaviour
     public Cat cat; //The cat the template bases itself on
     [SerializeField] private List<FoodObject> canOrder; //All the menu items this cat can order
     [SerializeField] private InventoryObject menu; //Reference to the menu set for the shift
-    [SerializeField] private float cleanlinessRating = 5;
-    [SerializeField] private float patience = 20;
-    [SerializeField] private int orderSatisfaction = 5;
-    [SerializeField] private float overallSatisfaction;
-
-    [Header("Interaction Settings")]
-    [SerializeField] private float scaleMultiplier; // When the cat is hovered over, local scale is multiplied by this value
-    private Vector3 originalScale; // Tracks original scale
-    private bool isServed; // Customer was served
-
-    [Header("Order Settings")]
-    private bool checkingOrder;
-    private bool wasServed;
-    private bool hasOrdered; // Track if they've ordered already or not
-    private GameObject currentThought; // Track current thought
-
+  
     SpriteRenderer sr;
 
     private void Start()
