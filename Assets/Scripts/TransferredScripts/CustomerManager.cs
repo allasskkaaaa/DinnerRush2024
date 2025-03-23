@@ -34,26 +34,43 @@ public class CustomerManager : MonoBehaviour
 
     public void checkPossibleCats()
     {
- 
+
         //Iterate through each cat, check their favourite foods and compare each food to each menu item.
         //If the menu item matches, add that cat to the possibleCats list.
         foreach (Cat cat in allCats)
         {
+            bool catAlreadyAdded = false;
 
             foreach (FoodObject food in cat.favouriteFoods)
             {
                 for (int i = 0; i < menu.inventory.Count; i++)
                 {
-
                     if (menu.inventory[i] == food)
                     {
-                        possibleCats.Add(cat);
+                        // Check if the cat is already in the possibleCats list
+                        if (!possibleCats.Contains(cat))
+                        {
+                            possibleCats.Add(cat);
+                            cat.appearances++;
+
+                            if (cat.appearances > 3 && !cat.isRegular)
+                            {
+                                cat.isRegular = true;
+                            }
+                            
+                            catAlreadyAdded = true;
+                        }
 
                         break; // Stop checking more foods for this cat once added
                     }
                 }
+
+                // If the cat has been added already, no need to continue checking the remaining foods for this cat
+                if (catAlreadyAdded) break;
             }
         }
+
+
 
 
         Debug.Log("Found customers: " + possibleCats.Count);

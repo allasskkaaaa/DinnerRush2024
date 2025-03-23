@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thumbnail: {fileID: -22171955, guid: 07d96f9821985174ab8608398f44b1a9, type: 3}
   catName: Black Cat
+  appearances: 0
+  isRegular: 0
   favouriteFoods:
   - {fileID: 11400000, guid: 3d7da82e252cdee4190143638f84e3bd, type: 2}
   - {fileID: 11400000, guid: 10c2a44de503837468fec32c18884dba, type: 2}

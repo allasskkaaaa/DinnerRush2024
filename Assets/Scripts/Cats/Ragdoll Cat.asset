@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 1042810446, guid: 07d96f9821985174ab8608398f44b1a9, type: 3}
   catName: Ragdoll Cat
+  appearances: 0
+  isRegular: 0
   favouriteFoods:
   - {fileID: 11400000, guid: fe8d4a9055ea1c947874166b87c1e697, type: 2}
   - {fileID: 11400000, guid: fef8309c98e7dc641b445dda2d266eb6, type: 2}

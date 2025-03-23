@@ -74,10 +74,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
-  m_Sprite: {fileID: 104120353, guid: 07d96f9821985174ab8608398f44b1a9, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 1009880095, guid: 07d96f9821985174ab8608398f44b1a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.9, y: 4.51}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7136edc62fcea5d4199a4289a74fdbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cat: {fileID: 11400000, guid: b5e9548cb328b574b87866bcd53454c9, type: 2}
+  cat: {fileID: 11400000, guid: d83a4c42b86c6a241815993eefbff81c, type: 2}
   canOrder: []
   menu: {fileID: 11400000, guid: d69d84cf2f8926c478c4424050467472, type: 2}
   spawnNode: {fileID: 0}
