@@ -39,12 +39,12 @@ public class Level : MonoBehaviour
             Button capturedButton = slotButton;  // Capture the correct reference
             //capturedButton.onClick.RemoveAllListeners();
             //Debug.Log("Removing listeners");
-            slotButton.onClick.AddListener(() => addToMenu(slotButton.GetComponent<SlotManager>().itemInSlot));
+            slotButton.onClick.AddListener(() => addToMenu(slotButton.GetComponent<SlotManager>().itemInSlot, slotButton));
         }
 
     }
 
-    private void addToMenu(FoodObject foodItem)
+    private void addToMenu(FoodObject foodItem, Button button)
     {
         Debug.Log("Adding food to menu");
 
@@ -55,11 +55,22 @@ public class Level : MonoBehaviour
                 Debug.Log("Item already in menu");
                 return;
             }
+
+            if (foodItem.quantity > 1)
+            {
+                foodItem.quantity--;
+            }
+            else
+            {
+                foodItem.quantity--;
+                button.interactable = false;
+
+
+            }
         }
 
 
 
-        bool itemAdded = false;
         foreach (SlotManager slot in menuSlots)
         {
             if (slot.itemInSlot == null)
@@ -72,10 +83,6 @@ public class Level : MonoBehaviour
             }
         }
 
-        if (itemAdded)
-        {
-            Debug.Log("Items left to pick: " + picked);
-        }
 
         if (picked <= 0)
         {

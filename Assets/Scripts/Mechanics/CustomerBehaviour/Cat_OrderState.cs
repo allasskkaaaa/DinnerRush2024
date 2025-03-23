@@ -37,6 +37,7 @@ public class Cat_OrderState : Cat_BaseState
             hasOrdered = true;
 
             cat.StartCoroutine(displayOrder(cat));
+            cat.SwitchState(cat.waitingState);
         }
         else
         {
@@ -49,26 +50,28 @@ public class Cat_OrderState : Cat_BaseState
     {
         cat.thoughtBubbleAnimator.Play("Form");
         yield return new WaitForSeconds(1);
+        AudioManager.instance.playOneShot(cat.hungry_meow);
         cat.orderThoughtSprite.sprite = cat.currentOrder.thumbnail;
         yield return new WaitForSeconds(3);
         cat.thoughtBubbleAnimator.Play("HeadEmpty");
         cat.orderThoughtSprite.sprite = null;
         hasOrdered = true;
 
-        cat.SwitchState(cat.waitingState);
+        
     }
 
     public override void OnTriggerEnter(Cat_StateManager cat, Collider2D collision)
     {
-        cat.selected();
+
     }
 
     public override void OnTriggerStay(Cat_StateManager cat, Collider2D collision)
     {
+
     }
 
     public override void OnTriggerExit(Cat_StateManager cat, Collider2D collision)
     {
-        cat.unselected();
+
     }
 }

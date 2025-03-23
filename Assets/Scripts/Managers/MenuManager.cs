@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
 {
     private Animator anim;
     [SerializeField] private Button start;
+    [SerializeField] private Button shop;
     [SerializeField] private Button options;
     [SerializeField] private Button tutorial;
     [SerializeField] private Button credits;
@@ -20,6 +21,11 @@ public class MenuManager : MonoBehaviour
         if (start != null)
         {
             start.onClick.AddListener(startGame);
+        }
+
+        if (shop != null)
+        {
+            shop.onClick.AddListener(shopsMenu);
         }
 
         if (options != null)
@@ -52,6 +58,11 @@ public class MenuManager : MonoBehaviour
     public void optionsMenu()
     {
         switchPanels("OptionsMenu");
+    }
+
+    public void shopsMenu()
+    {
+        switchPanels("ShopMenu");
     }
 
     public void tutorialMenu()

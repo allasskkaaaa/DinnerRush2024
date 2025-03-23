@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 814478185, guid: a6c833fcc873dde4f9840095c37d33e5, type: 3}
   itemName: 
-  quantity: 0
+  quantity: 3
   itemID: 0
-  cost: 200
-  isBought: 0
+  cost: 0
+  maxStock: 3
+  currentStock: 1
   recipe: []
   type: 0

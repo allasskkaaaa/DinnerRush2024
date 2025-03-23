@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float highScore = 0;
     [SerializeField] private StarTracker starTracker;
     [SerializeField] public int money = 1000;
+    [SerializeField] public TMP_Text moneyText;
 
     [HideInInspector] public bool newHighScore;
 
@@ -86,7 +87,12 @@ public class GameManager : MonoBehaviour
 
         starTracker.UpdateStars();
     }
-
+    public void updateMoney(int newAmount)
+    {
+        money += newAmount;
+        if (moneyText != null)
+            moneyText.text = newAmount.ToString();
+    }
     public void setHighScore()
     {
         
@@ -116,10 +122,15 @@ public class GameManager : MonoBehaviour
         if (data != null)
         {
             highScore = data.highScore;
+            money = data.money;
         }
         
     }
-   
+
+    private void OnDisable()
+    {
+        SavePlayer();
+    }
     public void deleteData()
     {
         SaveSystem.ResetPlayerData();

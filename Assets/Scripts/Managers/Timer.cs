@@ -28,6 +28,7 @@ public class Timer : MonoBehaviour
             }
             else
             {
+                GameManager.Instance.SavePlayer();
                 canvas.endScreen();
                 isDone = true;
             }

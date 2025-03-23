@@ -38,12 +38,24 @@ public class ShopSlot : MonoBehaviour
     {
         if (itemInSlot.currentStock > 0 && GameManager.Instance.money >= itemInSlot.cost)
         {
-            inventory.inventory.Add(itemInSlot);
+            for (int i = 0; i > inventory.inventory.Count; i++)
+            {
+               if (inventory.inventory[i] == itemInSlot)
+                {
+                    inventory.inventory[i].quantity++;
+                }
+                else
+                {
+                    itemInSlot.quantity++;
+                    inventory.inventory.Add(itemInSlot);
+                }
+            }
+            
             button.interactable = false;
             GameManager.Instance.money -= itemInSlot.cost;
             shopReference.updateMoney();
             itemInSlot.currentStock--;
-            itemInSlot.quantity++;
+            
             updateSlot();
         }
     }

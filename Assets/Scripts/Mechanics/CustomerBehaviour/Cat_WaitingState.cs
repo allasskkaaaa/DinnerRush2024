@@ -11,6 +11,7 @@ public class Cat_WaitingState : Cat_BaseState
     {
         Debug.Log("Entering Waiting state");
         timer = cat.patience;
+        waitingFor = cat.currentOrder;
     }
 
     public override void UpdateState(Cat_StateManager cat)
@@ -27,20 +28,10 @@ public class Cat_WaitingState : Cat_BaseState
         
     }
 
-    private IEnumerator displayOrder(Cat_StateManager cat)
-    {
-        cat.thoughtBubbleAnimator.Play("Form");
-        yield return new WaitForSeconds(1);
-        cat.orderThoughtSprite.sprite = cat.currentOrder.thumbnail;
-        yield return new WaitForSeconds(3);
-        cat.thoughtBubbleAnimator.Play("HeadEmpty");
-        cat.orderThoughtSprite.sprite = null;
-
-        cat.SwitchState(cat.waitingState);
-    }
 
     private IEnumerator displayMood(Cat_StateManager cat, string mood)
     {
+        cat.orderThoughtSprite.sprite = null;
         cat.thoughtBubbleAnimator.Play(mood);
         yield return new WaitForSeconds(3);
         cat.thoughtBubbleAnimator.Play("HeadEmpty");
@@ -51,8 +42,7 @@ public class Cat_WaitingState : Cat_BaseState
 
     public override void OnTriggerEnter(Cat_StateManager cat, Collider2D collision)
     {
-        cat.selected();
-        cat.StartCoroutine(displayOrder(cat));
+
     }
 
     public override void OnTriggerStay(Cat_StateManager cat, Collider2D collision)
@@ -69,35 +59,50 @@ public class Cat_WaitingState : Cat_BaseState
 
         if (!draggable.isDragging)
         {
+            
             Dish dish = collision.GetComponent<Dish>();
-
-            if (dish.dish == waitingFor)
+            Debug.Log("Dish detected");
+            if (dish.dish == cat.currentOrder)
             {
+                AudioManager.instance.playOneShot(cat.meow);
                 Debug.Log("Order recieved");
+                cat.StopAllCoroutines();
                 cat.StartCoroutine(displayMood(cat, "Happy"));
                 GameObject.Destroy(draggable.gameObject);
                 cat.currentMood = "Happy";
+                cat.SwitchState(cat.leavingState);
             } 
-            else if (dish.dish == waitingFor && serveAttempts == 2)
+            else if (dish.dish == cat.currentOrder && serveAttempts == 2)
             {
+                AudioManager.instance.playOneShot(cat.meow);
                 serveAttempts--;
+                cat.orderSatisfaction--;
+                cat.StopAllCoroutines();
                 cat.StartCoroutine(displayMood(cat, "Neutral"));
                 GameObject.Destroy(draggable.gameObject);
                 cat.currentMood = "Neutral";
+                cat.SwitchState(cat.leavingState);
             }
-            else if (dish.dish == waitingFor && serveAttempts == 1)
+            else if (dish.dish == cat.currentOrder && serveAttempts == 1)
             {
+                AudioManager.instance.playOneShot(cat.meow);
                 serveAttempts--;
+                cat.orderSatisfaction--;
+                cat.StopAllCoroutines();
                 cat.StartCoroutine(displayMood(cat, "Sad"));
                 GameObject.Destroy(draggable.gameObject);
                 cat.currentMood = "Sad";
+                cat.SwitchState(cat.leavingState);
             }
-            else if (dish.dish == waitingFor && serveAttempts == 1)
+            else if (dish.dish == cat.currentOrder && serveAttempts == 0)
             {
-                serveAttempts--;
+                AudioManager.instance.playOneShot(cat.angry_meow);
+                cat.orderSatisfaction--;
+                cat.StopAllCoroutines();
                 cat.StartCoroutine(displayMood(cat, "Angry"));
                 GameObject.Destroy(draggable.gameObject);
                 cat.currentMood = "Angry";
+                cat.SwitchState(cat.leavingState);
             }
 
 
@@ -106,6 +111,6 @@ public class Cat_WaitingState : Cat_BaseState
 
     public override void OnTriggerExit(Cat_StateManager cat, Collider2D collision)
     {
-        cat.unselected();
+
     }
 }
