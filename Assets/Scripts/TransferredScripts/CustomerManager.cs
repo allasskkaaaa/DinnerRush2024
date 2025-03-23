@@ -19,7 +19,6 @@ public class CustomerManager : MonoBehaviour
     {
         timer = spawnInterval;
 
-        checkPossibleCats();
     }
 
     private void Update()
@@ -33,23 +32,31 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    private void checkPossibleCats()
+    public void checkPossibleCats()
     {
+ 
         //Iterate through each cat, check their favourite foods and compare each food to each menu item.
         //If the menu item matches, add that cat to the possibleCats list.
         foreach (Cat cat in allCats)
         {
-            foreach (FoodObject dish in cat.favouriteFoods)
+
+            foreach (FoodObject food in cat.favouriteFoods)
             {
                 for (int i = 0; i < menu.inventory.Count; i++)
                 {
-                   if (menu.inventory[i] == dish)
+
+                    if (menu.inventory[i] == food)
                     {
                         possibleCats.Add(cat);
+
+                        break; // Stop checking more foods for this cat once added
                     }
                 }
             }
         }
+
+
+        Debug.Log("Found customers: " + possibleCats.Count);
 
     }
 
@@ -84,7 +91,10 @@ public class CustomerManager : MonoBehaviour
         CatTemplate catTemplate = catPrefab.GetComponent<CatTemplate>();
         catTemplate.cat = possibleCats[randomCat];
         randomSpawn.GetComponent<SpawnNode>().isOccupied = true;
-        spawnedNPC.GetComponent<Customer>().spawnNode = randomSpawn;
+        catTemplate.spawnNode = randomSpawn;
+
+        catTemplate.initCat();
+        
 
 
     }

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186e51d7addac3b459b5e36a55b107f5, type: 3}
   m_Name: Black Cat
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 0}
-  catName: 
-  favouriteFoods: []
+  thumbnail: {fileID: -22171955, guid: 07d96f9821985174ab8608398f44b1a9, type: 3}
+  catName: Black Cat
+  favouriteFoods:
+  - {fileID: 11400000, guid: 3d7da82e252cdee4190143638f84e3bd, type: 2}
+  - {fileID: 11400000, guid: 10c2a44de503837468fec32c18884dba, type: 2}
+  - {fileID: 11400000, guid: a3d0707b861184e4982921909fd435e2, type: 2}

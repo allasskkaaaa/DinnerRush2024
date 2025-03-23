@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186e51d7addac3b459b5e36a55b107f5, type: 3}
   m_Name: Panda Cat
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 0}
-  catName: 
-  favouriteFoods: []
+  thumbnail: {fileID: 1009880095, guid: 07d96f9821985174ab8608398f44b1a9, type: 3}
+  catName: Panda Cat
+  favouriteFoods:
+  - {fileID: 11400000, guid: 42bed8f7a293dd1449c2a78d27bb2728, type: 2}
+  - {fileID: 11400000, guid: d1d20f0d6397d5044803985aa6ba08d0, type: 2}

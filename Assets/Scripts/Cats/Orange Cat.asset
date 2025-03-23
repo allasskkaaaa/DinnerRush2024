@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186e51d7addac3b459b5e36a55b107f5, type: 3}
   m_Name: Orange Cat
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 0}
-  catName: 
-  favouriteFoods: []
+  thumbnail: {fileID: 104120353, guid: 07d96f9821985174ab8608398f44b1a9, type: 3}
+  catName: Orange Cat
+  favouriteFoods:
+  - {fileID: 11400000, guid: 0238bd6bec6c876459d50e7b91065794, type: 2}
+  - {fileID: 11400000, guid: 68e1467fc7d870744aa4b62aadfc0bed, type: 2}

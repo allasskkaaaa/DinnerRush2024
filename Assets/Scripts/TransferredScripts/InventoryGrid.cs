@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+[DefaultExecutionOrder(-1)]
 public class InventoryGrid : MonoBehaviour
 {
     public GameObject slotPrefab; // Assign your slot prefab in the Inspector
@@ -13,6 +13,7 @@ public class InventoryGrid : MonoBehaviour
     public InventoryObject inventory; //Inventory the grid displays
 
     public List<Button> createdSlotButtons = new List<Button>();
+    [SerializeField] private bool isCooking;
 
     public enum InventoryType
     {
@@ -58,7 +59,11 @@ public class InventoryGrid : MonoBehaviour
                 slotScript.itemInSlot = inventory.inventory[inventoryIndex]; //Put current item in index into the slot
                 slotScript.updateSlot(); //Update the slot to display info
 
-                slotButton.onClick.AddListener(() => inputItem(slotScript.itemInSlot));
+                //if (isCooking)
+                //{
+                //    slotButton.onClick.AddListener(() => inputItem(slotScript.itemInSlot));
+                //}
+                
                 newSlot.name = $"Slot ({row}, {column})";
 
                 inventoryIndex++;

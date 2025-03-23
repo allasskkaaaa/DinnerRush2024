@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(1)]
 public class Level : MonoBehaviour
 {
     [SerializeField] private InventoryObject foodInventory;
@@ -14,6 +15,7 @@ public class Level : MonoBehaviour
     [SerializeField] private InventoryGrid foodSelection;
     [SerializeField] private Button startGameButton;
     [SerializeField] private NotePad notePad;
+    [SerializeField] private CustomerManager customerManager;
 
     private int picked = 3;
     private void Start()
@@ -35,8 +37,9 @@ public class Level : MonoBehaviour
         foreach (Button slotButton in foodSelection.createdSlotButtons)
         {
             Button capturedButton = slotButton;  // Capture the correct reference
-            capturedButton.onClick.RemoveAllListeners();
-            capturedButton.onClick.AddListener(() => addToMenu(capturedButton.GetComponent<SlotManager>().itemInSlot));
+            //capturedButton.onClick.RemoveAllListeners();
+            //Debug.Log("Removing listeners");
+            slotButton.onClick.AddListener(() => addToMenu(slotButton.GetComponent<SlotManager>().itemInSlot));
         }
 
     }
@@ -45,10 +48,13 @@ public class Level : MonoBehaviour
     {
         Debug.Log("Adding food to menu");
 
-        if (menuInventory.inventory.Contains(foodItem))
+        foreach (SlotManager slot in menuSlots)
         {
-            Debug.Log("Item already in menu!");
-            return;
+            if (slot.itemInSlot == foodItem)
+            {
+                Debug.Log("Item already in menu");
+                return;
+            }
         }
 
 
@@ -92,6 +98,10 @@ public class Level : MonoBehaviour
 
         notePad.initializeMenuButtons();
 
+        customerManager.checkPossibleCats();
         menuInventory.inventory.Clear();
+
+        
+
     }
 }

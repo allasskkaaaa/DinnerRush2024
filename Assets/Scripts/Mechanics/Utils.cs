@@ -9,7 +9,6 @@ public class Utils : MonoBehaviour
         if (position.x < 0 || position.x > camera.pixelWidth ||
             position.y < 0 || position.y > camera.pixelHeight)
         {
-            Debug.LogWarning("Screen position is outside of the viewport area.");
             return Vector3.zero; // Or any other default value you want to use
         }
 
