@@ -6,7 +6,6 @@ public class Cat_WaitingState : Cat_BaseState
 {
     FoodObject waitingFor;
     float timer;
-    int serveAttempts = 2;
     public override void EnterState(Cat_StateManager cat)
     {
         Debug.Log("Entering Waiting state");
@@ -64,6 +63,7 @@ public class Cat_WaitingState : Cat_BaseState
             Debug.Log("Dish detected");
             if (dish.dish == cat.currentOrder)
             {
+                cat.patience = timer;
                 AudioManager.instance.playOneShot(cat.meow);
                 Debug.Log("Order recieved");
                 cat.StopAllCoroutines();
@@ -72,30 +72,33 @@ public class Cat_WaitingState : Cat_BaseState
                 cat.currentMood = "Happy";
                 cat.SwitchState(cat.leavingState);
             } 
-            else if (dish.dish == cat.currentOrder && serveAttempts == 2)
+            else if (dish.dish != cat.currentOrder && cat.orderSatisfaction == 2)
             {
                 AudioManager.instance.playOneShot(cat.meow);
-                serveAttempts--;
+
+                cat.patience = timer;
                 cat.orderSatisfaction--;
                 cat.StopAllCoroutines();
                 cat.StartCoroutine(displayMood(cat, "Neutral"));
                 GameObject.Destroy(draggable.gameObject);
                 cat.currentMood = "Neutral";
-                cat.SwitchState(cat.leavingState);
+                
             }
-            else if (dish.dish == cat.currentOrder && serveAttempts == 1)
+            else if (dish.dish != cat.currentOrder && cat.orderSatisfaction == 1)
             {
                 AudioManager.instance.playOneShot(cat.meow);
-                serveAttempts--;
+
+                cat.patience = timer;
                 cat.orderSatisfaction--;
                 cat.StopAllCoroutines();
                 cat.StartCoroutine(displayMood(cat, "Sad"));
                 GameObject.Destroy(draggable.gameObject);
                 cat.currentMood = "Sad";
-                cat.SwitchState(cat.leavingState);
+                
             }
-            else if (dish.dish == cat.currentOrder && serveAttempts == 0)
+            else if (dish.dish != cat.currentOrder && cat.orderSatisfaction == 0)
             {
+                cat.patience = timer;
                 AudioManager.instance.playOneShot(cat.angry_meow);
                 cat.orderSatisfaction--;
                 cat.StopAllCoroutines();
@@ -103,6 +106,7 @@ public class Cat_WaitingState : Cat_BaseState
                 GameObject.Destroy(draggable.gameObject);
                 cat.currentMood = "Angry";
                 cat.SwitchState(cat.leavingState);
+
             }
 
 

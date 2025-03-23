@@ -13,6 +13,11 @@ public class MenuStarTracker : MonoBehaviour
     {
         UpdateStars();
     }
+
+    private void OnEnable()
+    {
+        UpdateStars();
+    }
     public void UpdateStars()
     {
         float remainingScore = GameManager.Instance.highScore;

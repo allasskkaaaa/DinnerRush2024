@@ -1,41 +1,46 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CatTemplate : MonoBehaviour
 {
     [Header("Cat Settings")]
-    public Cat cat; //The cat the template bases itself on
-    [SerializeField] public List<FoodObject> canOrder; //All the menu items this cat can order
-    [SerializeField] private InventoryObject menu; //Reference to the menu set for the shift
+    public Cat cat; // The cat the template bases itself on
+    [SerializeField] public List<FoodObject> canOrder; // All the menu items this cat can order
+    [SerializeField] private InventoryObject menu; // Reference to the menu set for the shift
     [SerializeField] public SpawnNode spawnNode;
 
     [SerializeField] public SpriteRenderer sr;
 
-
-    public void initCat()
+    private void Awake()
     {
-        if (cat == null)
+        // Clear cat reference in case this object is reused or reset
+        cat = null;
+    }
+
+    // Call this method to initialize the cat template
+    public void initCat(Cat newCat)
+    {
+        if (newCat == null)
         {
             Debug.Log("Cat not found");
             return;
         }
 
-        // Set cat image
+        cat = newCat; // Set the new cat reference
+
+        // Set the sprite and other properties for the cat
         sr.sortingOrder = spawnNode.zOrder;
         sr.flipX = spawnNode.xFlipped;
         sr.sprite = cat.thumbnail;
 
-        // Initialize the canOrder list to ensure it's empty before adding items
-        canOrder = new List<FoodObject>();
+        // Clear the previous canOrder list and reinitialize it
+        canOrder.Clear();
 
-        // Check what the cat can order by iterating through each of the favourite food and going through the menu
+        // Populate the canOrder list with the food items the cat can order
         foreach (FoodObject dish in cat.favouriteFoods)
         {
             foreach (FoodObject menuItem in menu.inventory)
             {
-                // Compare based on the food name or ID (adjust as needed)
                 if (dish.name == menuItem.name)
                 {
                     canOrder.Add(dish);
@@ -45,6 +50,4 @@ public class CatTemplate : MonoBehaviour
             }
         }
     }
-
-
 }

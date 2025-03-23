@@ -99,20 +99,22 @@ public class CustomerManager : MonoBehaviour
         // Randomly select one of the available nodes
         SpawnNode randomSpawn = availableNodes[Random.Range(0, availableNodes.Count)];
 
-
-        //Randomly select a cat
+        // Randomly select a cat
         int randomCat = Random.Range(0, possibleCats.Count);
 
-        // Spawn cat prefab and set the catTemplate cat as the randomly selected cat from possibleCats
+        // Spawn cat prefab and get the catTemplate component
         GameObject spawnedNPC = Instantiate(catPrefab, randomSpawn.transform.position, randomSpawn.transform.rotation);
-        CatTemplate catTemplate = catPrefab.GetComponent<CatTemplate>();
+        CatTemplate catTemplate = spawnedNPC.GetComponent<CatTemplate>();
+
+        // Set the catTemplate cat to the selected cat from possibleCats
         catTemplate.cat = possibleCats[randomCat];
-        randomSpawn.GetComponent<SpawnNode>().isOccupied = true;
         catTemplate.spawnNode = randomSpawn;
 
-        catTemplate.initCat();
-        
+        // Mark the spawn node as occupied
+        randomSpawn.GetComponent<SpawnNode>().isOccupied = true;
 
-
+        // Initialize the catTemplate
+        catTemplate.initCat(catTemplate.cat);  // Ensure this is called after the cat is assigned to the template
     }
+
 }

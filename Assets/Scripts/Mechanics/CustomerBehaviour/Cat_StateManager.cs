@@ -18,7 +18,7 @@ public class Cat_StateManager : MonoBehaviour
     [Header("Cat Satisfaction")]
     [SerializeField] public float cleanlinessRating = 5;
     [SerializeField] public float patience = 20;
-    [SerializeField] public int orderSatisfaction = 5;
+    [SerializeField] public int orderSatisfaction = 2;
     [SerializeField] public float overallSatisfaction;
     [SerializeField] public string currentMood;
 
@@ -77,6 +77,7 @@ public class Cat_StateManager : MonoBehaviour
             }
         }
 
+        Debug.Log("Cleanliness: " + (1 - ((float)garbageOnFloor.Count / possibleGarbage.Length)));
         return (1 - ((float)garbageOnFloor.Count / possibleGarbage.Length));
 
         

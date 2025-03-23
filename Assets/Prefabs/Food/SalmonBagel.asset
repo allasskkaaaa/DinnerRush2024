@@ -17,6 +17,7 @@ MonoBehaviour:
   quantity: 0
   itemID: 0
   cost: 200
-  isBought: 0
+  maxStock: 3
+  currentStock: 3
   recipe: []
   type: 0

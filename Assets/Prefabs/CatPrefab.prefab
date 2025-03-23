@@ -115,7 +115,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.9, y: 4.51}
+  m_Size: {x: 1.45, y: 2.255}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7136edc62fcea5d4199a4289a74fdbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cat: {fileID: 11400000, guid: cde4c2592d158b649b55f8a68d35ff4d, type: 2}
+  cat: {fileID: 0}
   canOrder:
   - {fileID: 11400000, guid: 10c2a44de503837468fec32c18884dba, type: 2}
   - {fileID: 11400000, guid: 3d7da82e252cdee4190143638f84e3bd, type: 2}
@@ -199,7 +199,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.43, y: 2.25}
-    newSize: {x: 2.9, y: 4.51}
+    newSize: {x: 1.45, y: 2.255}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   currentOrder: {fileID: 0}
   cleanlinessRating: 5
   patience: 20
-  orderSatisfaction: 5
+  orderSatisfaction: 2
   overallSatisfaction: 0
   currentMood: 
   scaleMultiplier: 1.2

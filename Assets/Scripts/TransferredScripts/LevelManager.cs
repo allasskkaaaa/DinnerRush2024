@@ -1,100 +1,115 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+using TMPro;
+
+[DefaultExecutionOrder(-1)]
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private InventoryObject foodInventory;
-    [SerializeField] private InventoryObject menuInventory;
-    [SerializeField] private FoodObject[] menu = new FoodObject[3];
-    [SerializeField] private SlotManager[] menuSlots;
-    [SerializeField] private GameObject chooseMenuPanel;
-    [SerializeField] private InventoryGrid foodSelection;
-    [SerializeField] private Button startGameButton;
-    [SerializeField] private NotePad notePad;
+    static LevelManager _instance;
+    public static LevelManager Instance => _instance;
 
-    private int picked = 3;
+    public Action<int> OnLifeValueChange;
+
+    [SerializeField] public float restaurantScore = 0;
+    [SerializeField] public List<float> allRatings;
+    [SerializeField] public float highScore = 0;
+    [SerializeField] private StarTracker starTracker;
+    [SerializeField] public int money = 1000;
+    [SerializeField] public TMP_Text moneyText;
+
+    [HideInInspector] public bool newHighScore;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        if (FindObjectsOfType<GameManager>().Length > 1)
+        {
+            Destroy(gameObject); // Destroys duplicate instances
+        }
+
+
+
+
+    }
+
+
     private void Start()
     {
-        chooseMenu();
-
-        startGameButton.onClick.AddListener(() => startGame());
-    }
-
-    private void chooseMenu()
-    {
-        Time.timeScale = 0;
-        chooseMenuPanel.SetActive(true);
-        startGameButton.interactable = false;
-
-        foodSelection.inventory = foodInventory;
-        foodSelection.GenerateGrid();
-
-        foreach (Button slotButton in foodSelection.createdSlotButtons)
-        {
-            Button capturedButton = slotButton;  // Capture the correct reference
-            capturedButton.onClick.AddListener(() => addToMenu(capturedButton.GetComponent<SlotManager>().itemInSlot));
-        }
-
-
-
-    }
-
-    private void addToMenu(FoodObject foodItem)
-    {
-        Debug.Log("Adding food to menu");
-
-        if (menuInventory.inventory.Contains(foodItem))
-        {
-            Debug.Log("Item already in menu!");
-            return;
-        }
-
-        
-
-        bool itemAdded = false;
-        foreach (SlotManager slot in menuSlots)
-        {
-            if (slot.itemInSlot == null)
-            {
-                slot.itemInSlot = foodItem;
-                slot.updateSlot();
-                picked--;
-                
-                break;
-            }
-        }
-
-        if (itemAdded)
-        {
-            Debug.Log("Items left to pick: " + picked);
-        }
-
-        if (picked <= 0)
-        {
-            Debug.Log("All items picked!");
-            startGameButton.interactable = true;
-        }
-    }
-
-
-    private void startGame()
-    {
-
-        foreach (SlotManager slot in menuSlots)
-        {
-            menuInventory.inventory.Add(slot.itemInSlot);
-        }
-
         Time.timeScale = 1;
-        chooseMenuPanel.SetActive(false);
+        restaurantScore = 0;
 
-        notePad.initializeMenuButtons();
+        _instance = this;
 
-        menuInventory.inventory.Clear();
+        if (starTracker != null)
+            starTracker.UpdateStars();
+
+        SceneManager.sceneLoaded += OnSceneLoaded; // Subscribe to the sceneLoaded event
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Unsubscribe to prevent memory leaks
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        starTracker = FindObjectOfType<StarTracker>();
+        if (starTracker != null)
+            starTracker.UpdateStars();
+    }
+    public void LoadScene(int scene)
+    {
+        Debug.Log("Loading scene " + scene);
+        SceneManager.LoadScene(scene);
+    }
+
+
+
+    public void calculateRestaurantScore()
+    {
+        float sum = 0;
+
+        float average;
+
+        for (int i = 0; i < allRatings.Count; i++)
+        {
+            sum += allRatings[i];
+        }
+
+        average = sum / allRatings.Count;
+
+        restaurantScore = average;
+
+        starTracker.UpdateStars();
+    }
+    public void updateMoney(int newAmount)
+    {
+        money += newAmount;
+        if (moneyText != null)
+            moneyText.text = money.ToString();
+    }
+    public void setHighScore()
+    {
+
+        if (restaurantScore > highScore)
+        {
+            Debug.Log("New high score!");
+            highScore = restaurantScore;
+
+            newHighScore = true;
+
+        }
+        else
+        {
+            newHighScore = false;
+        }
+    }
 
 }

@@ -21,8 +21,8 @@ public class SlotManager : MonoBehaviour
         {
             if (itemInSlot.quantity > 0)
             {
-                quantitySlot.SetActive(true);
-                quantityText.SetText(itemInSlot.quantity.ToString());
+                if (quantitySlot != null) quantitySlot.SetActive(true);
+                if (quantitySlot != null) quantityText.SetText(itemInSlot.quantity.ToString());
             }
 
             thumbnail.gameObject.SetActive(true);
@@ -34,15 +34,22 @@ public class SlotManager : MonoBehaviour
             if (quantitySlot != null) quantitySlot.SetActive(false);
             thumbnail.gameObject.SetActive(false);
         }
+
     }
 
     public void removeFromSlot()
     {
-        itemInSlot = null;
+        if (itemInSlot != null)
+        {
+            itemInSlot.quantity += 1;
+            itemInSlot = null;
 
-        updateSlot();
+            updateSlot();
+        }
+        
 
     }
+
 
     public FoodObject returnItemInSlot()
     {

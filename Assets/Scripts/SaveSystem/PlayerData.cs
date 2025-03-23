@@ -14,4 +14,6 @@ public class PlayerData
         highScore = manager.highScore;
         money = manager.money;
     }
+
+
 }

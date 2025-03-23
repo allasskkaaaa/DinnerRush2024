@@ -76,7 +76,7 @@ MonoBehaviour:
   sr: {fileID: 229294851250652250}
   cleanlinessRating: 5
   patience: 20
-  orderSatisfaction: 5
+  orderSatisfaction: 2
   overallSatisfaction: 0
   scaleMultiplier: 1.3
   order: {fileID: 0}

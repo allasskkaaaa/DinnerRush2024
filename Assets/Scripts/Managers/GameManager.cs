@@ -21,13 +21,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float highScore = 0;
     [SerializeField] private StarTracker starTracker;
     [SerializeField] public int money = 1000;
-    [SerializeField] public TMP_Text moneyText;
+    [SerializeField] public TMP_Text[] moneyTexts;
 
     [HideInInspector] public bool newHighScore;
 
+    
+
+    [SerializeField] private InventoryObject boughtInventory;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
 
         if (FindObjectsOfType<GameManager>().Length > 1)
         {
@@ -39,10 +41,22 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        LoadPlayer();
+    }
+
+    private void OnDisable()
+    {
+        SavePlayer();
+    }
+
     private void Start()
     {
         Time.timeScale = 1;
         restaurantScore = 0;
+
+        updateMoney(0);
 
         _instance = this;
 
@@ -70,6 +84,7 @@ public class GameManager : MonoBehaviour
     }
 
 
+
     public void calculateRestaurantScore()
     {
         float sum = 0;
@@ -90,8 +105,9 @@ public class GameManager : MonoBehaviour
     public void updateMoney(int newAmount)
     {
         money += newAmount;
-        if (moneyText != null)
-            moneyText.text = newAmount.ToString();
+        if (moneyTexts.Length > 0)
+            foreach (TMP_Text moneyText in moneyTexts)
+            moneyText.text = money.ToString();
     }
     public void setHighScore()
     {
@@ -123,16 +139,31 @@ public class GameManager : MonoBehaviour
         {
             highScore = data.highScore;
             money = data.money;
+            updateMoney(0);
         }
         
     }
 
-    private void OnDisable()
-    {
-        SavePlayer();
-    }
+   
+
     public void deleteData()
     {
         SaveSystem.ResetPlayerData();
+        money = 0;
+        updateMoney(0);
+        highScore = 0;
+        restaurantScore = 0;
+
+        foreach (FoodObject item in boughtInventory.inventory)
+        {
+            item.quantity = 0;
+            item.currentStock = item.maxStock;
+        }
+
+        boughtInventory.inventory.Clear();
+
+        SaveSystem.SavePlayer(this);
+
+        Debug.Log("Data reset");
     }
 }

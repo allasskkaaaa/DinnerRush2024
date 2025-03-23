@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    [SerializeField] public float restockCooldown = 30f; // 10 minutes
+    [SerializeField] public float restockCooldown = 30f; // Cooldown time (e.g., 30 seconds for testing)
     [SerializeField] private float remainingTime;
     [SerializeField] private bool timerRunning = false;
     [SerializeField] private TMP_Text timerText;
@@ -16,14 +16,7 @@ public class Shop : MonoBehaviour
 
     private void Start()
     {
-        updateMoney();
         LoadTimer();
-    }
-
-    public void updateMoney()
-    {
-        moneyText.text = GameManager.Instance.money.ToString();
-        Debug.Log("Money updated");
     }
 
     void OnApplicationPause(bool pause)
@@ -43,12 +36,12 @@ public class Shop : MonoBehaviour
     {
         if (timerRunning)
         {
-            remainingTime -= Time.deltaTime;
-            if (remainingTime <= 0)
+            remainingTime -= Time.deltaTime; // Reduce remaining time
+            if (remainingTime <= 0) // Time is up, restock the items
             {
                 remainingTime = 0;
                 timerRunning = false;
-                restockItems();
+                restockItems(); // Trigger restock when time runs out
             }
             UpdateTimerDisplay();
         }
@@ -58,8 +51,8 @@ public class Shop : MonoBehaviour
     {
         if (timerRunning)
         {
-            PlayerPrefs.SetString("SavedTime", DateTime.Now.ToString());
-            PlayerPrefs.SetFloat("RemainingTime", remainingTime);
+            PlayerPrefs.SetString("SavedTime", DateTime.Now.ToString()); // Save current time
+            PlayerPrefs.SetFloat("RemainingTime", remainingTime); // Save remaining time
             PlayerPrefs.Save();
         }
     }
@@ -72,26 +65,29 @@ public class Shop : MonoBehaviour
             DateTime lastSavedTime = DateTime.Parse(savedTime);
             TimeSpan elapsed = DateTime.Now - lastSavedTime;
 
+            // Calculate the remaining time based on elapsed time
             remainingTime = PlayerPrefs.GetFloat("RemainingTime", restockCooldown) - (float)elapsed.TotalSeconds;
 
+            // If the remaining time is still positive, resume the timer
             if (remainingTime > 0)
             {
                 timerRunning = true;
             }
             else
             {
+                // If time expired, start a fresh timer
                 remainingTime = restockCooldown;
                 timerRunning = true;
-                Debug.Log("Timer already finished.");
-                restockItems();
+                Debug.Log("Timer has expired, restocking items.");
+                restockItems(); // Restock items once when time expires
             }
         }
         else
         {
+            // No saved data, start the timer fresh
             remainingTime = restockCooldown;
             timerRunning = true;
             restockItems();
-
         }
     }
 
@@ -106,12 +102,13 @@ public class Shop : MonoBehaviour
     {
         foreach (ShopSlot shopSlot in shopSlots)
         {
-            if (!shopSlot.button.interactable)
+            if (shopSlot.itemInSlot.currentStock < shopSlot.itemInSlot.maxStock)
             {
                 shopSlot.restock();
             }
         }
 
+        // Reset the timer for the next restock
         remainingTime = restockCooldown;
         timerRunning = true;
     }

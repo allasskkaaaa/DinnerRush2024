@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ShopSlot : MonoBehaviour
 {
-    [SerializeField] FoodObject itemInSlot;
+    [SerializeField] public FoodObject itemInSlot;
     [SerializeField] public Button button;
     [SerializeField] TMP_Text itemCost;
     [SerializeField] TMP_Text quantityText;
@@ -31,6 +31,10 @@ public class ShopSlot : MonoBehaviour
         {
             button.interactable = true;
         }
+        else
+        {
+            button.interactable = false;
+        }
 
     }
 
@@ -38,22 +42,20 @@ public class ShopSlot : MonoBehaviour
     {
         if (itemInSlot.currentStock > 0 && GameManager.Instance.money >= itemInSlot.cost)
         {
-            for (int i = 0; i > inventory.inventory.Count; i++)
+            if (inventory.inventory.Contains(itemInSlot))
             {
-               if (inventory.inventory[i] == itemInSlot)
-                {
-                    inventory.inventory[i].quantity++;
-                }
-                else
-                {
-                    itemInSlot.quantity++;
-                    inventory.inventory.Add(itemInSlot);
-                }
+                itemInSlot.quantity++;
             }
-            
+            else
+            {
+                itemInSlot.quantity++;
+                inventory.inventory.Add(itemInSlot);
+            }
+
+
+
             button.interactable = false;
-            GameManager.Instance.money -= itemInSlot.cost;
-            shopReference.updateMoney();
+            GameManager.Instance.updateMoney(-itemInSlot.cost);
             itemInSlot.currentStock--;
             
             updateSlot();
