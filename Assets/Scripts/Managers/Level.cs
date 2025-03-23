@@ -99,9 +99,11 @@ public class Level : MonoBehaviour
         notePad.initializeMenuButtons();
 
         customerManager.checkPossibleCats();
+
+    }
+
+    private void OnDisable()
+    {
         menuInventory.inventory.Clear();
-
-        
-
     }
 }

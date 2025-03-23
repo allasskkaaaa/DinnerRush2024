@@ -14,13 +14,6 @@ public class Customer : MonoBehaviour
     [SerializeField] private int orderSatisfaction = 5;
     [SerializeField] private float overallSatisfaction;
 
-
-
-
-
-
-
-
     // Interaction Settings
     [Header("Interaction Settings")]
     [SerializeField] private float scaleMultiplier; // When the cat is hovered over, local scale is multiplied by this value

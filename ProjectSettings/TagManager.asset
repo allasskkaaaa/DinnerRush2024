@@ -20,6 +20,9 @@ TagManager:
   - VolumeSlider
   - Music Source
   - SFX Source
+  - NPC
+  - Slot
+  - DIsh
   layers:
   - Default
   - TransparentFX
